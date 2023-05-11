@@ -29,11 +29,12 @@
 
 
     <!-- 여행지 view 시작 -->
-    <link rel="stylesheet" href="" src=""/>
+    <link rel="stylesheet" href="../../../../resources/static/css/travel/view.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/e046991a5a.js" crossorigin="anonymous"></script>
     <!-- 여행지 view 끝 -->
+    <jsp:include page="../../layout/header.jsp"/>
 </head>
 <body>
 
@@ -240,4 +241,5 @@
 
 
 </body>
+<jsp:include page="/WEB-INF/views/layout/footer.jsp"/>
 </html>
