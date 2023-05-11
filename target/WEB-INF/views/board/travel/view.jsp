@@ -10,24 +10,26 @@
 <head>
     <meta charset="UTF-8">
     <title>서울, 지금 : SeouLive</title>
-    <link rel="icon" href="ico/SLlogo1.png">
+<%--    <link rel="icon" href="ico/SLlogo1.png">--%>
 
     <!-- header, footer 시작  -->
-    <link rel="stylesheet" href="css/reset.css">
+<%--    <link rel="stylesheet" href="css/reset.css">--%>
+
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.4.1/jquery-migrate.min.js"></script>
     <script src="https://kit.fontawesome.com/4b84ea08f3.js" crossorigin="anonymous"></script>
     <!-- layout css -->
-    <link rel="stylesheet" href="css/layout/header.css">
-    <link rel="stylesheet" href="css/layout/footer.css">
-    <!-- main css -->
-    <link rel="stylesheet" href="css/main/main.css">
-    <link rel="stylesheet" href="https://kit.fontawesome.com/4b84ea08f3.css" crossorigin="anonymous">
+<%--    <link rel="stylesheet" href="css/layout/header.css">css--%>
+<%--    <link rel="stylesheet" href="css/layout/footer.css">--%>
+<%--    <!-- main css -->--%>
+<%--    <link rel="stylesheet" href="css/main/main.css">--%>
+<%--    <link rel="stylesheet" href="https://kit.fontawesome.com/4b84ea08f3.css" crossorigin="anonymous">--%>
     <!-- header, footer 끝  -->
 
 
     <!-- 여행지 view 시작 -->
-    <link rel="stylesheet" href="css/travel/view.css">
+    <link rel="stylesheet" href="" src=""/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/e046991a5a.js" crossorigin="anonymous"></script>
@@ -94,9 +96,9 @@
         <!-- Additional required wrapper -->
         <div class="swiper-wrapper">
             <!-- Slides -->
-            <div class="swiper-slide"><img src="img/IMG_1000.JPG" onclick="window.open(this.src)" style="height: 100%; width: 100%;" ></div>
-            <div class="swiper-slide"><img src="img/IMG_1001.JPG" onclick="window.open(this.src)" style="height: 100%; width: 100%;" ></div>
-            <div class="swiper-slide"><img src="img/IMG_1002.JPG" onclick="window.open(this.src)" style="height: 100%; width: 100%;" ></div>
+            <div class="swiper-slide"><img src="../../../../resources/static/img/IMG_1000.JPG" onclick="window.open(this.src)" style="height: 100%; width: 100%;" ></div>
+            <div class="swiper-slide"><img src="../../../../resources/static/img/IMG_1001.JPG" onclick="window.open(this.src)" style="height: 100%; width: 100%;" ></div>
+            <div class="swiper-slide"><img src="../../../../resources/static/img/IMG_1002.JPG" onclick="window.open(this.src)" style="height: 100%; width: 100%;" ></div>
         </div>
         <!-- If we need pagination -->
         <div class="swiper-pagination"></div>
@@ -122,7 +124,7 @@
     <h3>지도</h3>
     <hr>
     <div class="map">
-        <img src="/img/스크린샷 2023-04-11 오후 3.10.08.png" height="100%" width="100%">
+        <img src="../../../../resources/static/img/스크린샷%202023-04-11%20오후%203.10.08.png" height="100%" width="100%">
     </div>
 
     <h3>추천 여행지</h3>
@@ -130,17 +132,17 @@
     <div class="recom">
 
         <div class="recom1">
-            <img src="img/스크린샷 2023-04-11 오후 3.10.25.png" height="100%" width="100%">
+            <img src="../../../../resources/static/img/스크린샷%202023-04-11%20오후%203.10.25.png" height="100%" width="100%">
             <div class="recom-name"><h3>추천 여행지 #1</h3></div>
         </div>
 
         <div class="recom2">
-            <img src="img/스크린샷 2023-04-11 오후 3.10.32.png" height="100%" width="100%">
+            <img src="../../../../resources/static/img/스크린샷 2023-04-11 오후 3.10.32.png" height="100%" width="100%">
             <div class="recom-name"><h3>추천 여행지 #2</h3></div>
         </div>
 
         <div class="recom3">
-            <img src="img/스크린샷 2023-04-11 오후 3.10.39.png" height="100%" width="100%">
+            <img src="../../../../resources/static/img/스크린샷 2023-04-11 오후 3.10.39.png" height="100%" width="100%">
             <div class="recom-name"><h3>추천 여행지 #3</h3></div>
         </div>
 
