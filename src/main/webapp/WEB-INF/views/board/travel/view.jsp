@@ -33,7 +33,7 @@
 
     <!-- 여행지 view 시작 -->
     <link rel="stylesheet" href="../../../../resources/static/css/travel/view.css"/>
-    <link rel="stylesheet" href="../../../../resources/static/css/layout/layout.css">
+    <link rel="stylesheet" href="../../../../resources/static/css/layout/layout.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/e046991a5a.js" crossorigin="anonymous"></script>
@@ -96,7 +96,7 @@
     <h3>지도</h3>
     <hr>
     <div class="map">
-        <img src="../../../../resources/static/img/스크린샷%202023-04-11%20오후%203.10.08.png" height="100%" width="100%">
+        <img src="../../../../resources/static/img/IMG_1003.png" height="100%" width="100%">
     </div>
 
     <h3>추천 여행지</h3>
@@ -104,17 +104,17 @@
     <div class="recom">
 
         <div class="recom1">
-            <img src="../../../../resources/static/img/스크린샷%202023-04-11%20오후%203.10.25.png" height="100%" width="100%">
+            <img src="../../../../resources/static/img/IMG_1004.png" height="100%" width="100%">
             <div class="recom-name"><h3>추천 여행지 #1</h3></div>
         </div>
 
         <div class="recom2">
-            <img src="../../../../resources/static/img/스크린샷 2023-04-11 오후 3.10.32.png" height="100%" width="100%">
+            <img src="../../../../resources/static/img/IMG_1005.png" height="100%" width="100%">
             <div class="recom-name"><h3>추천 여행지 #2</h3></div>
         </div>
 
         <div class="recom3">
-            <img src="../../../../resources/static/img/스크린샷 2023-04-11 오후 3.10.39.png" height="100%" width="100%">
+            <img src="../../../../resources/static/img/IMG_1006.png" height="100%" width="100%">
             <div class="recom-name"><h3>추천 여행지 #3</h3></div>
         </div>
 
@@ -131,6 +131,8 @@
 
 
 </div>
+
+<jsp:include page="/WEB-INF/views/layout/footer.jsp"/>
 
 <script>
     const swiper = new Swiper(".swiper", {
@@ -180,6 +182,4 @@
 
 </body>
 
-
-<jsp:include page="/WEB-INF/views/layout/footer.jsp"/>
 </html>
