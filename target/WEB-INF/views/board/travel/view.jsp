@@ -5,10 +5,13 @@
   Time: 8:02 PM
   To change this template use File | Settings | File Templates.
 --%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>서울, 지금 : SeouLive</title>
 <%--    <link rel="icon" href="ico/SLlogo1.png">--%>
 
