@@ -33,6 +33,7 @@
 
     <!-- 여행지 view 시작 -->
     <link rel="stylesheet" href="../../../../resources/static/css/travel/view.css"/>
+    <link rel="stylesheet" href="../../../../resources/static/css/layout/layout.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/e046991a5a.js" crossorigin="anonymous"></script>
@@ -174,6 +175,7 @@
     // });
 </script>
 <!-- 여행지 view 끝  -->
+
 
 
 </body>

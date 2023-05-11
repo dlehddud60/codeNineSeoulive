@@ -33,6 +33,7 @@
 
     <!-- 여행지 view 시작 -->
     <link rel="stylesheet" href="../../../../resources/static/css/travel/view.css"/>
+    <link rel="stylesheet" href="../../../../resources/static/css/layout/layout.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/e046991a5a.js" crossorigin="anonymous"></script>
@@ -41,40 +42,7 @@
 </head>
 <body>
 
-<!-- 헤더 시작 -->
-<!-- <div id="header">
-  <div class="wrap">
-      <h1 class="logo">
-          <a href="#"><img src="imgs/img-logo.png" width="240" height="60"></a>
-      </h1>
-      <ul class="bn">
-          <a href="#" class="fl">
-              <li>여행지</li>
-          </a>
-          <a href="#" class="fl">
-              <li>일정</li>
-          </a>
 
-          <a href="#" class="fl">
-              <li>자유게시판</li>
-          </a>
-
-      </ul>
-
-      <ul class="bn">
-
-          <a href="#" class="fr">
-              <li>회원가입</li>
-          </a>
-          <a href="#" class="fr">
-              <li>로그인</li>
-          </a>
-
-      </ul>
-
-  </div>
-
-</div> -->
 
 <!-- 여행지 view 시작  -->
 <div id="wrap">
@@ -162,40 +130,6 @@
     <br>
 
 
-    <!-- 퀵메뉴 시작 -->
-    <!-- <aside>
-      <div class="quick_box">
-          <p>QUICK LINK</p>
-          <ul>
-              <li><a href="#a">날씨</a></li>
-              <li><a href="#a">문의</a></li>
-              <li class="top"><a href="#a"><i class="fas fa-caret-up"></i></a></li>
-              <li class="bottom"><a href="#a"><i class="fas fa-caret-down"></i></a></li>
-          </ul>
-      </div>
-
-    </aside> -->
-    <!-- 퀵메뉴 끝 -->
-
-    <!-- 푸터 시작 -->
-    <!-- <footer>
-      <div class="footer_wrap">
-          <div class="footer_box">
-              <div class="logo_box">
-                  <a href="#a"><img src="imgs/img-footer-logo.png"/></a>
-              </div>
-              <div>
-                  <ul>
-                      <li><a href="#a">이용약관</a></li>
-                      <li><a href="#a">개인정보처리방침</a></li>
-                      <li><a href="#a">사이트맵</a></li>
-                  </ul>
-                  <p class="copyright">Copyright © SeouLive. All Rights Reserved</p>
-              </div>
-          </div>
-      </div>
-    </footer> -->
-    <!-- 푸터 끝 -->
 </div>
 
 <script>
@@ -241,6 +175,7 @@
     // });
 </script>
 <!-- 여행지 view 끝  -->
+
 
 
 </body>
