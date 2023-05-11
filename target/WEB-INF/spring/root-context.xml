@@ -11,7 +11,7 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 	
-	<!-- <context:component-scan base-package="org.zerock.seoulive.domain" /> -->
+	 <context:component-scan base-package="org.zerock.seoulive.board.free.domain" />
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 <!--git 제외33-->
@@ -39,25 +39,27 @@
 		<constructor-arg ref="hikariConfig"/>
 	</bean>
 
-<!--	<bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">-->
-<!--		<property name="dataSource" ref="hikariDataSource"/>-->
-<!--		<property name="configLocation" value="classpath:mybatis-config.xml"/>-->
-<!--		&lt;!&ndash; <property name="mapperLocations" value="classpath:mappers/*.xml"/> &ndash;&gt;-->
-<!--	</bean>-->
+	<bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="hikariDataSource"/>
+		<property name="configLocation" value="classpath:mybatis-config.xml"/>
+		<!-- <property name="mapperLocations" value="classpath:mappers/*.xml"/> -->
+	</bean>
 
-	<mybatis-spring:scan base-package="org.zerock.seoulive.controller" />
+	<mybatis-spring:scan base-package="org.zerock.seoulive.board.free.persistence" />
 	
 	<!-- ================= Start Of AOP ================== -->
 	
 	<context:annotation-config />
 	<aop:aspectj-autoproxy />
 
-	<context:component-scan base-package="org.zerock.seoulive.service" />
-	<context:component-scan base-package="org.zerock.seoulive.persistence" />
+<!--	<context:component-scan base-package="org.zerock.seoulive.service" />-->
+<!--	<context:component-scan base-package="org.zerock.seoulive.persistence" />-->
 
 	<!-- ================= End Of AOP ================== -->
 	
 	<!-- ================= Start Of Dtributed TX ================== -->
+
+
 
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="hikariDataSource" />

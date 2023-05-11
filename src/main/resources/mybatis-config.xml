@@ -6,8 +6,12 @@
 
 <configuration>
 
+<!--    <mappers>-->
+<!--    	<mapper resource="org/zerock/myapp/persistence/UserDAOMapper.xml" />-->
+<!--    </mappers>-->
+
     <mappers>
-    	<mapper resource="org/zerock/myapp/persistence/UserDAOMapper.xml" />
+        <mapper resource="org/zerock/seoulive/board/free/persistence/FreeDAOMapper.xml" />
     </mappers>
 
 </configuration>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.zerock.seoulive.board.free.persistence.FreeDAO">
+
+    <select id="getList" resultType="org.zerock.seoulive.board.free.domain.FreeDTO">
+        SELECT *
+        FROM
+            TBL_FREE
+        ORDER BY
+            SEQ desc
+    </select>
+
+    <insert id="boardInsert" parameterType="kr.board.entity.Board">
+        insert into myboard(memID,title,content,writer)
+        values(#{memID},#{title},#{content},#{writer})
+    </insert>
+
+
+</mapper>
