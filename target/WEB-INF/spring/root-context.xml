@@ -11,7 +11,7 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 	
-	 <context:component-scan base-package="org.zerock.seoulive.board.free.domain" />
+<!--	 <context:component-scan base-package="org.zerock.seoulive.board.free.domain" />-->
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 <!--git 제외33-->
@@ -42,7 +42,7 @@
 	<bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="hikariDataSource"/>
 		<property name="configLocation" value="classpath:mybatis-config.xml"/>
-		<!-- <property name="mapperLocations" value="classpath:mappers/*.xml"/> -->
+
 	</bean>
 
 	<mybatis-spring:scan base-package="org.zerock.seoulive.board.free.persistence" />

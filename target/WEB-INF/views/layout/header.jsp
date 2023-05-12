@@ -14,7 +14,7 @@
                 <li>일정</li>
             </a>
 
-            <a href="#" class="fl">
+            <a href="/board/free/list" class="fl">
                 <li>자유게시판</li>
             </a>
 

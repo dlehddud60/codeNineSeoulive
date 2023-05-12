@@ -26,7 +26,7 @@
         <h2 class="title">자유게시판</h2>
     </div>
     <div class="board_write_wrap">
-        <form action="" method="">
+        <form action="write" method="post">
             <fieldset class="board_write_box">
                 <legend class="hide">게시글 등록</legend>
                 <div>
@@ -35,7 +35,7 @@
                             <label for="category">카테고리 선택</label>
                         </div>
                         <div class="input_box col2">
-                            <select name="category" id="">
+                            <select name="category">
                                 <option value="category1">카테고리1</option>
                                 <option value="category2">카테고리2</option>
                                 <option value="category3">카테고리3</option>
@@ -47,15 +47,15 @@
                             <label for="title">제목</label>
                         </div>
                         <div class="input_box col2">
-                            <input class="b_input" type="text" name="title" id="">
+                            <input class="b_input" type="text" name="title">
                         </div>
                     </div>
                     <div class="row">
                         <div class="title_box col1">
-                            <label for="author">작성자</label>
+                            <label for="writer">작성자</label>
                         </div>
                         <div class="input_box col2">
-                            <input class="b_input" type="text" name="author" id="">
+                            <input class="b_input" type="text" name="writer">
                         </div>
                     </div>
                     <div class="row">
@@ -63,25 +63,25 @@
                             <label for="content">내용</label>
                         </div>
                         <div class="input_box col2">
-                                <textarea name="content" id="" cols="30" rows="10">
-
-                                </textarea>
+                                <textarea name="content" cols="30" rows="10"></textarea>
                         </div>
                     </div>
                 </div>
             </fieldset>
+            <div class="button_wrap">
+                <ul class="button_box">
+                    <li><a href="#a">영구삭제</a></li>
+                    <li><a href="#a">삭제</a></li>
+                    <li><button type="submit">등록</button></li>
+                    <li><a href="freeBoard.html">목록</a></li>
+                </ul>
+                <button type="submit">등록하기</button>
+            </div>
         </form>
     </div>
 
 
-    <div class="button_wrap">
-        <ul class="button_box">
-            <li><a href="#a">영구삭제</a></li>
-            <li><a href="#a">삭제</a></li>
-            <li><a href="#a">수정</a></li>
-            <li><a href="freeBoard.html">목록</a></li>
-        </ul>
-    </div>
+
 
 
 

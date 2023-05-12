@@ -1,4 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fn"  uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -60,7 +63,7 @@
             </colgroup>
             <thead>
             <tr>
-                <th scope="col"></th>
+                <th scope="col">번호</th>
                 <th scope="col">제목</th>
                 <th scope="col">작성자</th>
                 <th scope="col">등록일</th>
@@ -68,69 +71,18 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>1</td>
-                <td class="title left">
-                    <a href="#" title="자세히 보기">제목영역</a>
-                </td>
-                <td>작성자임</td>
-                <td>2022-12-20</td>
-                <td>50</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td class="title left">
-                    <a href="#" title="자세히 보기">제목영역</a>
-                </td>
-                <td>작성자임</td>
-                <td>2022-12-20</td>
-                <td>50</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td class="title left">
-                    <a href="#" title="자세히 보기">제목영역</a>
-                </td>
-                <td>작성자임</td>
-                <td>2022-12-20</td>
-                <td>50</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td class="title left">
-                    <a href="#" title="자세히 보기">제목영역</a>
-                </td>
-                <td>작성자임</td>
-                <td>2022-12-20</td>
-                <td>50</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td class="title left">
-                    <a href="#" title="자세히 보기">제목영역</a>
-                </td>
-                <td>작성자임</td>
-                <td>2022-12-20</td>
-                <td>50</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td class="title left">
-                    <a href="#" title="자세히 보기">제목영역</a>
-                </td>
-                <td>작성자임</td>
-                <td>2022-12-20</td>
-                <td>50</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td class="title left">
-                    <a href="#" title="자세히 보기">제목영역</a>
-                </td>
-                <td>작성자임</td>
-                <td>2022-12-20</td>
-                <td>50</td>
-            </tr>
+            <c:forEach var="freeDto" items="${list}">
+                <tr>
+                    <td>${freeDto.seq}</td>
+                    <td class="title left"><a href="view?seq=${freeDto.seq}">${freeDto.title}</a>
+                        <a href="#" title="자세히 보기"></a>
+                    </td>
+                    <td>${freeDto.writer}</td>
+                    <td><fmt:formatDate value="${freeDto.write_date}" pattern="yyyy-MM-dd"/></td>
+                    <td>${freeDto.total_count}</td>
+                </tr>
+            </c:forEach>
+
             </tbody>
         </table>
     </div>

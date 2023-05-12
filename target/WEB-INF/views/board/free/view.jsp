@@ -1,4 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fn"  uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,17 +20,17 @@
 <jsp:include page="../../layout/header.jsp"/>
 <div class="wrapper">
     <div class="title">
-        <h2 class="title_name">여기는 메인제목 입니다.</h2>
+        <h1 class="title_name">${vo.title}</h1>
         <div class="head_line">
             <div id="writer_container">
                 <span class="writer_picture"><i class="fas fa-user"></i>프로필사진</span>
-                <span id="writer">글쓴이
+                <span id="writer"></span>
             <span id="area_profile"></span>
             <span id="nick"></span>
           </span>
-                <i class="fas fa-circle"></i>
-                <span id="publish_date">날짜</span>
-                <span id="watch_count">조회수</span>
+                <i class="fas fa-circle">${vo.writer}</i>
+                <span id="publish_date"><fmt:formatDate value="${freeDto.write_date}" pattern="yyyy-MM-dd"/></span>
+                <span id="watch_count">${vo.total_count}</span>
             </div>
             <div class="title_function">
                 <a href="#" id="copyBtn" class="url_setClipboard" title="" style="cursor:pointer;">
@@ -56,9 +59,7 @@
 
 
 
-    <div class="content">내용이 들어가는 곳입니다
-
-    </div>
+    <div class="content">${vo.content}</div>
 
     <div class="viewBtn">
         <ul class="btnList">
