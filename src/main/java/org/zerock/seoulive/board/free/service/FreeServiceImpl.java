@@ -29,7 +29,7 @@ public class FreeServiceImpl implements FreeService{
 
     @Override
     public FreeDTO view(String seq) {
-        FreeDTO vo = freeDAO.read(seq);
-        return vo;
+        FreeDTO dto = freeDAO.read(seq);
+        return dto;
     }
 }

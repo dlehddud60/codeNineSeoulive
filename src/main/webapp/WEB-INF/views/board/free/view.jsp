@@ -20,7 +20,7 @@
 <jsp:include page="../../layout/header.jsp"/>
 <div class="wrapper">
     <div class="title">
-        <h1 class="title_name">${vo.title}</h1>
+        <h1 class="title_name">${dto.title}</h1>
         <div class="head_line">
             <div id="writer_container">
                 <span class="writer_picture"><i class="fas fa-user"></i>프로필사진</span>
@@ -28,9 +28,9 @@
             <span id="area_profile"></span>
             <span id="nick"></span>
           </span>
-                <i class="fas fa-circle">${vo.writer}</i>
-                <span id="publish_date"><fmt:formatDate value="${freeDto.write_date}" pattern="yyyy-MM-dd"/></span>
-                <span id="watch_count">${vo.total_count}</span>
+                <i class="fas fa-circle">${dto.writer}</i>
+                <span id="publish_date"><fmt:formatDate value="${dto.write_date}" pattern="yyyy-MM-dd"/></span>
+                <span id="watch_count">${dto.total_count}</span>
             </div>
             <div class="title_function">
                 <a href="#" id="copyBtn" class="url_setClipboard" title="" style="cursor:pointer;">
@@ -59,7 +59,7 @@
 
 
 
-    <div class="content">${vo.content}</div>
+    <div class="content">${dto.content}</div>
 
     <div class="viewBtn">
         <ul class="btnList">

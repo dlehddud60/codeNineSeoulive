@@ -42,9 +42,9 @@ public class FreeBoardController {
 
     @GetMapping("/view")
     public String view(@RequestParam("seq") String seq, Model model) {
-        FreeDTO vo = freeService.view(seq);
-        model.addAttribute("vo",vo);
+        FreeDTO dto = freeService.view(seq);
+        model.addAttribute("dto",dto);
         return "board/free/view";
-//        http://localhost:8080/sp07/board/get?idx=3
+
     }
 }
