@@ -29,8 +29,11 @@
             <span id="nick"></span>
           </span>
                 <i class="fas fa-circle">${dto.writer}</i>
-                <span id="publish_date"><fmt:formatDate value="${dto.write_date}" pattern="yyyy-MM-dd"/></span>
-                <span id="watch_count">${dto.total_count}</span>
+                <span id="publish_date">작성일 : <fmt:formatDate value="${dto.write_date}" pattern="yyyy-MM-dd"/></span>
+                <c:if test="${!empty dto.modify_date}">
+                    <span id="">수정일 : <fmt:formatDate value="${dto.write_date}" pattern="yyyy-MM-dd일-E a h: m분"/></span>
+                </c:if>
+                <span id="watch_count">조회수 : ${dto.total_count}</span>
             </div>
             <div class="title_function">
                 <a href="#" id="copyBtn" class="url_setClipboard" title="" style="cursor:pointer;">
@@ -63,9 +66,9 @@
 
     <div class="viewBtn">
         <ul class="btnList">
-            <li><a href="#">삭제</a></li>
-            <li><a href="#">수정</a></li>
-            <li><a href="#">목록</a></li>
+            <li><a href="/board/free/remove?seq=${dto.seq}">삭제</a></li>
+            <li><a href="/board/free/modify?seq=${dto.seq}">수정</a></li>
+            <li><a href="/board/free/list">목록</a></li>
         </ul>
     </div>
 
@@ -79,17 +82,17 @@
         </div>
         <div class="comment_bottom">
             <ul class="comment_bot_wrap">
-                <img src="/seoullive2/img/KakaoTalk_20230407_144432323.png" alt="">
+                <img src="#" alt="">
                 <li class="comment_id">user1</li>
                 <li class="comment_cont">댓글내용</li>
             </ul>
             <ul class="comment_bot_wrap">
-                <img src="/seoullive2/img/KakaoTalk_20230407_144432323.png" alt="">
+                <img src="#" alt="">
                 <li class="comment_id">user1</li>
                 <li class="comment_cont">댓글내용</li>
             </ul>
             <ul class="comment_bot_wrap">
-                <img src="/seoullive2/img/KakaoTalk_20230407_144432323.png" alt="">
+                <img src="#" alt="">
                 <li class="comment_id">user1</li>
                 <li class="comment_cont">댓글내용</li>
             </ul>
@@ -97,7 +100,7 @@
     </div>
 
 </div>
-<script src="/js/reviewvi.js" defer></script>
+<%--<script src="/js/reviewvi.js" defer></script>--%>
 <jsp:include page="/WEB-INF/views/layout/footer.jsp"/>
 </body>
 

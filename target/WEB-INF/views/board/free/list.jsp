@@ -89,8 +89,7 @@
 
     <div class="button_wrap">
         <ul class="button_box">
-            <li><a href="#a">복구</a></li>
-            <li><a href="freeBoardWrite.html">등록</a></li>
+            <li><a href="/board/free/write">등록</a></li>
         </ul>
     </div>
 

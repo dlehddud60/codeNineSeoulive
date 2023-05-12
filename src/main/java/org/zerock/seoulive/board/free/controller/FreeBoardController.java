@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.zerock.seoulive.board.free.domain.FreeDTO;
+import org.zerock.seoulive.board.free.persistence.FreeDAO;
 import org.zerock.seoulive.board.free.service.FreeService;
 
 import java.util.List;
@@ -33,6 +34,7 @@ public class FreeBoardController {
     public String write() {
         return "board/free/write";
     }
+
     @PostMapping("/write")
     public String write(FreeDTO dto) {
         freeService.freeInsert(dto);
@@ -41,10 +43,35 @@ public class FreeBoardController {
 
 
     @GetMapping("/view")
-    public String view(@RequestParam("seq") String seq, Model model) {
+    public String view(@RequestParam("seq") int seq, Model model) {
+
+        freeService.total_count(seq);
+
         FreeDTO dto = freeService.view(seq);
         model.addAttribute("dto",dto);
         return "board/free/view";
-
     }
+
+    @GetMapping("/modify")
+    public String modify(@RequestParam("seq") int seq, Model model) {
+        FreeDTO dto = freeService.view(seq);
+        model.addAttribute("dto",dto);
+        return "board/free/modify";
+    }
+
+    @PostMapping("/modify")
+    public String modify(FreeDTO dto) {
+        freeService.modify(dto);
+        return "redirect:/board/free/list";
+    }
+
+
+
+    @GetMapping("/remove")
+    public String remove(@RequestParam("seq") int seq) {
+        freeService.remove(seq);
+        return "redirect:/board/free/list";
+    }
+
+
 }

@@ -5,6 +5,13 @@ import org.apache.ibatis.annotations.Mapper;
 
 import java.util.Date;
 
+
+//<insert id="freeInsert" parameterType="org.zerock.seoulive.board.free.domain.FreeDTO">
+//        INSERT INTO TBL_FREE(seq,writer,category,title,content,write_date)
+//        VALUES (seq.nextval,#{writer},#{category},#{title},#{content},sysdate)
+//</insert>
+
+
 @Data
 public class FreeDTO {
     private int seq; //번호

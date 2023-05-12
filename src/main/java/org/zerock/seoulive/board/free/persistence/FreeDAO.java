@@ -9,6 +9,10 @@ import java.util.List;
 public interface FreeDAO {
     public List<FreeDTO> getList();
     public void freeInsert(FreeDTO dto);
-    public FreeDTO read(String seq);
+    public FreeDTO read(int seq);
+    public void delete(int seq);
+    public void update(FreeDTO dto);
+    public int total_count(int seq);
+
 
 }

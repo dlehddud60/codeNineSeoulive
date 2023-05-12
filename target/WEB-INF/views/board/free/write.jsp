@@ -26,7 +26,8 @@
         <h2 class="title">자유게시판</h2>
     </div>
     <div class="board_write_wrap">
-        <form action="write" method="post">
+        <form action="/board/free/write" method="post">
+
             <fieldset class="board_write_box">
                 <legend class="hide">게시글 등록</legend>
                 <div>
@@ -73,7 +74,7 @@
                     <li><a href="#a">영구삭제</a></li>
                     <li><a href="#a">삭제</a></li>
                     <li><button type="submit">등록</button></li>
-                    <li><a href="freeBoard.html">목록</a></li>
+                    <li><a href="/board/free/list">목록</a></li>
                 </ul>
                 <button type="submit">등록하기</button>
             </div>

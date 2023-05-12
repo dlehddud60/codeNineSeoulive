@@ -28,8 +28,23 @@ public class FreeServiceImpl implements FreeService{
     }
 
     @Override
-    public FreeDTO view(String seq) {
+    public FreeDTO view(int seq) {
         FreeDTO dto = freeDAO.read(seq);
         return dto;
+    }
+
+    @Override
+    public void remove(int seq) {
+        freeDAO.delete(seq);
+    }
+
+    @Override
+    public void modify(FreeDTO dto) {
+        freeDAO.update(dto);
+    }
+
+    @Override
+    public void total_count(int seq) {
+        freeDAO.total_count(seq);
     }
 }
