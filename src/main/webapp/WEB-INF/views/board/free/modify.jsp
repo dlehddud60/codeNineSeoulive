@@ -1,4 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fn"  uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -37,9 +40,9 @@
                         </div>
                         <div class="input_box col2">
                             <select name="category">
-                                <option value="category1">카테고리1</option>
-                                <option value="category2">카테고리2</option>
-                                <option value="category3">카테고리3</option>
+                                <option <c:if test="${dto.category eq 'category1'}">selected</c:if>  value="category1">카테고리1</option>
+                                <option <c:if test="${dto.category eq 'category2'}">selected</c:if> value="category2">카테고리2</option>
+                                <option <c:if test="${dto.category eq 'category3'}">selected</c:if> value="category3">카테고리3</option>
                             </select>
                         </div>
                     </div>

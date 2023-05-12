@@ -25,10 +25,11 @@
     </select>
 
     <update id="update" parameterType="org.zerock.seoulive.board.free.domain.FreeDTO">
-        UPDATE TBL_FREE set  writer=#{writer},category=#{category},title=#{title},content=#{content} where seq=#{seq}
+        UPDATE TBL_FREE set writer=#{writer},category=#{category},title=#{title},content=#{content},modify_date=SYSDATE where seq=#{seq}
     </update>
 
-    <update id="total_count">
+
+    <update id="total_count" >
         UPDATE TBL_FREE set total_count=total_count+1 where seq=#{seq}
     </update>
 
