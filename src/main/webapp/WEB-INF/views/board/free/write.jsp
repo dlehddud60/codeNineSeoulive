@@ -12,9 +12,11 @@
     <link rel="stylesheet" href="../../../../resources/static/css/free/list&write.css">
     <link rel="stylesheet" href="../../../../resources/static/css/layout/layout.css">
 
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.4.1/jquery-migrate.min.js"></script>
     <script src="https://kit.fontawesome.com/4b84ea08f3.js" crossorigin="anonymous"></script>
+    <script src="../../../../resources/static/js/free/write&modify.js"></script>
 
 </head>
 <jsp:include page="../../layout/header.jsp"/>
@@ -26,7 +28,7 @@
         <h2 class="title">자유게시판</h2>
     </div>
     <div class="board_write_wrap">
-        <form action="/board/free/write" method="post">
+        <form id="frm" action="/board/free/write" method="post">
 
             <fieldset class="board_write_box">
                 <legend class="hide">게시글 등록</legend>
@@ -71,12 +73,11 @@
             </fieldset>
             <div class="button_wrap">
                 <ul class="button_box">
-                    <li><a href="#a">영구삭제</a></li>
+                    <li><a type="submit">영구삭제</a></li>
                     <li><a href="#a">삭제</a></li>
-                    <li><button type="submit">등록</button></li>
+                    <li><a href="#" onclick="return chk_form()">등록</a></li>
                     <li><a href="/board/free/list">목록</a></li>
                 </ul>
-                <button type="submit">등록하기</button>
             </div>
         </form>
     </div>

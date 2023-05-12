@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="../../../../resources/static/css/free/view.css">
     <link rel="stylesheet" href="../../../../resources/static/css/layout/layout.css">
 
+    
+
     <script src="https://kit.fontawesome.com/6ba5041685.js" crossorigin="anonymous"></script>
 </head>
 <!-- test -->

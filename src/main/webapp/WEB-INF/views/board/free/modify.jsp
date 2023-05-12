@@ -15,9 +15,18 @@
     <link rel="stylesheet" href="../../../../resources/static/css/free/list&write.css">
     <link rel="stylesheet" href="../../../../resources/static/css/layout/layout.css">
 
+    <%-- 제이쿼리 --%>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.4.1/jquery-migrate.min.js"></script>
+
+    <%-- 폰트어썸 --%>
     <script src="https://kit.fontawesome.com/4b84ea08f3.js" crossorigin="anonymous"></script>
+
+
+
+    <%-- 자바스크립트 --%>
+    <script src="../../../../resources/static/js/free/write&modify.js"></script>
+
 
 </head>
 <jsp:include page="../../layout/header.jsp"/>
@@ -29,7 +38,7 @@
         <h2 class="title">자유게시판</h2>
     </div>
     <div class="board_write_wrap">
-        <form action="/board/free/modify" method="post">
+        <form id="frm" action="/board/free/modify" method="post">
 
             <fieldset class="board_write_box">
                 <legend class="hide">게시글 수</legend>
@@ -85,7 +94,7 @@
                 <ul class="button_box">
                     <li><a href="#a">영구삭제</a></li>
                     <li><a href="#a">삭제</a></li>
-                    <li><button type="submit">수정</button></li>
+                    <li><a href="#" onclick="return chk_form()">수정</a></li>
                     <li><a href="/board/free/list">목록</a></li>
                 </ul>
             </div>
