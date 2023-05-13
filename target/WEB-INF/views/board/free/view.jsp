@@ -15,6 +15,8 @@
 
 
 
+
+
     <script src="https://kit.fontawesome.com/6ba5041685.js" crossorigin="anonymous"></script>
 </head>
 <!-- test -->
@@ -68,12 +70,93 @@
             </ul>
         </div>
 
+
+        <div class="comment_wrap">
+            <div class="main-comment-title">
+                <h1>댓글</h1>
+            </div>
+
+            <div class="board-view">
+                <div class="board-comment-title">${dto.title}</div>
+                <div class="board-info">
+                    <div class="board-info-lists">
+                        <div class="board-info-list">글쓴이</div>
+                        <div class="board-info-num">${dto.seq}</div>
+                    </div>
+                    <div class="board-info-lists">
+                        <div class="board-info-list">날짜</div>
+                        <div class="board-info-num"><fmt:formatDate value="${dto.write_date}" pattern="yyyy-MM-dd"/></div>
+                    </div>
+                </div>
+                <div class="board-comment-info">
+                    <div class="button_wrap">
+                        <ul class="button_box">
+                            <li><a href="#">삭제</a></li>
+                            <li><a href="#">수정</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="board-view">
+                <div class="board-comment-title">${dto.title}</div>
+                <div class="board-info">
+                    <div class="board-info-lists">
+                        <div class="board-info-list">글쓴이</div>
+                        <div class="board-info-num">${dto.seq}</div>
+                    </div>
+                    <div class="board-info-lists">
+                        <div class="board-info-list">날짜</div>
+                        <div class="board-info-num"><fmt:formatDate value="${dto.write_date}" pattern="yyyy-MM-dd"/></div>
+                    </div>
+                </div>
+                <div class="board-comment-info">
+                    <div class="button_wrap">
+                        <ul class="button_box">
+                            <li><a href="#">삭제</a></li>
+                            <li><a href="#">수정</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="comment_form">
+                <div class="commentguid">댓글 작성</div>
+                <textarea name="" id="" cols="118" rows="10"></textarea>
+                <div class="button_wrap">
+                    <ul class="button_box">
+                        <li><a href="#">댓글작성</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
     </div>
+
+
+
+
+
+
+
+
+
 </div>
 
 
-<jsp:include page="/WEB-INF/views/layout/footer.jsp"/>
+
+</main>
+
+
 </body>
+<jsp:include page="/WEB-INF/views/layout/footer.jsp"/>
 
 
 </html>
