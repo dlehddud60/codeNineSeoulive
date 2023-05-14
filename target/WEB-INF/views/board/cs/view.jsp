@@ -14,7 +14,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>고객센터</title>
-    <link rel="stylesheet" href="../../../../resources/static/css/service/view.css"/>
+    <link rel="stylesheet" href="../../../../resources/static/css/cs/view.css"/>
     <link rel="stylesheet" href="../../../../resources/static/css/layout/layout.css"/>
 
     <jsp:include page="../../layout/header.jsp"/>
