@@ -19,7 +19,59 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.4.1/jquery-migrate.min.js"></script>
     <script src="https://kit.fontawesome.com/6ba5041685.js" crossorigin="anonymous"></script>
-    <script src="../../../../resources/static/js/free/view.js"></script>
+<%--    <script src="../../../../resources/static/js/free/view.js"></script>--%>
+    <script>
+
+        function chk_form() {
+            document.getElementById('frm').submit();
+        }
+
+        $(document).ready(function (){
+            loadList();
+        });
+        console.log("${dto.seq}");
+
+        var commentSeq = "${dto.seq}";
+
+        const loadList = () => {
+            //서버와 통신: 게시판 리스트 가져오기
+            $.ajax({
+                url : "comment/"+commentSeq,
+                type : "get",
+                dataType : "json",
+                success : commentView,
+                error : function () {alert("error");}
+            })
+        }
+
+        const commentView = (data) => {
+            var listHtml;
+            $.each(data,function (index,obj) {
+                listHtml+= "<div class='board-view'>";
+                listHtml+="<div class='board-comment-title'>"+obj.content+"</div>";
+                listHtml+="<div class='board-info'>";
+                listHtml+="<div class='board-info-lists'>";
+                listHtml+="<div class='board-info-list'>"+obj.writer+"</div>";
+                listHtml+="<div class='board-info-num'>"+obj.seq+"</div>";
+                listHtml+="</div>";
+                listHtml+="<div class='board-info-lists'>";
+                listHtml+="<div class='board-info-list'>날자</div>";
+                listHtml+="<div class='board-info-num'>"+obj.write_date+"</div>";
+                listHtml+="</div>";
+                listHtml+="</div>";
+                listHtml+="<div class='board-comment-info'>";
+                listHtml+="<div class='button_wrap'>";
+                listHtml+="<ul class='button_box'>";
+                listHtml+="<li><a href='#'>삭제</a></li>";
+                listHtml+="<li><a href='#'>수정</a></li>";
+                listHtml+="</ul>";
+                listHtml+="</div>";
+                listHtml+="</div>";
+                listHtml+="</div>";
+            });
+            $("#comment_area").html(listHtml);
+        }
+    </script>
 </head>
 <!-- test -->
 <body>
@@ -86,30 +138,6 @@
 
 
                 </div>
-
-            <c:forEach var="comment_dto" items="${comment_list}">
-            <div class="board-view">
-                <div class="board-comment-title">${comment_dto.content}</div>
-                <div class="board-info">
-                    <div class="board-info-lists">
-                        <div class="board-info-list">${comment_dto.writer}</div>
-                        <div class="board-info-num">${comment_dto.seq}</div>
-                    </div>
-                    <div class="board-info-lists">
-                        <div class="board-info-list">날짜</div>
-                        <div class="board-info-num"><fmt:formatDate value="${comment_dto.write_date}" pattern="yyyy-MM-dd"/></div>
-                    </div>
-                </div>
-                <div class="board-comment-info">
-                    <div class="button_wrap">
-                        <ul class="button_box">
-                            <li><a href="#">삭제</a></li>
-                            <li><a href="#">수정</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            </c:forEach>
 
 
 

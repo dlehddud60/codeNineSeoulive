@@ -47,16 +47,16 @@ public class FreeBoardController {
 
 
     @GetMapping("/view")
-    public String view(@RequestParam("seq") int seq, Model model, HttpServletRequest request) {
+    public String view(@RequestParam("seq") int seq, Model model) {
 
         freeService.total_count(seq);
 
         FreeDTO dto = freeService.view(seq);
         model.addAttribute("dto",dto);
 
-        //댓글
-        List<FreeCommentDTO> comment_list = freeCommentService.freeCommentList(seq);
-        model.addAttribute("comment_list",comment_list);
+//        //댓글
+//        List<FreeCommentDTO> comment_list = freeCommentService.freeCommentList(seq);
+//        model.addAttribute("comment_list",comment_list);
 
 
 

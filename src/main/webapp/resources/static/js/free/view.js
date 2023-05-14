@@ -1,12 +1,12 @@
 // view JavaScript
-function chk_form() {
-    document.getElementById('frm').submit();
-}
 
 
+// var dto = "${dto.seq}";
+//
+//
 //
 // $(document).ready(function (){
-//     loadList();
+//     console.log(dto);
 // });
 //
 // const loadList = () => {
