@@ -25,6 +25,11 @@ public class FreeCommentController {
         return commentList;
     }
 
+    @PostMapping("/write")
+    public void freeCommentInsert(FreeCommentDTO dto) {
+        freeCommentService.freeCommentInsert(dto);
+    }
+
 
 
 

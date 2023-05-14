@@ -13,6 +13,10 @@
         BOARD_NAME='freeboard' AND POST_SEQ=#{seq}
     </select>
 
+    <insert id="freeCommentInsert" parameterType="org.zerock.seoulive.board.free.domain.FreeCommentDTO">
+        INSERT INTO tbl_comment(seq,writer,content,write_date,modify_date,board_name,post_seq)
+        VALUES (SEQ_TBL_COMMENT.nextval,#{writer},#{content},sysdate,null,#{board_name},#{post_seq})
+    </insert>
 
 
 

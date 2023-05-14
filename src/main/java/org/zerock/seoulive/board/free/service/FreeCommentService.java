@@ -6,5 +6,7 @@ import java.util.List;
 
 public interface FreeCommentService {
     List<FreeCommentDTO> freeCommentList(int seq);
+    public void freeCommentInsert(FreeCommentDTO dto);
+
 
 }

@@ -98,7 +98,7 @@ SELECT *
 FROM
     TBL_COMMENT
 WHERE
-    BOARD_NAME='freeboard' AND POST_SEQ=3;
+    BOARD_NAME='freeboard' AND POST_SEQ=5;
 
 SELECT *
 FROM
@@ -106,6 +106,12 @@ FROM
 WHERE
         BOARD_NAME='freeboard' AND POST_SEQ=${post_seq};
 
+CREATE SEQUENCE SEQ_TBL_COMMENT START WITH 1 INCREMENT BY 1 MAXVALUE 10000 CYCLE NOCACHE;
 
--- delete from reply where reply_idx=#{param1}
+
+INSERT INTO tbl_comment(seq,writer,content,write_date,modify_date,board_name,post_seq)
+VALUES (SEQ_TBL_COMMENT.nextval,'관리자','안녕하세요',sysdate,null,'freeboard',5);
+
+commit;
+
 

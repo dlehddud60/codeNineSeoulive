@@ -71,6 +71,20 @@
             });
             $("#comment_area").html(listHtml);
         }
+
+        const goInsert = () => {
+            var fData = $("#frm").serialize();
+            // alert(fData);
+
+            $.ajax({
+                url : "/board/free/comment/write",
+                type : "post",
+                data : fData,
+                success : loadList,
+                error : function () {alert("error");}
+
+            });
+        }
     </script>
 </head>
 <!-- test -->
@@ -142,15 +156,16 @@
 
 
 <%--댓글 작성 폼--%>
-            <form id="frm" action="writeComment" method="post">
+            <form id="frm" method="post">
                 <div class="comment_form">
                     <div class="commentguid">댓글 작성</div>
                     <input type="hidden" name="post_seq" value="${dto.seq}">
-                   <input type="text" name="writer" value="" placeholder="닉네임을 입력해주세요" style="border: 1px solid black; height: 30px; width: 200px">
-                    <textarea name="comennt_content" id="" cols="118" rows="10"></textarea>
+                    <input type="hidden" name="board_name" value="freeboard">
+                   <input type="text" name="writer" placeholder="닉네임을 입력해주세요" style="border: 1px solid black; height: 30px; width: 200px">
+                    <textarea name="content" id="" cols="118" rows="10"></textarea>
                     <div class="button_wrap">
                         <ul class="button_box">
-                            <li><a href="#" onclick="return chk_form()">댓글작성</a></li>
+                            <li><a href="" onclick="goInsert()">댓글작성</a></li>
                         </ul>
                     </div>
                 </div>

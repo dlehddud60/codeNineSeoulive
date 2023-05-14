@@ -22,4 +22,9 @@ public class FreeCommentServiceImpl implements FreeCommentService {
         List<FreeCommentDTO> freeCommentDTO = freeCommentDAO.freeCommentList(seq);
         return freeCommentDTO;
     }
+
+    @Override
+    public void freeCommentInsert(FreeCommentDTO dto) {
+        freeCommentDAO.freeCommentInsert(dto);
+    }
 }
