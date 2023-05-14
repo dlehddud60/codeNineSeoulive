@@ -54,13 +54,13 @@ button {border: none; background-color: transparent;}
 }
 
 
-.board-view { width: 100%; border-top: 2px solid black; font-size: 1rem; margin-top: 50px}
+.board-view { width: 100%; border-top: 3px solid #49539E; font-size: 1rem; margin-top: 50px}
 .board-view .board-title { padding: 20px 15px; border-bottom: 1px dashed rgb(221, 221, 221); font-size: 1.5rem; margin-bottom: 1rem; }
 .board-view .board-comment-title { padding: 20px 15px; border-bottom: 1px dashed rgb(221, 221, 221); font-size: 1rem; margin-bottom: 1rem; }
-.board-view .board-info { border-bottom: 1px solid rgb(153, 153, 153);}
+.board-view .board-info { border-bottom: 3px solid #49539E;}
 .board-info { display: flex; flex-direction: row; align-items: center; width: 100%; }
 .board-info-lists { display: flex; margin-bottom: 1rem; text-indent: 0.9rem; margin-right: 10%; }
-.board-view .board-content { padding: 1rem; border-bottom: 1px solid black; line-height: 140%; font-size: 1rem; min-height: 250px; max-height: 500px; }
+.board-view .board-content { padding: 1rem; border-bottom: 3px solid #49539E; line-height: 140%; font-size: 1rem; min-height: 250px; max-height: 500px; }
 .btn-wrap button { background-color: white; }
 .btn-wrap a:hover { background-color: rgb(40, 40, 40); }
 .btn-wrap button:hover { cursor: pointer; color: rgb(54, 46, 46); background-color: rgb(200, 200, 200); border: 1px solid rgb(217, 205, 205); }

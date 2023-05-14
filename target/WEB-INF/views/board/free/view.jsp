@@ -16,8 +16,10 @@
 
 
 
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.4.1/jquery-migrate.min.js"></script>
     <script src="https://kit.fontawesome.com/6ba5041685.js" crossorigin="anonymous"></script>
+    <script src="../../../../resources/static/js/free/view.js"></script>
 </head>
 <!-- test -->
 <body>
@@ -26,6 +28,8 @@
 
 
 <div class="main-container">
+
+    <%--자유게시판--%>
     <div class="main-title">
         <h1>자유게시판</h1>
         <p>서울라이브 게시판</p>
@@ -71,21 +75,29 @@
         </div>
 
 
-        <div class="comment_wrap">
-            <div class="main-comment-title">
-                <h1>댓글</h1>
-            </div>
 
+    <%--댓글--%>
+
+            <div class="comment_wrap">
+                <div class="main-comment-title">
+                    <h1>댓글</h1>
+                </div>
+                <div id="comment_area">
+
+
+                </div>
+
+            <c:forEach var="comment_dto" items="${comment_list}">
             <div class="board-view">
-                <div class="board-comment-title">${dto.title}</div>
+                <div class="board-comment-title">${comment_dto.content}</div>
                 <div class="board-info">
                     <div class="board-info-lists">
-                        <div class="board-info-list">글쓴이</div>
-                        <div class="board-info-num">${dto.seq}</div>
+                        <div class="board-info-list">${comment_dto.writer}</div>
+                        <div class="board-info-num">${comment_dto.seq}</div>
                     </div>
                     <div class="board-info-lists">
                         <div class="board-info-list">날짜</div>
-                        <div class="board-info-num"><fmt:formatDate value="${dto.write_date}" pattern="yyyy-MM-dd"/></div>
+                        <div class="board-info-num"><fmt:formatDate value="${comment_dto.write_date}" pattern="yyyy-MM-dd"/></div>
                     </div>
                 </div>
                 <div class="board-comment-info">
@@ -97,42 +109,29 @@
                     </div>
                 </div>
             </div>
+            </c:forEach>
 
-            <div class="board-view">
-                <div class="board-comment-title">${dto.title}</div>
-                <div class="board-info">
-                    <div class="board-info-lists">
-                        <div class="board-info-list">글쓴이</div>
-                        <div class="board-info-num">${dto.seq}</div>
-                    </div>
-                    <div class="board-info-lists">
-                        <div class="board-info-list">날짜</div>
-                        <div class="board-info-num"><fmt:formatDate value="${dto.write_date}" pattern="yyyy-MM-dd"/></div>
-                    </div>
-                </div>
-                <div class="board-comment-info">
+
+
+<%--댓글 작성 폼--%>
+            <form id="frm" action="writeComment" method="post">
+                <div class="comment_form">
+                    <div class="commentguid">댓글 작성</div>
+                    <input type="hidden" name="post_seq" value="${dto.seq}">
+                   <input type="text" name="writer" value="" placeholder="닉네임을 입력해주세요" style="border: 1px solid black; height: 30px; width: 200px">
+                    <textarea name="comennt_content" id="" cols="118" rows="10"></textarea>
                     <div class="button_wrap">
                         <ul class="button_box">
-                            <li><a href="#">삭제</a></li>
-                            <li><a href="#">수정</a></li>
+                            <li><a href="#" onclick="return chk_form()">댓글작성</a></li>
                         </ul>
                     </div>
                 </div>
-            </div>
+            </form>
 
 
-
-
-            <div class="comment_form">
-                <div class="commentguid">댓글 작성</div>
-                <textarea name="" id="" cols="118" rows="10"></textarea>
-                <div class="button_wrap">
-                    <ul class="button_box">
-                        <li><a href="#">댓글작성</a></li>
-                    </ul>
-                </div>
-            </div>
         </div>
+
+
 
 
 

@@ -11,6 +11,7 @@ WHERE seq=1;
 UPDATE TBL_FREE set total_count=total_count+1 where seq=1;
 
 
+
 UPDATE TBL_FREE set title='공지사항',writer='이동영',content='안녕하세요 저는 이동영 이라고 합니다.',category='category2',modify_date=SYSDATE where seq=4;
 
 -- CREATE TABLE tbl_free (
@@ -62,3 +63,49 @@ DROP SEQUENCE seq_tbl_free;
 CREATE SEQUENCE seq_tbl_free START WITH 1 INCREMENT BY 1 MAXVALUE 10000 CYCLE NOCACHE;
 
 commit;
+
+
+INSERT INTO tbl_comment (seq,writer,content,write_date,modify_date,board_name,post_seq)
+VALUES (1,'이동영','테스트공지사항',sysdate,null,'freeboard',3);
+
+
+INSERT INTO tbl_comment (seq,writer,content,write_date,modify_date,board_name,post_seq)
+VALUES (1,'이동영','테스트공지사항',sysdate,null,'freeboard',3);
+
+
+INSERT INTO tbl_comment (seq,writer,content,write_date,modify_date,board_name,post_seq)
+VALUES (2,'이동영','테스트공지사항',sysdate,null,'freeboard',3);
+INSERT INTO tbl_comment (seq,writer,content,write_date,modify_date,board_name,post_seq)
+VALUES (3,'이동영','테스트공지사항',sysdate,null,'freeboard',3);
+INSERT INTO tbl_comment (seq,writer,content,write_date,modify_date,board_name,post_seq)
+VALUES (4,'이동영','테스트공지사항',sysdate,null,'freeboard',3);
+INSERT INTO tbl_comment (seq,writer,content,write_date,modify_date,board_name,post_seq)
+VALUES (5,'이동영','테스트공지사항',sysdate,null,'freeboard',3);
+
+
+INSERT INTO tbl_comment (seq,writer,content,write_date,modify_date,board_name,post_seq)
+VALUES (6,'관리자','테스트공지사항',sysdate,null,'review',4);
+INSERT INTO tbl_comment (seq,writer,content,write_date,modify_date,board_name,post_seq)
+VALUES (7,'관리자','테스트공지사항',sysdate,null,'review',4);
+INSERT INTO tbl_comment (seq,writer,content,write_date,modify_date,board_name,post_seq)
+VALUES (8,'관리자','테스트공지사항',sysdate,null,'review',4);
+INSERT INTO tbl_comment (seq,writer,content,write_date,modify_date,board_name,post_seq)
+VALUES (9,'관리자','테스트공지사항',sysdate,null,'review',4);
+INSERT INTO tbl_comment (seq,writer,content,write_date,modify_date,board_name,post_seq)
+VALUES (10,'관리자','테스트공지사항',sysdate,null,'review',4);
+
+SELECT *
+FROM
+    TBL_COMMENT
+WHERE
+    BOARD_NAME='freeboard' AND POST_SEQ=3;
+
+SELECT *
+FROM
+    TBL_COMMENT
+WHERE
+        BOARD_NAME='freeboard' AND POST_SEQ=${post_seq};
+
+
+-- delete from reply where reply_idx=#{param1}
+

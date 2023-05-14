@@ -1,14 +1,15 @@
-package org.zerock.seoulive.board.free.service;
+package org.zerock.seoulive.board.free.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.zerock.seoulive.board.free.domain.FreeDTO;
 import org.zerock.seoulive.board.free.persistence.FreeDAO;
+import org.zerock.seoulive.board.free.service.FreeService;
 
 import java.util.List;
 
 @Service
-public class FreeServiceImpl implements FreeService{
+public class FreeServiceImpl implements FreeService {
 
     @Autowired
     FreeDAO freeDAO;

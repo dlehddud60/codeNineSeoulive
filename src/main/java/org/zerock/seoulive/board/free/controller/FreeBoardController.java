@@ -3,26 +3,30 @@ package org.zerock.seoulive.board.free.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import org.zerock.seoulive.board.free.domain.FreeCommentDTO;
 import org.zerock.seoulive.board.free.domain.FreeDTO;
 import org.zerock.seoulive.board.free.persistence.FreeDAO;
+import org.zerock.seoulive.board.free.service.FreeCommentService;
 import org.zerock.seoulive.board.free.service.FreeService;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
 @RequestMapping("/board/free/*")
 public class FreeBoardController {
-    @Autowired
+
     FreeService freeService;
+    FreeCommentService freeCommentService;
+
+    @Autowired
+    public FreeBoardController(FreeService freeService, FreeCommentService freeCommentService) {
+        this.freeService = freeService;
+        this.freeCommentService = freeCommentService;
+    }
 
 
-//    public FreeBoardController(FreeService freeService) {
-//        this.freeService = freeService;
-//    }
 
     @GetMapping("/list")
     public String list(Model model) {
@@ -43,12 +47,19 @@ public class FreeBoardController {
 
 
     @GetMapping("/view")
-    public String view(@RequestParam("seq") int seq, Model model) {
+    public String view(@RequestParam("seq") int seq, Model model, HttpServletRequest request) {
 
         freeService.total_count(seq);
 
         FreeDTO dto = freeService.view(seq);
         model.addAttribute("dto",dto);
+
+        //댓글
+        List<FreeCommentDTO> comment_list = freeCommentService.freeCommentList(seq);
+        model.addAttribute("comment_list",comment_list);
+
+
+
         return "board/free/view";
     }
 
@@ -72,6 +83,9 @@ public class FreeBoardController {
         freeService.remove(seq);
         return "redirect:/board/free/list";
     }
+
+
+
 
 
 }

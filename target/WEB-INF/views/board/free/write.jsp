@@ -17,6 +17,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.4.1/jquery-migrate.min.js"></script>
     <script src="https://kit.fontawesome.com/4b84ea08f3.js" crossorigin="anonymous"></script>
     <script src="../../../../resources/static/js/free/write&modify.js"></script>
+<%--    summernote dependency--%>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
 
 </head>
 <jsp:include page="../../layout/header.jsp"/>
@@ -28,7 +32,7 @@
         <h2 class="title">자유게시판</h2>
     </div>
     <div class="board_write_wrap">
-        <form id="frm" action="/board/free/write" method="post">
+        <form id="frm" class="write-form" action="/board/free/write" method="post">
 
             <fieldset class="board_write_box">
                 <legend class="hide">게시글 등록</legend>

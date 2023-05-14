@@ -22,10 +22,13 @@
     <%-- 폰트어썸 --%>
     <script src="https://kit.fontawesome.com/4b84ea08f3.js" crossorigin="anonymous"></script>
 
-
-
     <%-- 자바스크립트 --%>
     <script src="../../../../resources/static/js/free/write&modify.js"></script>
+
+    <%-- 썸머 노트--%>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
 
 
 </head>
@@ -35,10 +38,10 @@
 
 <div id="container">
     <div class="title_box">
-        <h2 class="title">자유게시판</h2>
+        <h2 class="title">자유게시판</h2>이
     </div>
     <div class="board_write_wrap">
-        <form id="frm" action="/board/free/modify" method="post">
+        <form id="frm" class="write-form" action="/board/free/modify" method="post">
 
             <fieldset class="board_write_box">
                 <legend class="hide">게시글 수</legend>
