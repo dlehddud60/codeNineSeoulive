@@ -14,5 +14,4 @@ public interface FreeDAO {
     public void update(FreeDTO dto);
     public int total_count(int seq);
 
-
 }

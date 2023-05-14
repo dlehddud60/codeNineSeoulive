@@ -19,8 +19,20 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.4.1/jquery-migrate.min.js"></script>
     <script src="https://kit.fontawesome.com/6ba5041685.js" crossorigin="anonymous"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
 <%--    <script src="../../../../resources/static/js/free/view.js"></script>--%>
     <script>
+
+        $(function (){
+            //summernote 생성
+            $(".comment-write-form").find("[name=content]").summernote({
+                height:100, //기본 높이
+                minHeight:100, //최소 높이
+            });
+        });
 
         function chk_form() {
             document.getElementById('frm').submit();
@@ -51,11 +63,11 @@
                 listHtml+="<div class='board-comment-title'>"+obj.content+"</div>";
                 listHtml+="<div class='board-info'>";
                 listHtml+="<div class='board-info-lists'>";
-                listHtml+="<div class='board-info-list'>"+obj.writer+"</div>";
-                listHtml+="<div class='board-info-num'>"+obj.seq+"</div>";
+                listHtml+="<div class='board-info-num'>댓글번호 : "+obj.seq+"</div>";
+                listHtml+="<div class='board-info-list'>작성자 : "+obj.writer+"</div>";
                 listHtml+="</div>";
                 listHtml+="<div class='board-info-lists'>";
-                listHtml+="<div class='board-info-list'>날자</div>";
+                listHtml+="<div class='board-info-list'>작성일 :</div>";
                 listHtml+="<div class='board-info-num'>"+obj.write_date+"</div>";
                 listHtml+="</div>";
                 listHtml+="</div>";
@@ -156,7 +168,7 @@
 
 
 <%--댓글 작성 폼--%>
-            <form id="frm" method="post">
+            <form id="frm" class="comment-write-form" method="post">
                 <div class="comment_form">
                     <div class="commentguid">댓글 작성</div>
                     <input type="hidden" name="post_seq" value="${dto.seq}">

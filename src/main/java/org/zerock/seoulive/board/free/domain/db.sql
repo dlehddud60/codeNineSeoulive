@@ -98,7 +98,15 @@ SELECT *
 FROM
     TBL_COMMENT
 WHERE
-    BOARD_NAME='freeboard' AND POST_SEQ=5;
+    BOARD_NAME='freeboard' AND POST_SEQ=3;
+
+SELECT
+    COUNT(SEQ) AS comment_count
+FROM
+    TBL_COMMENT
+
+WHERE
+        BOARD_NAME='freeboard' AND POST_SEQ=3;
 
 SELECT *
 FROM

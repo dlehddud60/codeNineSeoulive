@@ -32,6 +32,9 @@ public class FreeBoardController {
     public String list(Model model) {
         List<FreeDTO> list = freeService.getList();
         model.addAttribute("list",list);
+
+
+
         return "board/free/list";
     }
     @GetMapping("/write")
@@ -83,6 +86,8 @@ public class FreeBoardController {
         freeService.remove(seq);
         return "redirect:/board/free/list";
     }
+
+
 
 
 
