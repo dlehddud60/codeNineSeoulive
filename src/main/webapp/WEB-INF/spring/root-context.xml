@@ -39,11 +39,11 @@
 		<constructor-arg ref="hikariConfig"/>
 	</bean>
 
-<!--	<bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">-->
-<!--		<property name="dataSource" ref="hikariDataSource"/>-->
-<!--		<property name="configLocation" value="classpath:mybatis-config.xml"/>-->
-<!--		&lt;!&ndash; <property name="mapperLocations" value="classpath:mappers/*.xml"/> &ndash;&gt;-->
-<!--	</bean>-->
+	<bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="hikariDataSource"/>
+		<property name="configLocation" value="classpath:mybatis-config.xml"/>
+		<!-- <property name="mapperLocations" value="classpath:mappers/*.xml"/> -->
+	</bean>
 
 	<mybatis-spring:scan base-package="org.zerock.seoulive.controller" />
 	
@@ -52,8 +52,10 @@
 	<context:annotation-config />
 	<aop:aspectj-autoproxy />
 
-	<context:component-scan base-package="org.zerock.seoulive.service" />
-	<context:component-scan base-package="org.zerock.seoulive.persistence" />
+	<context:component-scan base-package="org.zerock.seoulive.board.travel.service" />
+	<mybatis-spring:scan base-package="org.zerock.seoulive.board.travel.mapper" />
+<!--	<context:component-scan base-package="org.zerock.seoulive.service" />-->
+<!--	<context:component-scan base-package="org.zerock.seoulive.persistence" />-->
 
 	<!-- ================= End Of AOP ================== -->
 	
