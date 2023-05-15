@@ -6,6 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -30,6 +32,29 @@
 <%--    <link rel="stylesheet" href="https://kit.fontawesome.com/4b84ea08f3.css" crossorigin="anonymous">--%>
     <!-- header, footer 끝  -->
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.4.1/jquery-migrate.min.js"></script>
+    <script>
+        $(function() {
+            $('.listBtn').click(function() {
+
+                <%--location.href = "/board/travel/list?currPage=${param.currPage}";--%>
+                location.href = "/board/travel/list";
+
+            });
+
+            $('.modBtn').click(function() {
+
+                <%--location.href = "/board/travel/modify?currPage=${param.currPage}&seq=${__BOARD__.seq}";--%>
+                location.href = "/board/travel/modify";
+            });
+
+            $('.delBtn').click(function () {
+
+                location.href = "/board/travel/list"
+            });
+        });
+    </script>
 
     <!-- 여행지 view 시작 -->
     <link rel="stylesheet" href="../../../../resources/static/css/travel/view.css"/>
@@ -48,23 +73,23 @@
 <div id="wrap">
     <br>
     <div class="name">
-        <h2>창경궁</h2>
+        <h2>${__BOARD__.title}</h2>
     </div>
     <br>
     <div class="theme">
         <!-- <h2>테마</h2> -->
-        <span>서울시 종로구</span>
+        <span>${__BOARD__.address}</span>
     </div>
     <div class="etc">
         <a href="#"><i class="fa-regular fa-heart" style="color: #E76649"></i></a>
         <a href="#"><i class="fa-solid fa-share-nodes" style="color: #49539e;"></i></a>
-        <i class="fas fa-eye"> 조회수</i>
+        <i class="fas fa-eye"> ${__BOARD__.total}</i>
     </div>
     <div class="reg_Date">
-        <span>등록일 : </span>
+        <span>등록일 : ${__BOARD__.write_Date}</span>
     </div>
     <div class="mod_Date">
-        <span>수정일 : </span>
+        <span>수정일 : ${__BOARD__.modify_Date}</span>
     </div>
 
     <!-- <h3>사진</h3> -->
@@ -93,7 +118,7 @@
     <div class="exam">
 
         <ul>
-            <li>시간</li>
+            <li>${__BOARD__.content}</li>
             <li>날짜</li>
             <li>위치</li>
         </ul>
@@ -130,9 +155,9 @@
     <br>
 
     <div class="list">
-        <div><input type="button" value="수정"></div>
-        <div><input type="button" value="삭제"></div>
-        <div><input type="button" value="목록"></div>
+        <div><input type="button" class="modBtn" value="수정"></div>
+        <div><input type="button" class="delBtn" value="삭제"></div>
+        <div><input type="button" class="listBtn" value="목록"></div>
     </div>
     <br>
 

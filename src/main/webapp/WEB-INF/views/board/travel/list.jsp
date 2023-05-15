@@ -25,6 +25,16 @@
     <%--  날씨 API  --%>
     <script src="https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={seoul}&appid={19d293c9493145a49d96d3143af18942}"></script>
 
+    <script>
+        $(function() {
+            $('.write_btn').click(function() {
+
+                location.href = "/board/travel/write";
+
+            });
+
+        });
+    </script>
 </head>
 
 <body>

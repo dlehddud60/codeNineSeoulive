@@ -2,6 +2,7 @@ package org.zerock.seoulive.board.travel.mapper;
 
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import org.zerock.seoulive.board.travel.domain.DTO;
 import org.zerock.seoulive.board.travel.domain.VO;
 
@@ -19,6 +20,7 @@ public interface mapper {
             """)
     public abstract VO select(@Param("seq") Integer seq);
     public abstract Integer delete(Integer seq);
+
     public abstract Integer update(DTO dto);
 
 

@@ -39,12 +39,34 @@ public class TravelController {
         } // try-catch
     } // list
 
-    @GetMapping(path = {"/view", "/modify"}, params = "seq")
+    @PostMapping("/write")
+    String write(DTO dto, RedirectAttributes rttrs) throws ControllerException {
+
+        try {
+            Objects.requireNonNull(dto);
+
+            if(this.service.register(dto)) {
+                rttrs.addFlashAttribute("result", "true");
+                rttrs.addFlashAttribute("seq", dto.getSeq());
+            } // end if
+            return "redirect:/board/travel/write";
+        }
+        catch(Exception e) {
+            throw new ControllerException(e);
+        } // try-catch
+    }
+
+    @GetMapping("/write")
+    void write() {	// 단순 수정 화면 요청
+
+    } //
+
+    @GetMapping(path = "/view", params = "seq")
     void view(@RequestParam("seq") Integer seq, Model model) throws ControllerException {
 
         try {
             VO vo = this.service.get(seq);
-            model.addAttribute("__BOARD__","vo");
+            model.addAttribute("__BOARD__", vo);
         }
         catch (Exception e) {
             throw new ControllerException(e);
@@ -62,12 +84,17 @@ public class TravelController {
                     rttrs.addAttribute("seq", dto.getSeq());
                 } // end if
 
-                return "redirect:/board/travel/view";
+                return "redirect:/board/travel/modify";
         }
         catch (Exception e) {
             throw new ControllerException(e);
         } // try-catch
     } // modify
+
+    @GetMapping("/modify")
+    void modify() {	// 단순 수정 화면 요청
+
+    } //
 
     @PostMapping("/remove")
     String remove(Integer currPage, Integer seq, RedirectAttributes rttrs) throws ControllerException {
