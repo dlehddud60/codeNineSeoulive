@@ -58,6 +58,13 @@
     <div class="etc">
         <a href="#"><i class="fa-regular fa-heart" style="color: #E76649"></i></a>
         <a href="#"><i class="fa-solid fa-share-nodes" style="color: #49539e;"></i></a>
+        <i class="fas fa-eye"> 조회수</i>
+    </div>
+    <div class="reg_Date">
+        <span>등록일 : </span>
+    </div>
+    <div class="mod_Date">
+        <span>수정일 : </span>
     </div>
 
     <!-- <h3>사진</h3> -->
