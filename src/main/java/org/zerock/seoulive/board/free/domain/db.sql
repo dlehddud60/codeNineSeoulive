@@ -97,8 +97,11 @@ VALUES (10,'관리자','테스트공지사항',sysdate,null,'review',4);
 SELECT *
 FROM
     TBL_COMMENT
+where seq=8 AND BOARD_NAME = 'freeboard';
+
+
 WHERE
-    BOARD_NAME='freeboard' AND POST_SEQ=3;
+    BOARD_NAME='freeboard' AND POST_SEQ=20;
 
 SELECT
     COUNT(SEQ) AS comment_count
@@ -123,5 +126,17 @@ VALUES (SEQ_TBL_COMMENT.nextval,'관리자','안녕하세요',sysdate,null,'free
 delete from tbl_comment where seq=5;
 
 commit;
+
+update tbl_comment set content='수정테스트', modify_date=sysdate
+where seq=8 AND BOARD_NAME = 'freeboard' AND post_seq=20;
+
+SELECT *
+FROM
+    TBL_COMMENT
+where seq=8 AND post_seq=20 AND board_name = 'freeboard';
+
+update tbl_comment set content='수정 테스트 입니다..', modify_date=sysdate
+where seq=8 AND board_name = 'freeboard' AND post_seq = 20;
+
 rollback;
 

@@ -22,6 +22,15 @@
         delete from tbl_comment where seq=#{seq}
     </delete>
 
+    <update id="freeCommentUpdate" parameterType="org.zerock.seoulive.board.free.domain.FreeCommentDTO">
+        update tbl_comment set content=#{content}, modify_date=sysdate
+        where seq=#{seq} AND board_name = #{board_name} AND post_seq = #{post_seq}
+    </update>
+
+<!--    update tbl_comment set content='수정테스트', modify_date=sysdate-->
+<!--    where seq=8 AND BOARD_NAME = 'freeboard';-->
+<!--    update tbl_comment set content='수정테스트', modify_date=sysdate-->
+<!--    where seq=8 AND BOARD_NAME = 'freeboard' AND post_seq=20;-->
 
 
 </mapper>

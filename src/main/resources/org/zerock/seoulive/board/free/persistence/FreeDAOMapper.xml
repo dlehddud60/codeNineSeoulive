@@ -25,7 +25,8 @@
     </select>
 
     <update id="update" parameterType="org.zerock.seoulive.board.free.domain.FreeDTO">
-        UPDATE TBL_FREE set writer=#{writer},category=#{category},title=#{title},content=#{content},modify_date=SYSDATE where seq=#{seq}
+        UPDATE TBL_FREE set writer=#{writer},category=#{category},title=#{title},content=#{content},modify_date=SYSDATE
+        where seq=#{seq}
     </update>
 
 
@@ -37,6 +38,7 @@
     <delete id="delete">
         delete from TBL_FREE where seq=#{seq}
     </delete>
+
 
 
 

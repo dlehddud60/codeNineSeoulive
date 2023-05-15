@@ -36,6 +36,7 @@
 
         function chk_form() {
             document.getElementById('frm').submit();
+            document.getElementById('commentFrm').submit();
         }
 
         $(document).ready(function (){
@@ -57,10 +58,10 @@
         }
 
         const commentView = (data) => {
-            var listHtml;
+            var listHtml = "";
             $.each(data,function (index,obj) {
-                listHtml+= "<div class='board-view'>";
-                listHtml+="<div class='board-comment-title'>"+obj.content+"</div>";
+                listHtml+= "<div id='commnetSeq"+obj.seq+"' class='board-view'>";
+                listHtml+="<div id='commentContent"+obj.seq+"' class='board-comment-title'>"+obj.content+"</div>";
                 listHtml+="<div class='board-info'>";
                 listHtml+="<div class='board-info-lists'>";
                 listHtml+="<div class='board-info-num'>댓글번호 : "+obj.seq+"</div>";
@@ -75,7 +76,7 @@
                 listHtml+="<div class='button_wrap'>";
                 listHtml+="<ul class='button_box'>";
                 listHtml+="<li><a href='javascript:goDelete("+obj.seq+")'>삭제</a></li>";
-                listHtml+="<li><a href='#'>수정</a></li>";
+                listHtml+="<li><a href='javascript:goUpdateForm("+obj.seq+")'>수정</a></li>";
                 listHtml+="</ul>";
                 listHtml+="</div>";
                 listHtml+="</div>";
@@ -107,6 +108,49 @@
                 error : function () {alert("error")}
             });
         }
+
+        const goUpdateForm = (seq) => {
+
+            var commentHtml = "";
+            var commentContent = $("#commentContent"+seq).text();
+
+
+
+            commentHtml+= '<div class="comment_form">';
+            commentHtml+= '<div class="commentguid">'+seq+'번 댓글 수정</div>';
+            commentHtml+= '<textarea name="content" id="commentVal'+seq+'" cols="118" rows="10">'+commentContent+'</textarea>';
+            commentHtml+= '<div class="button_wrap">';
+            commentHtml+= '<ul class="button_box">';
+            commentHtml+= '<li><a href="javascript:onclick=goUpdate('+seq+')">댓글수정</a></li>';
+            commentHtml+= '</ul>';
+            commentHtml+= '</div>';
+            commentHtml+= '</div>';
+
+
+
+            $("#commnetSeq" + seq).html(commentHtml);
+
+
+        }
+
+        const goUpdate = (seq) => {
+
+            var content = $("#commentVal"+seq).val();
+            var post_seq = "${dto.seq}"
+            var board_name = "freeboard";
+
+
+            $.ajax({
+                url : "/board/free/comment/commentModify",
+                type : "put",
+                contentType: 'application/json;charset=utf-8',
+                data : JSON.stringify({"seq":seq,"content":content,"board_name":board_name,"post_seq":post_seq}),
+                success : loadList,
+                error : function () {alert("error");}
+            });
+        }
+
+
     </script>
 </head>
 <!-- test -->
@@ -123,7 +167,7 @@
         <p>서울라이브 게시판</p>
     </div>
     <div class="board-view-container">
-        <div class="board-view" id="board-view-content">
+        <div  class="board-view" id="board-view-content">
             <div class="board-title">${dto.title}</div>
             <div class="board-info">
                 <div class="board-info-lists">
@@ -174,6 +218,7 @@
 
 
                 </div>
+
 
 
 
