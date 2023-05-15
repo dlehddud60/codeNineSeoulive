@@ -68,8 +68,14 @@
                 listHtml+="<div class='board-info-list'>작성자 : "+obj.writer+"</div>";
                 listHtml+="</div>";
                 listHtml+="<div class='board-info-lists'>";
-                listHtml+="<div class='board-info-list'>작성일 :</div>";
-                listHtml+="<div class='board-info-num'>"+obj.write_date+"</div>";
+                if(obj.modify_date == null){
+                    listHtml+="<div class='board-info-list'>작성일 :</div>";
+                    listHtml+="<div class='board-info-num'>"+obj.write_date+"</div>";
+                }else {
+                    listHtml+="<div class='board-info-list'>수정일 :</div>";
+                    listHtml+="<div class='board-info-num'>"+obj.modify_date+"</div>";
+                }
+
                 listHtml+="</div>";
                 listHtml+="</div>";
                 listHtml+="<div class='board-comment-info'>";
@@ -114,8 +120,15 @@
             var commentHtml = "";
             var commentContent = $("#commentContent"+seq).text();
 
+            $(function (){
+                //summernote 생성
+                $(".comment-write-form").find("[name=content]").summernote({
+                    height:100, //기본 높이
+                    minHeight:100, //최소 높이
+                });
+            });
 
-
+            commentHtml+= ' <form class="comment-write-form">';
             commentHtml+= '<div class="comment_form">';
             commentHtml+= '<div class="commentguid">'+seq+'번 댓글 수정</div>';
             commentHtml+= '<textarea name="content" id="commentVal'+seq+'" cols="118" rows="10">'+commentContent+'</textarea>';
@@ -125,6 +138,7 @@
             commentHtml+= '</ul>';
             commentHtml+= '</div>';
             commentHtml+= '</div>';
+            commentHtml+= '</form>';
 
 
 
