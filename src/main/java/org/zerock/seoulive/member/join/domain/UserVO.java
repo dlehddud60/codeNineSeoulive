@@ -19,12 +19,12 @@ import lombok.extern.log4j.Log4j2;
 //@ToString
 @Log4j2
 public class UserVO {
-    private String userEmail;
-    private String userPassword;
-    private String userNickName;
+    private String email;
+    private String password;
+    private String nickName;
     private String birthDate;
-    private String userGender;
-    private String userIntroduction;
+    private String gender;
+    private String introduction;
     private String profileImg;
 
     private String birthYear;
@@ -35,12 +35,12 @@ public class UserVO {
         log.trace("toDTO() invoked");
 
         UserDTO dto = new UserDTO();
-        dto.setUserEmail(userEmail);
-        dto.setUserPassword(userPassword);
-        dto.setUserNickName(userNickName);
-        dto.setBirthDate(birthDate);
-        dto.setUserGender(userGender);
-        dto.setUserIntroduction(userIntroduction);
+        dto.setUserEmail(email);
+        dto.setUserPassword(password);
+        dto.setUserNickName(nickName);
+        dto.setBirthDate(birthYear+birthMonth+birthDay);
+        dto.setUserGender(gender);
+        dto.setUserIntroduction(introduction);
         dto.setProfileImg(profileImg);
 
         log.info("\t + dto : {}", dto);

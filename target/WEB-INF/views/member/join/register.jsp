@@ -9,6 +9,7 @@
   <title>회원가입</title>
 
   <link rel="stylesheet" href="../../../../resources/static/css/member/join/join_input.css">
+  <link rel="stylesheet" href="../../../../resources/static/css/layout/layout.css">
 
   <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
   <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
@@ -16,7 +17,10 @@
   <script src="https://kit.fontawesome.com/507ab4987a.js" crossorigin="anonymous"></script>
 </head>
 
+<jsp:include page="../../layout/header.jsp"/>
+
 <body>
+
 <form action="${path}/member/join/register" method="post">
   <div class="join_container">
     <div class="join_container inner">
@@ -181,5 +185,7 @@
 </script>
 
 </body>
+
+<jsp:include page="../../layout/footer.jsp"/>
 
 </html>

@@ -45,7 +45,10 @@
 		<!-- <property name="mapperLocations" value="classpath:mappers/*.xml"/> -->
 	</bean>
 
-	<mybatis-spring:scan base-package="org.zerock.seoulive" />
+<!--	<mybatis-spring:scan base-package="org.zerock.seoulive" />-->
+	<mybatis-spring:scan base-package="org.zerock.seoulive.member.join.mapper" />
+	<mybatis-spring:scan base-package="org.zerock.seoulive.member.join.controller" />
+
 <!--	<mybatis-spring:scan base-package="org.zerock.seoulive.controller" />-->
 
 	<!-- ================= Start Of AOP ================== -->
@@ -53,8 +56,10 @@
 	<context:annotation-config />
 	<aop:aspectj-autoproxy />
 
-	<context:component-scan base-package="org.zerock.seoulive.service" />
-	<context:component-scan base-package="org.zerock.seoulive.persistence" />
+<!--	<context:component-scan base-package="org.zerock.seoulive" />-->
+	<context:component-scan base-package="org.zerock.seoulive.member.join.service" />
+
+<!--	<context:component-scan base-package="org.zerock.seoulive.persistence" />-->
 
 	<!-- ================= End Of AOP ================== -->
 	
@@ -67,4 +72,24 @@
 	<tx:annotation-driven />
 
 	<!-- ================= End Of Dtributed TX ================== -->
+
+
+	<!-- email 인증 관련   -->
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="smtp.gmail.com" />
+		<property name="port" value="587" />
+		<property name="username" value="destiny8693@gmail.com"/>
+		<property name="password" value="wpjcykyddmtjkqjx" />
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.transport.protocol">smtp</prop>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+				<prop key="mail.debug">true</prop>
+				<prop key="mail.smtp.ssl.trust">smtp.gmail.com</prop>
+				<prop key="mail.smtp.ssl.protocols">TLSv1.2</prop>
+			</props>
+		</property>
+	</bean>
+
 </beans>

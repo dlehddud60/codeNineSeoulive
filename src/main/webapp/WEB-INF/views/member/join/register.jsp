@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -9,6 +10,9 @@
   <title>회원가입</title>
 
   <link rel="stylesheet" href="../../../../resources/static/css/member/join/join_input.css">
+  <link rel="stylesheet" href="../../../../resources/static/css/layout/layout.css">
+
+  <script defer src="../../../../resources/static/js/member/join/join_input.js"></script>
 
   <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
   <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
@@ -16,7 +20,10 @@
   <script src="https://kit.fontawesome.com/507ab4987a.js" crossorigin="anonymous"></script>
 </head>
 
+<jsp:include page="../../layout/header.jsp"/>
+
 <body>
+
 <form action="${path}/member/join/register" method="post">
   <div class="join_container">
     <div class="join_container inner">
@@ -32,16 +39,16 @@
       <div class="join_wrap">
         <p>이메일</p>
         <div class="join_btn_wrap">
-          <input name="email_id" type="email" placeholder="example@example.com">
+          <input type="email" name="user_email" id="user_email" placeholder="example@example.com">
           <div>
-            <button class="btn">이메일 인증</button>
+            <button type="button" class="btn" name="mail_check_btn" id="mail_check_btn">이메일 인증</button>
           </div>
         </div>
         <div class="join_btn_wrap">
-          <input name="email_id" type="email" placeholder="인증번호 입력" style="margin: 3px auto;">
-          <div>
-            <button class="btn">인증 확인</button>
-          </div>
+          <input name="mail_check_input" id="mail_check_input" placeholder="인증번호 입력" disabled="disabled" maxlength="6" style="margin: 3px auto;">
+<%--          <div>--%>
+<%--            <button type="button" class="btn">인증 확인</button>--%>
+<%--          </div>--%>
           <div class="error_message"></div>
         </div>
       </div>
@@ -118,7 +125,7 @@
         <p>닉네임</p>
         <div class="join_btn_wrap">
           <input type="text" placeholder="4~10자">
-          <button class="btn">중복확인</button>
+          <button type="button" class="btn">중복확인</button>
         </div>
       </div>
 
@@ -140,46 +147,8 @@
   </div>
 </form>
 
-
-<script>
-
-  // 프로필 사진 미리보기
-  function setThumbnail(event) {
-    var reader = new FileReader();
-
-    reader.onload = function (event) {
-      var img = document.createElement("img");
-      img.setAttribute("src", event.target.result);
-      document.querySelector("div#image_container").appendChild(img);
-    };
-
-    reader.readAsDataURL(event.target.files[0]);
-  }
-
-  // 리스트 펼치기
-  $('.selection_item').each(function () {
-    $(this).click(function () {
-      $(this).toggleClass('on');
-    });
-  });
-  $('.selection_list').each(function() {
-    $(this).children('li').click(function(event) {
-      $(this).parent().prev().text($(this).children().text());
-      $(this).parent().prev().removeClass('on');
-    });
-  });
-
-  // input 정보 가져오기
-  $(function () {
-    $('input').iCheck({
-      checkboxClass: 'icheckbox_square-blue',
-      radioClass: 'iradio_square-blue',
-      increaseArea: '20%' // optional
-    });
-  });
-
-</script>
-
 </body>
+
+<jsp:include page="../../layout/footer.jsp"/>
 
 </html>
