@@ -27,4 +27,9 @@ public class FreeCommentServiceImpl implements FreeCommentService {
     public void freeCommentInsert(FreeCommentDTO dto) {
         freeCommentDAO.freeCommentInsert(dto);
     }
+
+    @Override
+    public void freeCommentDelete(int seq) {
+        freeCommentDAO.freeCommentDelete(seq);
+    }
 }

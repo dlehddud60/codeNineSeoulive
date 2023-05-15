@@ -18,6 +18,9 @@
         VALUES (SEQ_TBL_COMMENT.nextval,#{writer},#{content},sysdate,null,#{board_name},#{post_seq})
     </insert>
 
+    <delete id="freeCommentDelete" parameterType="int">
+        delete from tbl_comment where seq=#{seq}
+    </delete>
 
 
 

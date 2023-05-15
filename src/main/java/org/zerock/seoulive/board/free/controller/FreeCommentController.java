@@ -30,6 +30,11 @@ public class FreeCommentController {
         freeCommentService.freeCommentInsert(dto);
     }
 
+    @DeleteMapping("/{seq}")
+    public void boardDelete(@PathVariable("seq") int seq) {
+        freeCommentService.freeCommentDelete(seq);
+    }
+
 
 
 

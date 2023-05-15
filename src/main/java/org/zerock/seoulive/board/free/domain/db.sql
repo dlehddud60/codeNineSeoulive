@@ -120,6 +120,8 @@ CREATE SEQUENCE SEQ_TBL_COMMENT START WITH 1 INCREMENT BY 1 MAXVALUE 10000 CYCLE
 INSERT INTO tbl_comment(seq,writer,content,write_date,modify_date,board_name,post_seq)
 VALUES (SEQ_TBL_COMMENT.nextval,'관리자','안녕하세요',sysdate,null,'freeboard',5);
 
-commit;
+delete from tbl_comment where seq=5;
 
+commit;
+rollback;
 

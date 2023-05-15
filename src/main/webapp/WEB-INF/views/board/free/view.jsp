@@ -74,7 +74,7 @@
                 listHtml+="<div class='board-comment-info'>";
                 listHtml+="<div class='button_wrap'>";
                 listHtml+="<ul class='button_box'>";
-                listHtml+="<li><a href='#'>삭제</a></li>";
+                listHtml+="<li><a href='javascript:goDelete("+obj.seq+")'>삭제</a></li>";
                 listHtml+="<li><a href='#'>수정</a></li>";
                 listHtml+="</ul>";
                 listHtml+="</div>";
@@ -95,6 +95,16 @@
                 success : loadList,
                 error : function () {alert("error");}
 
+            });
+        }
+
+        const goDelete = (seq) => {
+            // alert(seq);
+            $.ajax({
+                url : "comment/"+seq,
+                type : "delete",
+                success : loadList,
+                error : function () {alert("error")}
             });
         }
     </script>
