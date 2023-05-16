@@ -1,5 +1,6 @@
 package org.zerock.seoulive.board.travel.mapper;
 
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -14,6 +15,9 @@ public interface mapper {
             """)
     public abstract List<VO> selectList();
 
+    @Insert("""
+            INSERT INTO TBL_TRAVEL (title, 
+            """)
     public abstract Integer insert(DTO dto);
     @Select("""
             SELECT * FROM TBL_TRAVEL WHERE seq = #{seq}

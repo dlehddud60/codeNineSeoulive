@@ -20,10 +20,23 @@
   <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
   <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
+  <script>
+    $(function() {
+      $('.cancelBtn').click(function() {
+
+        <%--location.href = "/board/travel/list?currPage=${param.currPage}";--%>
+        location.href = "/board/travel/list";
+
+      });
+
+    });
+  </script>
+
+
   <jsp:include page="../../layout/header.jsp"/>
 </head>
 <body>
-<form action="#" method="post">
+<form action="/board/travel/write" method="post">
   <!-- 제목 -->
   <div class="travel_title">
     <input type="text" placeholder="제목을 입력해 주세요.">
@@ -67,8 +80,8 @@
 
   <!-- 버튼 -->
   <div class="travel_button">
-    <input type="reset" value="취소">
-    <input type="submit" value="작성">
+    <input class="cancelBtn" type="button" value="취소">
+    <input class="submitBtn" type="submit" value="작성">
   </div>
 </form>
 
