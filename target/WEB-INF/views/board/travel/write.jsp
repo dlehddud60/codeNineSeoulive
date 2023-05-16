@@ -31,9 +31,9 @@
 
   <!-- 카테고리 -->
   <div class="travel_thema">
-    <label for="travelplace"><input type="checkbox" id="travelplace" value="travel" name="thema"><span>#여행지</span></label>
-    <label for="exhibition"><input type="checkbox" id="exhibition" value="exhibition" name="thema"><span>#전시회</span></label>
-    <label for="popup"><input type="checkbox" id="popup" value="popup" name="thema"><span>#팝업스토어</span></label>
+    <label for="travelplace"><input type="checkbox" id="travelplace" value="travel" name="thema"><span>여행지</span></label>
+    <label for="exhibition"><input type="checkbox" id="exhibition" value="exhibition" name="thema"><span>전시회</span></label>
+    <label for="popup"><input type="checkbox" id="popup" value="popup" name="thema"><span>팝업스토어</span></label>
   </div>
 
   <!-- 캘린더 내용 -->
