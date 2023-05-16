@@ -140,3 +140,7 @@ where seq=8 AND board_name = 'freeboard' AND post_seq = 20;
 
 rollback;
 
+
+INSERT INTO tbl_free (seq, writer, category, title, content, write_date, modify_date, total_count)
+VALUES (27, '이동영짱27', '카테고리', '공지사항', '공지사항 입니다.', TO_DATE('2023-05-11', 'YYYY-MM-DD'), null, 100);
+

@@ -5,13 +5,13 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.zerock.seoulive.board.free.persistence.FreeDAO">
 
-    <select id="getList" resultType="org.zerock.seoulive.board.free.domain.FreeDTO">
-        SELECT *
-        FROM
-            TBL_FREE
-        ORDER BY
-            SEQ desc
-    </select>
+<!--    <select id="getList" resultType="org.zerock.seoulive.board.free.domain.FreeDTO">-->
+<!--        SELECT *-->
+<!--        FROM-->
+<!--            TBL_FREE-->
+<!--        ORDER BY-->
+<!--            SEQ desc-->
+<!--    </select>-->
 
     <insert id="freeInsert" parameterType="org.zerock.seoulive.board.free.domain.FreeDTO">
         INSERT INTO TBL_FREE(seq,writer,category,title,content,write_date,modify_date)

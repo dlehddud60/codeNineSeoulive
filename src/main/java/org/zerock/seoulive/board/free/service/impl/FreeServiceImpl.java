@@ -2,6 +2,7 @@ package org.zerock.seoulive.board.free.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.zerock.seoulive.board.free.domain.Criteria;
 import org.zerock.seoulive.board.free.domain.FreeDTO;
 import org.zerock.seoulive.board.free.persistence.FreeDAO;
 import org.zerock.seoulive.board.free.service.FreeService;
@@ -19,8 +20,8 @@ public class FreeServiceImpl implements FreeService {
 //    }
 
     @Override
-    public List<FreeDTO> getList() {
-        List<FreeDTO> list = freeDAO.getList();
+    public List<FreeDTO> getList(Criteria cri) {
+        List<FreeDTO> list = freeDAO.getList(cri);
         return list;
     }
     @Override
@@ -47,5 +48,10 @@ public class FreeServiceImpl implements FreeService {
     @Override
     public void total_count(int seq) {
         freeDAO.total_count(seq);
+    }
+
+    @Override
+    public int getTotal() {
+        return freeDAO.getTotalAmount();
     }
 }

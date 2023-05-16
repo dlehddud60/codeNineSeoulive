@@ -4,8 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.zerock.seoulive.board.free.domain.Criteria;
 import org.zerock.seoulive.board.free.domain.FreeCommentDTO;
 import org.zerock.seoulive.board.free.domain.FreeDTO;
+import org.zerock.seoulive.board.free.domain.PageDTO;
 import org.zerock.seoulive.board.free.persistence.FreeDAO;
 import org.zerock.seoulive.board.free.service.FreeCommentService;
 import org.zerock.seoulive.board.free.service.FreeService;
@@ -29,11 +31,13 @@ public class FreeBoardController {
 
 
     @GetMapping("/list")
-    public String list(Model model) {
-        List<FreeDTO> list = freeService.getList();
+    public String list(Criteria cri, Model model) {
+        List<FreeDTO> list = freeService.getList(cri);
         model.addAttribute("list",list);
 
+        PageDTO pageDTO = new PageDTO(cri, freeService.getTotal());
 
+        model.addAttribute("pageMaker",pageDTO);
 
         return "board/free/list";
     }

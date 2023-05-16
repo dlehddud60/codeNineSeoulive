@@ -20,6 +20,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.4.1/jquery-migrate.min.js"></script>
     <script src="https://kit.fontawesome.com/4b84ea08f3.js" crossorigin="anonymous"></script>
 
+    <%-- 자바스크립트 --%>
+    <script src="../../../../resources/static/js/free/list.js"></script>
+
 </head>
 <jsp:include page="../../layout/header.jsp"/>
 
@@ -98,30 +101,26 @@
     <div class="paging_wrap">
         <div class="paging_box">
             <ul>
-                <li class="prev pager">
-                    <a href="#a" title="이전 페이지로 이동하기"><i class="fas fa-chevron-left"></i></a></li>
-                <li>
-                    <a class="active" href="#a">1</a></li>
-                <li>
-                    <a href="#a">2</a></li>
-                <li>
-                    <a href="#a">3</a></li>
-                <li>
-                    <a href="#a">4</a></li>
-                <li>
-                    <a href="#a">5</a></li>
-                <li>
-                    <a href="#a">6</a></li>
-                <li>
-                    <a href="#a">7</a></li>
-                <li>
-                    <a href="#a">8</a></li>
-                <li>
-                    <a href="#a">9</a></li>
-                <li>
-                    <a href="#a">10</a></li>
-                <li class="next pager">
-                    <a href="#a" title="다음 페이지로 이동하기"><i class="fas fa-chevron-right"></i></a></li>
+                <c:if test="${pageMaker.prev}">
+                    <li class="prev pager">
+                        <a href="/board/free/list?currPage=${pageMaker.startPage -1}" title="이전 페이지로 이동하기"><i class="fas fa-chevron-left"></i></a>
+                    </li>
+                </c:if>
+
+                <c:forEach var="pageNum" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+                    <li>
+                        <a class="pageNum ${pageMaker.cri.currPage ==pageNum? 'active':''}"  href="#a">${pageNum}</a>
+                    </li>
+
+                </c:forEach>
+
+                <c:if test="${pageMaker.next}">
+                    <li class="next pager">
+                        <a href="/board/free/list?currPage=${pageMaker.endPage +1}" title="다음 페이지로 이동하기"><i class="fas fa-chevron-right"></i></a>
+                    </li>
+
+                </c:if>
+
             </ul>
         </div>
     </div>
