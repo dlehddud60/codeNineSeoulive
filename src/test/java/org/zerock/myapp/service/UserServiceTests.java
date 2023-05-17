@@ -53,12 +53,12 @@ public class UserServiceTests {
         log.trace("testRegister() invoked.");
 
         UserDTO dto = new UserDTO();
-        dto.setUserEmail("abc@email.com");
-        dto.setUserPassword("abc1234");
-        dto.setUserNickName("nick");
+        dto.setEmail("abc@email.com");
+        dto.setPassword("abc1234");
+        dto.setNickName("nick");
         dto.setBirthDate("19990203");
-        dto.setUserGender("여");
-        dto.setUserIntroduction("Hello");
+        dto.setGender("여");
+        dto.setIntroduction("Hello");
         log.info("\t+ dto : {}", dto);
 
         Boolean isSuccess = this.service.register(dto);

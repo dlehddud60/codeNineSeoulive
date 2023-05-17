@@ -17,27 +17,18 @@ $('.selection_item').each(function () {
         $(this).toggleClass('on');
     });
 });
-$('.selection_list').each(function() {
-    $(this).children('li').click(function(event) {
+$('.selection_list').each(function () {
+    $(this).children('li').click(function (event) {
+        // const value = parseInt($(this).children().val(),10);
+        const value = $(this).children().text();
+        console.log(value);
+
+        $('input[name=gender]').attr('value', value);
         $(this).parent().prev().text($(this).children().text());
         $(this).parent().prev().removeClass('on');
     });
 });
-
-// 이메일 인증
-$('#mail_check_btn').click(function() {
-    const email = $('#user_email').val(); // 이메일 주소값 얻어오기!
-    console.log('완성된 이메일 : ' + email); // 이메일 오는지 확인
-    const checkInput = $('#mail_check_input'); // 인증번호 입력하는곳
-
-    $.ajax({
-        type : 'get',
-        url : '<c:url value ="/member/join/register/mailCheck?email="/>'+email, // GET 방식이라 Url 뒤에 email을 붙힐 수 있다.
-        success : function (data) {
-            console.log("data : " +  data);
-            checkInput.attr('disabled', false);
-            code = data;
-            alert('인증번호가 전송되었습니다.')
-        }
-    }); // end ajax
-}); // end send email
+function inputValueChange() {
+    var birthDay = document.getElementById('#birthDay');
+    birthDay.value = birthDay.padStart(2, '0');
+}

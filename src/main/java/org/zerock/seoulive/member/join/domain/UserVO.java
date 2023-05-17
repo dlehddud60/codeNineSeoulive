@@ -25,22 +25,23 @@ public class UserVO {
     private String birthDate;
     private String gender;
     private String introduction;
+    private String joinDate;
     private String profileImg;
 
-    private String birthYear;
-    private String birthMonth;
-    private String birthDay;
+//    private String birthYear;
+//    private String birthMonth;
+//    private String birthDay;
 
     public UserDTO toDTO() {
         log.trace("toDTO() invoked");
 
         UserDTO dto = new UserDTO();
-        dto.setUserEmail(email);
-        dto.setUserPassword(password);
-        dto.setUserNickName(nickName);
-        dto.setBirthDate(birthYear+birthMonth+birthDay);
-        dto.setUserGender(gender);
-        dto.setUserIntroduction(introduction);
+        dto.setEmail(email);
+        dto.setPassword(password);
+        dto.setNickName(nickName);
+        dto.setBirthDate(birthDate);
+        dto.setGender(gender);
+        dto.setIntroduction(introduction);
         dto.setProfileImg(profileImg);
 
         log.info("\t + dto : {}", dto);

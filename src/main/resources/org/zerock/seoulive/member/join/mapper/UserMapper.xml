@@ -7,43 +7,28 @@
 <mapper namespace="org.zerock.seoulive.member.join.mapper.UserMapper">
 
     <insert id="insert">
-<!--        <selectKey keyProperty="bno" order="AFTER" resultType="int">-->
-<!--            SELECT "ISEQ$$_135879".CURRVAL FROM dual-->
-<!--        </selectKey>-->
         INSERT INTO tbl_member
             (email,
             password,
             nickname,
             birth_date,
             gender,
-            introduction)
+            introduction
+            )
         VALUES
             (#{email},
             #{password},
             #{nickName},
             #{birthDate},
+<!--            concat(#{birthYear}, #{birthMonth}, #{birthDay}),-->
             #{gender},
-            #{introduction})
+            #{introduction}
+            )
     </insert>
 
-<!--    <select id="select" resultType="org.zerock.myapp.domain.BoardVO">-->
-<!--        SELECT * FROM tbl_board WHERE bno = #{bno}-->
-<!--    </select>-->
-
-<!--    <delete id="delete">-->
-<!--        DELETE FROM tbl_board WHERE bno = #{bno}-->
-<!--    </delete>-->
-
-<!--    <update id="update">-->
-<!--        UPDATE tbl_board-->
-<!--        SET-->
-<!--            title = #{title},-->
-<!--            content = #{content},-->
-<!--            writer = #{writer},-->
-<!--            update_ts = current_date-->
-<!--        WHERE-->
-<!--            bno = #{bno}-->
-<!--    </update>-->
-
+    <!-- 이메일 중복 검사 -->
+    <select id="check_email" parameterType="String" resultType="int">
+        select count(*) from member where email = #{email}
+    </select>
 
 </mapper>
