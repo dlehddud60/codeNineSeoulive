@@ -40,13 +40,13 @@
             <div class="join_wrap">
               <p>이메일</p>
               <div class="join_btn_wrap">
-                <input type="email" class="check" name="email" id="email" placeholder="example@example.com">
+                <input type="email" name="email" id="email" placeholder="example@example.com" required>
                 <div>
                   <button type="button" class="btn" name="mail_check_btn" id="mail_check_btn">이메일 인증</button>
                 </div>
               </div>
               <div class="join_btn_wrap">
-                <input name="mail_check_input" id="mail_check_input" placeholder="인증번호 입력" disabled="disabled" maxlength="6" style="margin: 3px auto;">
+                <input name="mail_check_input" id="mail_check_input" placeholder="인증번호 입력" disabled="disabled" maxlength="6" required style="margin: 3px auto;">
                 <!--          <div>-->
                 <!--            <button type="button" class="btn">인증 확인</button>-->
                 <!--          </div>-->
@@ -56,9 +56,9 @@
 
             <div class="join_wrap">
               <p>비밀번호</p>
-              <input type="password" class="check" name="password" id="password" placeholder="영문/숫자/특수문자 10자 이상 20자 이하"
+              <input type="password" name="password" id="password" placeholder="영문/숫자/특수문자 10자 이상 20자 이하" required
                 style="margin: 3px auto;">
-              <input type="password" class="check" id="password_check" placeholder="비밀번호 확인">
+              <input type="password" id="password_check" placeholder="비밀번호 확인" required>
               <span id="pwError"></span>
             </div>
 
@@ -100,14 +100,14 @@
 
             <div class="join_wrap">
               <p>생년월일</p>
-              <input type="number" class="check" name="birthDate" placeholder="예)990101">
+              <div><input type="text" id="birthDate" name="birthDate" placeholder="예)19990101" maxlength="8" required></div>
               <span id="birthError"></span>
             </div>
 
             <div class="join_wrap">
               <p>성별</p>
               <div class="selection_list_warp">
-                <input type="hidden" class="check" name="gender">
+                <input type="text" id="gender" name="gender" required style="display: none">
                 <li class="selection_item">성별<i class="fas fa-angle-down"></i></li>
                 <ul class="selection_list">
                   <li><button type="button">성별</button></li>
@@ -136,7 +136,7 @@
             <div class="join_wrap">
               <p>닉네임</p>
               <div class="join_btn_wrap">
-                <input type="text" class="check" name="nickName" placeholder="4~10자">
+                <input type="text" id="nickName" name="nickName" placeholder="2~12자" required>
                 <button type="button" class="btn">중복확인</button>
               </div>
               <span id="nickError"></span>
@@ -144,11 +144,11 @@
 
             <div class="join_wrap">
               <p>소개글</p>
-              <input type="text" name="introduction" placeholder="100자 이내 입력">
+              <input type="text" name="introduction" placeholder="100자 이내 입력 (선택)">
             </div>
 
             <div class="join_wrap">
-              <p><input type="checkbox" class="check" id="terms">
+              <p><input type="checkbox" id="terms">
                 <label for="terms">이용약관과 개인정보 취급방침을 확인하고 이에 동의합니다.</label>
                 <a href="#">(전체 약관보기)</a></p>
               <span id="termsError"></span>
@@ -181,7 +181,6 @@
         }); // end send email
 
         // 인증번호 비교
-        // blur -> focus가 벗어나는 경우 발생
         $('#mail_check_input').blur(function () {
           const inputCode = $(this).val();
           const $resultMsg = $('#emailError');
@@ -191,8 +190,6 @@
             $resultMsg.css('color', 'green');
             $('#mail_check_btn').attr('disabled', true);
             $('#email').attr('readonly', true);
-            // $('#email2').attr('onFocus', 'this.initialSelect = this.selectedIndex');
-            // $('#email2').attr('onChange', 'this.selectedIndex = this.initialSelect');
           } else {
             $resultMsg.html('인증번호가 불일치 합니다. 다시 확인해주세요.');
             $resultMsg.css('color', 'red');
