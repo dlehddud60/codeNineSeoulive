@@ -91,6 +91,15 @@
             $("#comment_area").html(listHtml);
         }
 
+        const goCommentPostDelete = (seq) => {
+            $.ajax({
+                url : "comment/post/"+seq,
+                type : "delete",
+                success : loadList,
+                error : function () {alert("error")}
+            });
+        }
+
         const goInsert = () => {
             var fData = $("#frm").serialize();
             // alert(fData);
@@ -103,10 +112,10 @@
                 error : function () {alert("error");}
 
             });
+
         }
 
         const goDelete = (seq) => {
-            // alert(seq);
             $.ajax({
                 url : "comment/"+seq,
                 type : "delete",
@@ -214,7 +223,7 @@
 
         <div class="button_wrap">
             <ul class="button_box">
-                <li><a href="/board/free/remove?seq=${dto.seq}">삭제</a></li>
+                <li><a id="commentDelete" onclick="goCommentPostDelete(${dto.seq})" href="/board/free/remove?seq=${dto.seq}">삭제</a></li>
                 <li><a href="/board/free/modify?seq=${dto.seq}">수정</a></li>
                 <li><a href="/board/free/list">목록</a></li>
             </ul>

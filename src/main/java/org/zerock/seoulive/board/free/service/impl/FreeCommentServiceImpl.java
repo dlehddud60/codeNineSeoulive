@@ -33,6 +33,10 @@ public class FreeCommentServiceImpl implements FreeCommentService {
     public void freeCommentDelete(int seq) {
         freeCommentDAO.freeCommentDelete(seq);
     }
+    @Override
+    public void freeCommentPostDelete(int seq) {
+        freeCommentDAO.freeCommentPostDelete(seq);
+    }
 
     @Override
     public void freeCommentModify(FreeCommentDTO dto) {

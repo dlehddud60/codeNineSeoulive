@@ -31,8 +31,12 @@ public class FreeCommentController {
     }
 
     @DeleteMapping("/{seq}")
-    public void freeBoardDelete(@PathVariable("seq") int seq) {
+    public void freeCommentDelete(@PathVariable("seq") int seq) {
         freeCommentService.freeCommentDelete(seq);
+    }
+    @DeleteMapping("/post/{seq}")
+    public void freeCommentPostDelete(@PathVariable("seq") int seq) {
+        freeCommentService.freeCommentPostDelete(seq);
     }
 
 

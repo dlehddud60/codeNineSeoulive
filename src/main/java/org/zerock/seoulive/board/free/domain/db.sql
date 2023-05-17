@@ -148,3 +148,9 @@ VALUES (27, '이동영짱27', '카테고리', '공지사항', '공지사항 입�
 DELETE FROM tbl_free;
 
 commit;
+
+SELECT *
+FROM
+    TBL_COMMENT;
+
+delete from tbl_comment where post_seq=19;

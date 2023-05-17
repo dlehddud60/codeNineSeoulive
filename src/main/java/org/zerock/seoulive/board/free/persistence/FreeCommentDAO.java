@@ -11,6 +11,7 @@ public interface FreeCommentDAO {
     List<FreeCommentDTO> freeCommentList(int seq);
     public void freeCommentInsert(FreeCommentDTO dto);
     public void freeCommentDelete(int seq);
+    public void freeCommentPostDelete(int seq);
     public void freeCommentUpdate(FreeCommentDTO dto);
 
 }
