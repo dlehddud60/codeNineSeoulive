@@ -16,15 +16,17 @@ body{font-family: 'Nanum Gothic', sans-serif;font-size:14px;line-height:1;color:
 /* 전체 영역 */
 form {
     width: 1200px;
+    height: 700px;
     margin: auto;
 }
 /* 제목 */
 .travel_title {
     margin: 5px auto;
+    height: 150px;
 }
 .travel_title input {
     width: 1200px;
-    height: 25px;
+    height: 50px;
     margin: 5px auto;
     font-size: 14px;
 }
