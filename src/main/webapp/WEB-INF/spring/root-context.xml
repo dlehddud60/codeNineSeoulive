@@ -16,12 +16,37 @@
 	<!-- Root Context: defines shared resources visible to all other web components -->
 <!--git 제외33-->
 	
+	
+
+   <!-- 이메일 인증 관련 빈 등록 -->
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="smtp.gmail.com" />
+		<property name="port" value="587" />
+		<property name="username" value="intelinger@gmail.com"/>
+		<property name="password" value="emhxfimkttjulhek" />
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.transport.protocol">smtp</prop>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+				<prop key="mail.debug">true</prop>
+				<prop key="mail.smtp.ssl.trust">smtp.gmail.com</prop>
+				<prop key="mail.smtp.ssl.protocols">TLSv1.2</prop>
+			</props>
+		</property>
+	</bean>
+	
+	
+	
+	
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
 
+		
 		<property name="driverClassName" value="oracle.jdbc.OracleDriver"/>
-		<property name="jdbcUrl" value="jdbc:oracle:thin:@o9o6yubutmsjch3b_high?TNS_ADMIN=/Users/leedongyoung/opt/OracleCloudWallet/VFX" />
+		<property name="jdbcUrl" value="jdbc:oracle:thin:@o9o6yubutmsjch3b_high?TNS_ADMIN=/Users/wisdlogos/opt/OracleCloudWallet2juwon/Wallet_O9O6YUBUTMSJCH3B" />
 		<property name="username" value="SEOULIVE"/>
 		<property name="password" value="Oracle12345678"/>
+
 
 		<property name="maximumPoolSize" value="30"/>
 		<property name="minimumIdle" value="2"/>
@@ -39,22 +64,33 @@
 		<constructor-arg ref="hikariConfig"/>
 	</bean>
 
-<!--	<bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">-->
-<!--		<property name="dataSource" ref="hikariDataSource"/>-->
-<!--		<property name="configLocation" value="classpath:mybatis-config.xml"/>-->
-<!--		&lt;!&ndash; <property name="mapperLocations" value="classpath:mappers/*.xml"/> &ndash;&gt;-->
-<!--	</bean>-->
 
-	<mybatis-spring:scan base-package="org.zerock.seoulive.controller" />
+	<bean 
+		id="sqlSessionFactoryBean"
+		class="org.mybatis.spring.SqlSessionFactoryBean">
+		
+		<property name="dataSource" ref="hikariDataSource"/>
+		<property name="configLocation" value="classpath:mybatis-config.xml" />
+	</bean>
+
 	
 	<!-- ================= Start Of AOP ================== -->
 	
 	<context:annotation-config />
 	<aop:aspectj-autoproxy />
+	
 
-	<context:component-scan base-package="org.zerock.seoulive.service" />
-	<context:component-scan base-package="org.zerock.seoulive.persistence" />
+	<context:component-scan base-package="org.zerock.seoulive.board.free.service" />
+	<mybatis-spring:scan base-package="org.zerock.seoulive.board.free.mapper" />
 
+	
+	<context:component-scan base-package="org.zerock.seoulive.board.member.service" />
+	<mybatis-spring:scan base-package="org.zerock.seoulive.board.member.mapper" />
+	
+	
+	<context:component-scan base-package="org.zerock.seoulive.board.course.service" />
+	<mybatis-spring:scan base-package="org.zerock.seoulive.board.course.mapper" />
+	
 	<!-- ================= End Of AOP ================== -->
 	
 	<!-- ================= Start Of Dtributed TX ================== -->
