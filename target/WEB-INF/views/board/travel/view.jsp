@@ -15,25 +15,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>서울, 지금 : SeouLive</title>
-<%--    <link rel="icon" href="ico/SLlogo1.png">--%>
 
-    <!-- header, footer 시작  -->
-<%--    <link rel="stylesheet" href="css/reset.css">--%>
-
-
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/e046991a5a.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.4.1/jquery-migrate.min.js"></script>
     <script src="https://kit.fontawesome.com/4b84ea08f3.js" crossorigin="anonymous"></script>
-
-
-
-    <!-- layout css -->
-<%--    <link rel="stylesheet" href="css/layout/header.css">css--%>
-<%--    <link rel="stylesheet" href="css/layout/footer.css">--%>
-<%--    <!-- main css -->--%>
-<%--    <link rel="stylesheet" href="css/main/main.css">--%>
-<%--    <link rel="stylesheet" href="https://kit.fontawesome.com/4b84ea08f3.css" crossorigin="anonymous">--%>
-    <!-- header, footer 끝  -->
+    <script src="../../../../resources/static/js/travel/view.js"></script>
+    <link rel="stylesheet" href="../../../../resources/static/css/travel/view.css"/>
+    <link rel="stylesheet" href="../../../../resources/static/css/layout/layout.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
 
     <script>
         $(function() {
@@ -57,19 +48,9 @@
         });
     </script>
 
-    <!-- 여행지 view 시작 -->
-    <link rel="stylesheet" href="../../../../resources/static/css/travel/view.css"/>
-    <link rel="stylesheet" href="../../../../resources/static/css/layout/layout.css"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-    <script src="https://kit.fontawesome.com/e046991a5a.js" crossorigin="anonymous"></script>
-
-    <!-- 여행지 view 끝 -->
     <jsp:include page="../../layout/header.jsp"/>
 </head>
 <body>
-
-
 
 <!-- 여행지 view 시작  -->
 <div id="wrap">
@@ -82,7 +63,6 @@
     </div>
     <br>
     <div class="theme">
-        <!-- <h2>테마</h2> -->
         <span>${__BOARD__.address}</span>
     </div>
     <div class="etc">
@@ -97,7 +77,6 @@
         <span>수정일 : <fmt:formatDate value="${__BOARD__.modify_Date}"/></span>
     </div>
 
-    <!-- <h3>사진</h3> -->
     <hr>
 
     <div class="swiper">
@@ -133,7 +112,7 @@
     <h3>지도</h3>
     <hr>
     <div id="map">
-<%--        <img src="../../../../resources/static/img/IMG_1003.png" height="100%" width="100%">--%>
+
     </div>
 
     <h3>추천 여행지</h3>
@@ -155,7 +134,6 @@
             <div class="recom-name"><h3>추천 여행지 #3</h3></div>
         </div>
 
-
     </div>
     <br>
 
@@ -165,7 +143,6 @@
         <div><input type="button" class="listBtn" value="목록"></div>
     </div>
     <br>
-
 
 </div>
 
@@ -206,12 +183,6 @@
     const btnStart = document.querySelector(".btnStart");
     const btnStop = document.querySelector(".btnStop");
 
-    // btnStart.addEventListener("click", ()=> {
-    //     swiper.autoplay.start();
-    // });
-    // btnStop.addEventListener("click", ()=> {
-    //     swiper.autoplay.stop();
-    // });
 </script>
 <!-- 여행지 view 끝  -->
 
@@ -222,6 +193,7 @@
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1e94da7a1ab1c55879fcde4cfe8d086d&libraries=services"></script>
 <script type="text/javascript"><%@include file="../../../../resources/static/js/map.js"%></script>
 
+<%-- 지도 API 끝--%>
 </body>
 
 </html>
