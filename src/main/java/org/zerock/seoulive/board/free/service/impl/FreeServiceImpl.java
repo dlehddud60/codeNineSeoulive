@@ -21,8 +21,8 @@ public class FreeServiceImpl implements FreeService {
 
     @Override
     public List<FreeDTO> getList(Criteria cri) {
-        List<FreeDTO> list = freeDAO.getList(cri);
-        return list;
+
+        return freeDAO.getListWithPaging(cri);
     }
     @Override
     public void freeInsert(FreeDTO dto) {
@@ -51,7 +51,7 @@ public class FreeServiceImpl implements FreeService {
     }
 
     @Override
-    public int getTotal() {
-        return freeDAO.getTotalAmount();
+    public int getTotal(Criteria cri) {
+        return freeDAO.getTotalCount(cri);
     }
 }

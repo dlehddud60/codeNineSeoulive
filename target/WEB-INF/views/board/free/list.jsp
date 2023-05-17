@@ -33,27 +33,44 @@
         <h2 class="title">자유게시판</h2>
     </div>
     <div class="search_wrap">
-        <form method="get" action="?">
+        <form id="searchForm" method="get" action="/board/free/list">
             <fieldset class="search_box">
                 <legend class="hide">게시글 검색</legend>
                 <div class="cate_box">
                     <label for="search_category" class="hide"><span>검색분류선택</span></label>
-                    <select name="search_category">
-                        <option value="all">전체</option>
-                        <option value="">제목</option>
-                        <option value="">내용</option>
-                        <option value="">작성자</option>
+                    <select name="type">
+                        <option value=""
+                                <c:out value="${pageMaker.cri.type == null?'selected':''}"/>>--</option>
+                        <option value="T"
+                                <c:out value="${pageMaker.cri.type eq 'T'?'selected':''}"/>>제목</option>
+                        <option value="C"
+                                <c:out value="${pageMaker.cri.type eq 'C'?'selected':''}"/>>내용</option>
+                        <option value="W"
+                                <c:out value="${pageMaker.cri.type eq 'W'?'selected':''}"/>>작성자</option>
+                        <option value="TC"
+                                <c:out value="${pageMaker.cri.type eq 'TC'?'selected':''}"/>>제목
+                            or 내용</option>
+                        <option value="TW"
+                                <c:out value="${pageMaker.cri.type eq 'TW'?'selected':''}"/>>제목
+                            or 작성자</option>
+                        <option value="TWC"
+                                <c:out value="${pageMaker.cri.type eq 'TWC'?'selected':''}"/>>제목
+                            or 내용 or 작성자</option>
                     </select>
                 </div>
                 <div class="search_input_box">
                     <label for="search_value" class="hide"><span>검색</span></label>
-                    <input class="b_input"type="text" id="search_value" name="search_value" placeholder="검색어를 입력해 주세요">
-                    <button type="submit" class="search_button"><span>검색</span></button>
+                    <input class="b_input" type="text" id="search_value" name="keyword" placeholder="검색어를 입력해 주세요" value='<c:out value="${pageMaker.cri.keyword}"/>'>
+                    <input type="hidden" name="pageNum" value='<c:out value="${pageMaker.cri.pageNum}"/>'>
+                    <input type="hidden" name="amount" value='<c:out value="${pageMaker.cri.amount}"/>'>
+                    <button class="search_button">검색</button>
                 </div>
 
             </fieldset>
         </form>
     </div>
+
+
     <div class="table_wrap">
         <table class="table_free" summary="번호, 카테고리, 제목, 작성자, 등록일, 조회수로 구성된 표">
             <caption class="hide">공지사항</caption>
@@ -103,20 +120,27 @@
             <ul>
                 <c:if test="${pageMaker.prev}">
                     <li class="prev pager">
-                        <a href="/board/free/list?currPage=${pageMaker.startPage -1}" title="이전 페이지로 이동하기"><i class="fas fa-chevron-left"></i></a>
+                        <a href="${pageMaker.startPage -1}" title="이전 페이지로 이동하기"><i class="fas fa-chevron-left"></i></a>
                     </li>
                 </c:if>
 
+<%--                <c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">--%>
+<%--                    <li class="pageNum  ${pageMaker.cri.pageNum == num ? "active":""} ">--%>
+<%--                        <a href="${num}">${num}</a>--%>
+<%--                    </li>--%>
+
+<%--                </c:forEach>--%>
+
                 <c:forEach var="pageNum" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
                     <li>
-                        <a class="pageNum ${pageMaker.cri.currPage ==pageNum? 'active':''}"  href="#a">${pageNum}</a>
+                        <a class="pageNum ${pageMaker.cri.pageNum ==pageNum? 'active':''}"  href="#a">${pageNum}</a>
                     </li>
 
                 </c:forEach>
 
                 <c:if test="${pageMaker.next}">
-                    <li class="next pager">
-                        <a href="/board/free/list?currPage=${pageMaker.endPage +1}" title="다음 페이지로 이동하기"><i class="fas fa-chevron-right"></i></a>
+                    <li class="prev pager">
+                        <a href="${pageMaker.endPage +1}" title="다음 페이지로 이동하기"><i class="fas fa-chevron-right"></i></a>
                     </li>
 
                 </c:if>
@@ -124,6 +148,18 @@
             </ul>
         </div>
     </div>
+
+    <form id='actionForm' action="/board/free/list" method='get'>
+        <input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum}'>
+        <input type='hidden' name='amount' value='${pageMaker.cri.amount}'>
+
+        <input type='hidden' name='type'
+               value='<c:out value="${ pageMaker.cri.type }"/>'> <input
+            type='hidden' name='keyword'
+            value='<c:out value="${ pageMaker.cri.keyword }"/>'>
+
+
+    </form>
 
 </div>
 

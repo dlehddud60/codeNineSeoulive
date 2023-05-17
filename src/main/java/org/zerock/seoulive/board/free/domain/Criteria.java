@@ -1,13 +1,30 @@
 package org.zerock.seoulive.board.free.domain;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Data
+@Getter
+@Setter
 public class Criteria {
-    //For Fetching records according to the currPage
-    private Integer currPage=1;   		//현재 페이지 번호
-    private Integer amount=10;			//한페이지당 게시물 개수
+    private int pageNum;
+    private int amount;
 
-    //--For Pagenation
-    private Integer pagesPerPage =10;   //한 페이지당 보여줄 페이지목록의 길이
+    private String type;
+    private String keyword;
+
+    public Criteria() {
+        this(1, 10);
+    }
+
+    public Criteria(int pageNum, int amount) {
+        this.pageNum = pageNum;
+        this.amount = amount;
+    }
+
+    public String[] getTypeArr() {
+
+        return type == null? new String[] {}: type.split("");
+    }
 }

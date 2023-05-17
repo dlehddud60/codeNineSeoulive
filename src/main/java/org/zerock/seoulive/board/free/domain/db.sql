@@ -6,7 +6,7 @@ ORDER BY
 
 SELECT *
 FROM TBL_FREE
-WHERE seq=1;
+WHERE seq > 0;
 
 UPDATE TBL_FREE set total_count=total_count+1 where seq=1;
 
@@ -144,3 +144,7 @@ rollback;
 INSERT INTO tbl_free (seq, writer, category, title, content, write_date, modify_date, total_count)
 VALUES (27, '이동영짱27', '카테고리', '공지사항', '공지사항 입니다.', TO_DATE('2023-05-11', 'YYYY-MM-DD'), null, 100);
 
+
+DELETE FROM tbl_free;
+
+commit;

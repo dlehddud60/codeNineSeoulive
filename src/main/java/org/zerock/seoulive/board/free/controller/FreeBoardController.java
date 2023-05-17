@@ -35,9 +35,9 @@ public class FreeBoardController {
         List<FreeDTO> list = freeService.getList(cri);
         model.addAttribute("list",list);
 
-        PageDTO pageDTO = new PageDTO(cri, freeService.getTotal());
+        int total = freeService.getTotal(cri);
 
-        model.addAttribute("pageMaker",pageDTO);
+        model.addAttribute("pageMaker",new PageDTO(cri,total));
 
         return "board/free/list";
     }
