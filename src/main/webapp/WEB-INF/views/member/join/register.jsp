@@ -19,6 +19,9 @@
       <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
       <script src="https://kit.fontawesome.com/507ab4987a.js" crossorigin="anonymous"></script>
+
+      <link rel="shortcut icon" href="../../../../resources/static/img/logo_ico.png" type="image/x-icon">
+      <link rel="icon" href="../../../../resources/static/img/logo_ico.png" type="image/x-icon">
     </head>
 
     <jsp:include page="../../layout/header.jsp" />
@@ -107,7 +110,7 @@
             <div class="join_wrap">
               <p>성별</p>
               <div class="selection_list_warp">
-                <input type="text" id="gender" name="gender" required style="display: none">
+                <input type="hidden" id="gender" name="gender" required>
                 <li class="selection_item">성별<i class="fas fa-angle-down"></i></li>
                 <ul class="selection_list">
                   <li><button type="button">성별</button></li>

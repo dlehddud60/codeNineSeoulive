@@ -30,6 +30,11 @@ public class UserController {
     private MailSendService mailService;
 
 
+    @GetMapping("/main")
+    void joinMain() {   // 단순 등록화면 요청
+        log.trace("joinMain() invoked.");
+
+    } // joinMain
 
     @PostMapping(
             value = "/register",
