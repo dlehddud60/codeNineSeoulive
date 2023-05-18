@@ -137,14 +137,18 @@
     </div>
     <br>
 
-    <div class="list">
-        <div><input type="button" class="modBtn" value="수정"></div>
-        <div><input type="button" class="delBtn" value="삭제"></div>
-        <div><input type="button" class="listBtn" value="목록"></div>
-    </div>
+    <div class="btn">
+        <div class="btn_modify">
+            <a href="" onclick=""><button>수정</button></a>
+        </div>
+        <div class="btn_delete">
+            <a href="" onclick=""><button>삭제</button></a>
+        </div>
+        <div class="btn_list">
+            <a href="" onclick=""><button>목록</button></a>
+        </div>
     <br>
-
-</div>
+    </div>
 
 <jsp:include page="/WEB-INF/views/layout/footer.jsp"/>
 
