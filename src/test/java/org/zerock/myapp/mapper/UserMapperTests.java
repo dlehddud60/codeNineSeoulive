@@ -10,7 +10,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.zerock.seoulive.member.join.domain.UserDTO;
+import org.zerock.seoulive.member.join.domain.UserVO;
+import org.zerock.seoulive.member.join.exception.ServiceException;
 import org.zerock.seoulive.member.join.mapper.UserMapper;
+import org.zerock.seoulive.member.join.service.UserService;
+
+import java.sql.Timestamp;
 
 import static junit.framework.TestCase.assertNotNull;
 
@@ -27,6 +32,9 @@ public class UserMapperTests {
     @Setter(onMethod_ = {@Autowired})
     private UserMapper mapper;
 
+    @Setter(onMethod_ = {@Autowired})
+    private UserService service;
+
 
     @Before
     public void setup() {
@@ -38,24 +46,32 @@ public class UserMapperTests {
 
 
     @Test(timeout = 1000 * 2)
-    public void testInsert() {
-        log.trace("testInsert() invoked.");
+    public void testSelectUser() throws ServiceException {       // 단위 테스트
+        log.trace("testSelectUser() invoked.");
 
         UserDTO dto = new UserDTO();
-        dto.setEmail("abc@email.com");
-        dto.setPassword("abc1234");
-        dto.setNickName("nick");
-        dto.setBirthDate("19990203");
-        dto.setGender("여");
-        dto.setIntroduction("Hello");
-
-
+        dto.setEmail("destiny8693@gmail.com");
+        dto.setPassword("1234");
         log.info("\t+ dto : {}", dto);
 
-        Integer affectedLines = this.mapper.insert(dto);
-        assert affectedLines != null;
-        log.info("\t+ result : {}, dto : {}", (affectedLines == 1), dto);
-    } // testInsert
+        UserVO vo = this.service.authenticate(dto);
+        log.info("\t+ vo : {}", vo);
+    } // testSelectUser
+
+    @Test(timeout = 1000 * 2)
+    public void testUpdateUserWithRememberMe() throws Exception {       // 단위 테스트
+        log.trace("testUpdateUserWithRememberMe() invoked.");
+
+        String email = "destiny8693@gmail.com";
+        String rememberMeCookie = "1234567890ABCDEFG";
+
+        long oneWeek = 1000 * 60 * 60 * 24 * 7; // in milliseconds
+        long now = System.currentTimeMillis();  // in milliseconds
+        Timestamp rememberMeCookieMaxAge = new Timestamp(now + oneWeek);
+
+        int affectedLines = this.mapper.updateUserWithRememberMe(email, rememberMeCookie, rememberMeCookieMaxAge);
+        log.info("\t+ affectedLines : {}", affectedLines);
+    } // testUpdateUserWithRememberMe
 
 
 } // end class

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.zerock.seoulive.member.join.domain.UserDTO;
+import org.zerock.seoulive.member.join.domain.UserVO;
 import org.zerock.seoulive.member.join.exception.ServiceException;
 import org.zerock.seoulive.member.join.mapper.UserMapper;
 
@@ -35,7 +36,18 @@ public class UserServiceImpl
         } // try-catch
     } // register
 
-//    InitializingBean, DisposableBean    //
+    @Override
+    public UserVO authenticate(UserDTO dto) throws ServiceException {
+        log.trace("authenticate({}) invoked.", dto);
+
+        try {
+            return this.dao.selectUser(dto);
+        } catch(Exception e) {
+            throw new ServiceException(e);
+        } // try-catch
+    } // authenticate
+
+    //    InitializingBean, DisposableBean    //
     @Override
     public void afterPropertiesSet() throws Exception {
         log.trace("afterPropertiesSet() invoked.");

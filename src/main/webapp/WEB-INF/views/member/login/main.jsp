@@ -68,15 +68,16 @@
           Kakao.API.request({
             url: '/v2/user/me',
             success: function (response) {
-              console.log(response)
+              console.log(response);
+              location.href = "/";
             },
             fail: function (error) {
-              console.log(error)
+              console.log(error);
             },
           })
         },
         fail: function (error) {
-          console.log(error)
+          console.log(error);
         },
       })
     }

@@ -35,7 +35,7 @@
 
 <div class="container">
   <h2>이메일 로그인</h2>
-  <form>
+  <form action="/member/loginPost" method="post">
     <div class="form_wrap">
       <input type="text" id="email" name="email" placeholder="이메일" required>
     </div>
@@ -68,6 +68,15 @@
   </div>
 
 </div>
+
+<script>
+  // To display sign-in result.
+  var result = "${param.__RESULT__}";
+
+  if(result != null && result.length > 0) {
+    alert(result);
+  } // if
+</script>
 
 </body>
 

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="ADMIN.cloud" uuid="ed221c12-eb91-47a8-a3ce-346801b30231">
+      <driver-ref>oracle.19</driver-ref>
+      <synchronize>true</synchronize>
+      <auto-commit>false</auto-commit>
+      <jdbc-driver>oracle.jdbc.OracleDriver</jdbc-driver>
+      <jdbc-url>jdbc:oracle:thin:@o9o6yubutmsjch3b_high</jdbc-url>
+      <jdbc-additional-properties>
+        <property name="TNSADMIN_DIR" value="/opt/OracleCloudWallet/VFX" />
+      </jdbc-additional-properties>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
+    <data-source source="LOCAL" name="SEOULIVE.cloud" uuid="4d3e01aa-c7e9-4505-a0d9-d8e3287516e9">
+      <driver-ref>oracle.19</driver-ref>
+      <synchronize>true</synchronize>
+      <auto-commit>false</auto-commit>
+      <jdbc-driver>oracle.jdbc.OracleDriver</jdbc-driver>
+      <jdbc-url>jdbc:oracle:thin:@o9o6yubutmsjch3b_high</jdbc-url>
+      <jdbc-additional-properties>
+        <property name="TNSADMIN_DIR" value="/opt/OracleCloudWallet/VFX" />
+      </jdbc-additional-properties>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
+  </component>
+</project>

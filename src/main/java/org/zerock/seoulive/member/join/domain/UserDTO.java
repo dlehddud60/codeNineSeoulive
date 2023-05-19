@@ -14,5 +14,7 @@ public class UserDTO {
     private String joinDate;
     private String profileImg;
 
+    private boolean rememberMe;
+
 
 } // end class

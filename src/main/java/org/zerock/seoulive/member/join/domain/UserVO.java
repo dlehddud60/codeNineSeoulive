@@ -28,10 +28,6 @@ public class UserVO {
     private String joinDate;
     private String profileImg;
 
-//    private String birthYear;
-//    private String birthMonth;
-//    private String birthDay;
-
     public UserDTO toDTO() {
         log.trace("toDTO() invoked");
 
