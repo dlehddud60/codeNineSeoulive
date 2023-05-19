@@ -1,4 +1,4 @@
-package org.zerock.myapp.interceptor;
+package org.zerock.seoulive.member.join.interceptor;
 
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -24,7 +24,7 @@ import java.util.Objects;
 public class AuthInterceptor implements HandlerInterceptor {
 
     @Setter(onMethod_ = {@Autowired})
-    private UserMapper userDAO;
+    private UserMapper mapper;
 
 
     // HTTP request가 Request Mapping대로, Controller의 Handler에 위임되기 직전에 가로채서
@@ -36,18 +36,10 @@ public class AuthInterceptor implements HandlerInterceptor {
         log.trace("preHandle(req, res, {}) invoked.", handler);
         log.trace("====================================================");
 
-        // 없으면 만들고, 있으면 반환 (매개변수가 true인 경우와 같음)
-//        HttpSession session = req.getSession();
+        HttpSession session = req.getSession();
         // 없으면 null 반환, 있으면 반환
         // 요청을 보낸 웹브라우저에 대한 세션(HttpSession 객체)이 있으면 있는걸 반환하고 없으면 null 반환
-        HttpSession session = req.getSession(false);
-
-        if(session == null) {   // 세션자체가 없으면
-            log.info("No authentication found. Redirect to Login");
-
-            res.sendRedirect("/member/login/main");
-            return false;   // 원래 요청을 처리하지 못하도록 함
-        } // if
+//        HttpSession session = req.getSession(false);
 
         // 세션이 있으면 아래에서 인증정보 (=Cridential)가 있는지 확인
         String sessionId = session.getId(); // sessionId : 웹브라우저에게 지어준 이름 (금고상자의 키)
@@ -80,10 +72,10 @@ public class AuthInterceptor implements HandlerInterceptor {
                 // 사용자가 발견된다면 이 사용자에 대한 UserVO객체를 획득하고
                 // 획득한 UserVO객체를 현재 웹브라우저에 대응되는 세션객체
                 // "__AUTH__" 이름으로 UserVO객체를 Credential
-                Objects.requireNonNull(this.userDAO);
+                Objects.requireNonNull(this.mapper);
 
                 // 자동로그인 요청한 웹브라우저의 Credential(인증객체) 획득
-                UserVO userVO = this.userDAO.selectUserByRememberMe(cookieValue);
+                UserVO userVO = this.mapper.selectUserByRememberMe(cookieValue);
                 log.info("\t+ userVO : {}", userVO);
 
                 // 4) Credential Recovery
@@ -100,7 +92,7 @@ public class AuthInterceptor implements HandlerInterceptor {
             // 자동로그인 설정이 안되어 있는 경우와 위의 조건을 만족하지 못하는 경우 리다이레션
             log.info("No credential found. Redirect to Login");
 
-            res.sendRedirect("/member/login/email");
+            res.sendRedirect("/member/login/main");
             return false;   // 원래 요청을 처리하지 못하도록 함
         } // if-else
     } // preHandle

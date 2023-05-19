@@ -44,8 +44,8 @@
     <update id="updateUserWithRememberMe">
         UPDATE tbl_member
         SET
-            rememberMe = #{rememberMe, jdbcType=VARCHAR},
-            rememberMeAge = #{rememberMeAge, jdbcType=DATE}
+            rememberme = #{rememberme, jdbcType=VARCHAR},
+            remembermeage = #{remembermeage, jdbcType=DATE}
         WHERE
             email = #{email}
     </update>
@@ -53,7 +53,7 @@
     <select id="selectUserByRememberMe" resultType="org.zerock.seoulive.member.join.domain.UserVO">
         SELECT *
         FROM tbl_member
-        WHERE rememberme = #{rememberMe}
+        WHERE rememberMe = #{rememberme}
     </select>
 
 </mapper>

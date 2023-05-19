@@ -1,4 +1,4 @@
-package org.zerock.myapp.interceptor;
+package org.zerock.seoulive.member.join.interceptor;
 
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -22,8 +22,9 @@ import java.sql.Timestamp;
 
 @Component
 public class LoginInterceptor implements HandlerInterceptor {
+
     @Setter(onMethod_ = @Autowired)
-    UserMapper userDAO;
+    UserMapper mapper;
 
     // 전처리는 이미 사용자가 로그인창에서 아이디/암호를 입력/전송했다는 것은 분명하기 때문에
     // 로그인 요청을 먼저 가로채서 전처리에서는 로그인 요청을 보낸 웹브라우저에 대응되는 세션객체가 있다면 무조건 파괴
@@ -84,8 +85,8 @@ public class LoginInterceptor implements HandlerInterceptor {
 
             Timestamp rememeberMeCookieMaxAge = new Timestamp(expireDateTime);
 
-            int affectedLines = this.userDAO.updateUserWithRememberMe(
-                    getUserId(req),
+            int affectedLines = this.mapper.updateUserWithRememberMe(
+                    getEmail(req),
                     rememberMeCookie.getValue(),
                     rememeberMeCookieMaxAge
             );
@@ -97,13 +98,13 @@ public class LoginInterceptor implements HandlerInterceptor {
     } // postHandle
 
     // 인증정보로부터 사용자 아이디 반환
-    private String getUserId(HttpServletRequest req) {
+    private String getEmail(HttpServletRequest req) {
         log.trace("\t getUserId(req) invoked.");
 
         HttpSession session = req.getSession(false);
 
         UserVO userVO = (UserVO) session.getAttribute("__AUTH__");
-        log.info("\t userVO: {}",userVO);
+        log.info("\t userVO: {}", userVO);
 
         return userVO.getEmail();
     } // getUserId

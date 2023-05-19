@@ -13,11 +13,6 @@ import lombok.extern.log4j.Log4j2;
 //    4) getter 메소드를 통해서 필드의 값을 READ만 할 수 있게 함
 
 @Value
-//@Getter(AccessLevel.PUBLIC) // 각 필드별로 Getter 메소드 자동생성 (접근제한자 조절이 가능)
-//@AllArgsConstructor     // 모든 필드를 순서대로 매개변수로 가지는 생성자 선언
-//@EqualsAndHashCode      // 중복판단 이중 알고리즘에 맞게 자동으로 오버라이딩 (Set, Map 컬렉션에 대응)
-//@ToString
-@Log4j2
 public class UserVO {
     private String email;
     private String password;
@@ -28,21 +23,5 @@ public class UserVO {
     private String joinDate;
     private String profileImg;
 
-    public UserDTO toDTO() {
-        log.trace("toDTO() invoked");
-
-        UserDTO dto = new UserDTO();
-        dto.setEmail(email);
-        dto.setPassword(password);
-        dto.setNickName(nickName);
-        dto.setBirthDate(birthDate);
-        dto.setGender(gender);
-        dto.setIntroduction(introduction);
-        dto.setProfileImg(profileImg);
-
-        log.info("\t + dto : {}", dto);
-
-        return dto;
-    } // toDTO
 
 } // end class

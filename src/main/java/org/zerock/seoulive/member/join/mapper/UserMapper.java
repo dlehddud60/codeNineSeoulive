@@ -1,6 +1,7 @@
 package org.zerock.seoulive.member.join.mapper;
 
 
+import org.apache.ibatis.annotations.Param;
 import org.zerock.seoulive.member.join.domain.UserDTO;
 import org.zerock.seoulive.member.join.domain.UserVO;
 
@@ -17,9 +18,9 @@ public interface UserMapper {
 
     // 자동 로그인
     public abstract Integer updateUserWithRememberMe(
-            String email,
-            String rememberMeCookie,
-            Date rememberMeCookieMaxAge
+            @Param("email") String email,
+            @Param("rememberme") String rememberMeCookie,
+            @Param("remembermeage") Date rememberMeCookieMaxAge
     );
 
     public abstract UserVO selectUserByRememberMe(String rememberMe);

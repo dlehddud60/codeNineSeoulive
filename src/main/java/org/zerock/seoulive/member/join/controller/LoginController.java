@@ -1,6 +1,7 @@
-package org.zerock.myapp.controller;
+package org.zerock.seoulive.member.join.controller;
 
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,12 +19,13 @@ import org.zerock.seoulive.member.join.service.UserService;
 @Log4j2
 @NoArgsConstructor
 
-@SessionAttributes({"__AUTH__"})    // 인증객체를 세션이 넣어줌
+@SessionAttributes({"__AUTH__"})    // 인증객체를 세션에 넣어줌
 
 @RequestMapping("/member")
 @Controller
 public class LoginController {
-    @Autowired private UserService service;
+    @Setter(onMethod_ = @Autowired)
+    private UserService service;
 
     @PostMapping("/loginPost")
     String loginPost(UserDTO dto, Model model, RedirectAttributes rttrs) throws ControllerException {

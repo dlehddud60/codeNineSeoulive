@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @NoArgsConstructor
 
 //@ControllerAdvice      // For All packages
-@ControllerAdvice(basePackages = {"org.zerock.myapp.controller"})   // For one package
+@ControllerAdvice(basePackages = {"org.zerock.seolive.controller"})   // For one package
 public class ControllerExceptionHandler {
 
 

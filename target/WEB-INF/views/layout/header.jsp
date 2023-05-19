@@ -22,11 +22,8 @@
 
         <ul class="bn">
 
-            <a href="#" class="fr">
-                <li>회원가입</li>
-            </a>
-            <a href="#" class="fr">
-                <li>로그인</li>
+            <a href="#" class="fr" id="logoutBtn">
+                <li>로그아웃</li>
             </a>
 
         </ul>
@@ -34,4 +31,14 @@
     </div>
 
 </div>
+
+<script>
+    $(function () {
+
+        $('#logoutBtn').on('click', function () {
+            self.location.href = '/member/logout';    // GET, /user/logout
+        }); // .onclick
+
+    }); // .jq
+</script>
 <!-- 헤더 끝 -->
