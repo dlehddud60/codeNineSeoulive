@@ -1,16 +1,37 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: sejungahn
-  Date: 2023/05/10
-  Time: 19:36
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-  <head>
-    <title>$Title$</title>
-  </head>
-  <body>
-  $END$
-  </body>
-</html>
+
+<!-- 헤더 시작 -->
+<div id="header">
+    <div class="wrap">
+        <h1 class="logo">
+            <a href="#"><img src="../../../resources/static/img/img-logo.png" width="240" height="60"></a>
+        </h1>
+        <ul class="bn">
+            <a href="#" class="fl">
+                <li>여행지</li>
+            </a>
+            <a href="#" class="fl">
+                <li>일정</li>
+            </a>
+
+            <a href="#" class="fl">
+                <li>자유게시판</li>
+            </a>
+
+        </ul>
+
+        <ul class="bn">
+
+            <a href="#" class="fr">
+                <li>회원가입</li>
+            </a>
+            <a href="#" class="fr">
+                <li>로그인</li>
+            </a>
+
+        </ul>
+
+    </div>
+
+</div>
+<!-- 헤더 끝 -->
