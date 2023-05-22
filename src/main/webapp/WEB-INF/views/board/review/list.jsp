@@ -32,6 +32,25 @@
             }); // on click
 
         })
+        $(function (){
+            $('.pageNum').on('click', function(e){
+                // console.log('pageNum Clicked....')
+                let selectedPageNum = e.currentTarget.textContent
+                let keyword = "${pageMaker.cri.keyword}";
+                // console.log(selectedPageNum);
+
+                location.href = "/board/review/list?keyword=" +keyword+ "&currPage=" + selectedPageNum;
+            }); // onclick
+
+            $('.searchButton').on('click', function(e){
+                // e.preventDefault();
+                alert("검색버튼 활성화");
+                let val = $("input[name='keyword']").val();
+                moveForm.find("input[name='keyword']").val(val);
+                moveForm.find("input[name='pageNum']").val(1);
+                moveForm.submit();
+            });
+        }); //jq
     </script>
 </head>
 
@@ -41,52 +60,23 @@
 <div id="container" class="list_wrap">
 
     <!-- search bar -->
-    <div class="search_wrap">
-        <div class="search">
-            <select name="" id="">
-                <option value="카테고리">카테고리</option>
-                <option value="카테고리">카테고리</option>
-                <option value="카테고리">카테고리</option>
-                <option value="카테고리">카테고리</option>
-            </select>
-            <input type="text" class="searchTerm" placeholder="검색내용을 입력하세요.">
+    <form action="/board/review/list" method="get" id="moveForm">
+        <div class="search_wrap">
+            <div class="search">
+                <select id="title" class="form-control search-search">
+                    <option value="전체">전체</option>
+                    <option value="제목">제목</option>
+                </select>
+                <input type="text" class="searchTerm" placeholder="검색내용을 입력하세요." name="keyword">
 
-            <button type="submit" class="searchButton">
-                <i class="fa fa-search"></i>
-            </button>
+                <button type="submit" class="searchButton">
+                    <i class="fa fa-search"></i>
+                </button>
+            </div>
         </div>
-    </div>
-
-    <!-- tab menu -->
-    <ul class="tab">
-        <li class="on" data-tab="menu1"><a href="#">전체</a></li>
-        <li data-tab="menu2"><a href="#">공연</a></li>
-        <li data-tab="menu3"><a href="#">야외활동</a></li>
-        <li data-tab="menu4"><a href="#">팝업스토어</a></li>
-        <li data-tab="menu4"><a href="#">전시회</a></li>
-    </ul>
-
-<%--    <div id="menu1" class="tabcont on">--%>
-<%--        <h3>menu1</h3>--%>
-<%--        <p> This is menu1 content</p>--%>
-<%--    </div>--%>
-<%--    </div>--%>
-
-    <div id="menu2" class="tabcont">
-        <h3>menu2</h3>
-        <p> This is menu2 content</p>
-    </div>
-
-    <div id="menu3" class="tabcont">
-        <h3>menu3</h3>
-        <p> This is menu3 content</p>
-    </div>
-
-    <div id="menu4" class="tabcont">
-        <h3>menu4</h3>
-        <p> This is menu4 content</p>
-    </div>
-
+        <input type="hidden" name="currPage" value="${pageMaker.cri.currPage}">
+        <input type="hidden" name="amount" value="${pageMaker.cri.amount}">
+    </form>
     <!-- list -->
     <div class="gridViewContainer">
 <%---------------------%>
@@ -131,24 +121,38 @@
         </div>
         </c:forEach>
 
-    <div class="listWrap" id="list_container" style="display: block;"></div>
 
     <!-- pagination -->
-    <div class="pagination_wrap">
-        <ul class="pagination">
-            <li class="fas fa-angle-left"></li>
-            <li><a class="active" href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li class="fas fa-angle-right"></li>
-        </ul>
+    <div class="paging_wrap">
+        <div class="paging_box">
+            <ul>
+                <c:if test="${pageMaker.prev}">
+                    <li class="prev pager">
+                        <a href="/board/review/list?currPage=${pageMaker.startPage -1}" title="이전 페이지로 이동하기"><i class="fas fa-chevron-left"></i></a>
+                    </li>
+                </c:if>
+
+                <c:forEach var="pageNum" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+                    <li>
+                        <a class="pageNum ${pageMaker.cri.currPage ==pageNum? 'active':''}"  href="#a">${pageNum}</a>
+                    </li>
+
+                </c:forEach>
+
+                <c:if test="${pageMaker.next}">
+                    <li class="next pager">
+                        <a href="/board/review/list?currPage=${pageMaker.endPage +1}" title="다음 페이지로 이동하기"><i class="fas fa-chevron-right"></i></a>
+                    </li>
+
+                </c:if>
+
+            </ul>
+        </div>
+    </div>
         <div class="btn_wrap">
             <button class="write_btn"><a href="#">글쓰기</a></button>
         </div>
-    </div>
 </div>
-
-
         <jsp:include page="../../layout/footer.jsp"/>
 </body>
 </html>

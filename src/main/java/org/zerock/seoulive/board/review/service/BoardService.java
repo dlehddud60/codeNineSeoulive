@@ -1,10 +1,12 @@
 package org.zerock.seoulive.board.review.service;
 
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.zerock.seoulive.board.review.domain.BoardDTO;
 import org.zerock.seoulive.board.review.domain.BoardVO;
 import org.zerock.seoulive.board.review.domain.Criteria;
 import org.zerock.seoulive.board.review.exception.ServiceException;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 public interface BoardService {
@@ -25,7 +27,9 @@ public interface BoardService {
     public abstract Boolean remove(Integer seq)throws ServiceException;
 
     // 6. 총 게시물 개수 반환
-    public abstract Integer getTotal() throws ServiceException;
+    public abstract Integer getTotal(Criteria cri) throws ServiceException;
+
+
 
 
 }

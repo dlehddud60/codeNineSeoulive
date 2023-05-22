@@ -23,7 +23,27 @@
         function chk_form() {
             document.getElementById('frm').submit();
         }
+        $(function() {
+            $('#listBtn').click(function() {
+                // 게시판 목록으로 이동 : GET / board / list
 
+                location.href = "/board/review/list";
+            }); // on click
+        })
+
+        function readURL(input) {
+            var file = input.files[0]
+            console.log(file)
+            if (file != '') {
+                var reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = function (e) {
+                    console.log(e.target)
+                    console.log(e.target.result)
+                    $('#preview').attr('src', e.target.result);
+                }
+            }
+        }
     </script>
 
 </head>
@@ -36,7 +56,7 @@
         <h2 class="title">리뷰게시판</h2>
     </div>
     <div class="board_write_wrap">
-        <form id="frm" action="/board/review/write" method="post">
+        <form id="frm" action="/board/review/write" method="post" >
             <fieldset class="board_write_box">
                 <legend class="hide">게시글 등록</legend>
                 <div>
@@ -53,8 +73,9 @@
                             <label for="writer">작성자</label>
                         </div>
                         <div class="input_box col2">
-                            <input class="b_input" type="text" name="writer">
+                            <input class="b_input" type="text" name="place">
                         </div>
+
                     </div>
 
                     <div class="row">
@@ -81,28 +102,36 @@
             </fieldset>
 
 
-
+<%--일단  재우기 --%>
     <div class="file_container"></div>
     <div class="file_form">
         <input type="file">
         <span class="text">파일추가</span>
     </div>
+<%--           합쳐보기 --%>
+            <div class="inputArea">
+                <label for="gdsImg">이미지</label>
+                <input type="file" id="gdsImg" name="file" />
+                <div class="select_img"><img src="" /></div>
 
-
-
-
-
-
+                <script>
+                    $("#gdsImg").change(function(){
+                        if(this.files && this.files[0]) {
+                            var reader = new FileReader;
+                            reader.onload = function(data) {
+                                $(".select_img img").attr("src", data.target.result).width(500);
+                            }
+                            reader.readAsDataURL(this.files[0]);
+                        }
+                    });
+                </script>
+                <%=request.getRealPath("/") %>
+            </div>
 
     <div class="button_wrap">
-        <td colspan=2 class="buttons">
-            <button type="button" id="deleteBtn">삭제</button>
-<%--            <li><a href="" onclick="chk_form()">작성</a></li>--%>
-            <button type="submit" id="writeBtn">작성</button>
-            <button type="button" id="listBtn">목록</button>
-        </td>
+        <button type="submit" id="writeBtn">작성</button>
+        <button type="button" id="listBtn">목록</button>
     </div>
-
     </form>
 
 

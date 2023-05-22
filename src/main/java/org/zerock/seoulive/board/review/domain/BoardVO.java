@@ -1,6 +1,7 @@
 package org.zerock.seoulive.board.review.domain;
 
 import lombok.Value;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.sql.Timestamp;
 
@@ -25,7 +26,9 @@ public class BoardVO {
     private String title;
     private String content;
     private Integer total;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Timestamp write_date;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Timestamp modify_date;
     private String place;
 

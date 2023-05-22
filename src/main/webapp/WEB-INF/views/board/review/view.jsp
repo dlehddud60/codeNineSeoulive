@@ -18,6 +18,24 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <!-- <script type="text/javascript" src="/js/reviewvi.js"></script> -->
     <script src="https://kit.fontawesome.com/6ba5041685.js" crossorigin="anonymous"></script>
+
+    <script>
+        $(function() {
+            $('.listBtn').click(function() {
+                // 게시판 목록으로 이동 : GET / board / list
+
+                location.href = "/board/review/list";
+            }); // on click
+
+            $('.modifyBtn').click(function() {
+                // 게시판 목록으로 이동 : GET / board / list
+
+                location.href = "/board/review/modify?&seq=${__BOARD__.seq}";
+            }); // on click
+
+
+        })
+    </script>
 </head>
 <jsp:include page="../../layout/header.jsp"/>
 <body>
@@ -73,9 +91,9 @@
 
     <div class="viewBtn">
         <ul class="btnList">
-            <li><a href="#">삭제</a></li>
-            <li><a href="#">수정</a></li>
-            <li><a href="#">목록</a></li>
+            <li><a class="deleteBtn" href="#">삭제</a></li>
+            <li><a class="modifyBtn" href="#">수정</a></li>
+            <li><a class="listBtn" href="#">목록</a></li>
         </ul>
     </div>
 
