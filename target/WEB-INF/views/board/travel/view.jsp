@@ -41,7 +41,7 @@
             $('#modBtn').click(function() {
 
                 <%--location.href = "/board/travel/modify?currPage=${param.currPage}&seq=${__BOARD__.seq}";--%>
-                location.href = "/board/travel/modify";
+                location.href = "/board/travel/modify?seq=${__BOARD__.seq}";
             });
 
             $('#delBtn').click(function () {
@@ -74,10 +74,10 @@
         <i class="fas fa-eye"> ${__BOARD__.total}</i>
     </div>
     <div class="reg_Date">
-        <span>등록일 : <fmt:formatDate value="${__BOARD__.write_Date}"/></span>
+        <span>등록일 : <fmt:formatDate value="${__BOARD__.write_Date}" pattern="yyyy. MM. dd. HH:mm:ss"/></span>
     </div>
     <div class="mod_Date">
-        <span>수정일 : <fmt:formatDate value="${__BOARD__.modify_Date}"/></span>
+        <span>수정일 : <fmt:formatDate value="${__BOARD__.modify_Date}" pattern="yyyy. MM. dd. HH:mm:ss"/></span>
     </div>
 
     <hr>
@@ -131,37 +131,37 @@
 
     </div>
 
-    <h3>추천 여행지</h3>
-    <hr>
-    <div class="recom">
+<%--    <h3>추천 여행지</h3>--%>
+<%--    <hr>--%>
+<%--    <div class="recom">--%>
 
-        <div class="recom1">
-            <img src="../../../../resources/static/img/IMG_1004.png" height="100%" width="100%">
-            <div class="recom-name"><h3>추천 여행지 #1</h3></div>
-        </div>
+<%--        <div class="recom1">--%>
+<%--            <img src="../../../../resources/static/img/IMG_1004.png" height="100%" width="100%">--%>
+<%--            <div class="recom-name"><h3>추천 여행지 #1</h3></div>--%>
+<%--        </div>--%>
 
-        <div class="recom2">
-            <img src="../../../../resources/static/img/IMG_1005.png" height="100%" width="100%">
-            <div class="recom-name"><h3>추천 여행지 #2</h3></div>
-        </div>
+<%--        <div class="recom2">--%>
+<%--            <img src="../../../../resources/static/img/IMG_1005.png" height="100%" width="100%">--%>
+<%--            <div class="recom-name"><h3>추천 여행지 #2</h3></div>--%>
+<%--        </div>--%>
 
-        <div class="recom3">
-            <img src="../../../../resources/static/img/IMG_1006.png" height="100%" width="100%">
-            <div class="recom-name"><h3>추천 여행지 #3</h3></div>
-        </div>
+<%--        <div class="recom3">--%>
+<%--            <img src="../../../../resources/static/img/IMG_1006.png" height="100%" width="100%">--%>
+<%--            <div class="recom-name"><h3>추천 여행지 #3</h3></div>--%>
+<%--        </div>--%>
 
-    </div>
+<%--    </div>--%>
     <br>
 
     <div class="btn">
         <div class="btn_modify">
-            <a href="" onclick=""><button id="modBtn">수정</button></a>
+            <a href="#" onclick=""><button id="modBtn">수정</button></a>
         </div>
         <div class="btn_delete">
-            <a href="" onclick=""><button id="delBtn">삭제</button></a>
+            <a href="#" onclick=""><button id="delBtn">삭제</button></a>
         </div>
         <div class="btn_list">
-            <a href="" onclick=""><button id="listBtn">목록</button></a>
+            <a href="#" onclick=""><button id="listBtn">목록</button></a>
         </div>
     <br>
     </div>

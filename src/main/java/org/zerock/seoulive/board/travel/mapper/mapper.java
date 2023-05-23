@@ -26,6 +26,11 @@ public interface mapper {
     public abstract VO select(@Param("seq") Integer seq);
     public abstract Integer delete(Integer seq);
 
+    @Update("""
+            UPDATE TBL_TRAVEL SET title = #{title}, content = #{content}, address = #{address}, modify_date = current_date,
+                                          start_time = #{start_time}, end_time = #{end_time}, start_date = #{start_date}, end_date = #{end_date}
+                              WHERE seq = #{seq}
+            """)
     public abstract Integer update(DTO dto);
 
 

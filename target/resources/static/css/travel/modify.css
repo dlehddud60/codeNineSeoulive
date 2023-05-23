@@ -1,198 +1,177 @@
-@charset "utf-8";
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Orbitron&family=Roboto&display=swap');
+@charset "UTF-8";
 
-
-/* reset */
-*{text-decoration:none;list-style-type:none;margin:0;padding:0;}
-div, ul, li, a, input, select, form, dl, dt, dd{list-style-type:none;}
-fieldset, img{border:none;}
-img, input, select, textarea{vertical-align:middle;}
-img{border:0;}
-ol, ul{list-style-type:none;}
-a{color:inherit;text-decoration:none;}
-a:link, a:visited,a:hover{text-decoration:none;}
-body{font-family: 'Nanum Gothic', sans-serif;font-size:14px;line-height:1;color:#333;}
-
-/* 전체 영역 */
-form {
+#wrap {
     width: 1200px;
-    height: 1150px;
-    margin: auto;
+    /*height: 2500px;*/
+    display: block;
+    margin: 0 auto;
+    position: relative;
 }
-/* 헤더 */
-.travel_header {
-    display: flex;
-    align-items: center;
-    margin: 10px 0 10px 0;
-}
-/* 제목 */
-.travel_title {
-    display: flex;
-    align-items: center;
-    margin: 5px auto;
-    height: 100px;
-}
-.travel_title input {
-
-    width: 1200px;
-    height: 50px;
-    margin: 5px auto;
-    border: 1px solid #ddd;
-    font-size: 18px;
-
-}
-/* 테마 */
-.travel_category {
-    margin: 10px 0 10px 0;
-}
-.travel_thema {
-    height: 40px;
-    font-size: 17px;
-    margin: 10px 5px;
-}
-.travel_thema label {
-    /*text-align: left;*/
-    cursor: pointer;
-    height: 30px;
-    font-size: 16px;
-    margin: 0 20px 0 20px;
-
-}
-.travel_thema input[type="radio"]:checked + span {
+span {
     font-weight: bold;
 }
-.travel_thema input[type="radio"] {
-    position: absolute;
-    overflow: hidden;
-    clip:rect(0,0,0,0);
+.exam > ul {
+    width: 800px;
+    height: 300px;
 }
-/* 캘린더 */
-.cal {
-    margin: 10px 0 10px 0;
-}
-.cal_input {
+/*h3 {*/
+/* margin: 30px 0px 20px 20px; */
+/*}*/
+/*hr {*/
+/*    background: linear-gradient(50deg, #49539E 0%, #E76649 100%);*/
+/*    height: 2px;*/
+/*    margin: 30px 0 20px 0;*/
+/*}*/
+.category {
+    height: 50px;
+    width: 500px;
+    /* border: 1px solid red; */
     display: flex;
+    justify-content: center;
     align-items: center;
-    margin: 10px auto;
-    height: 100px;
+    margin: 0 auto;
+    /* margin-bottom: 10px; */
+    /* padding: 15px; */
 }
-.cal_date_input {
-    height: 70px;
+.name {
+    height: 50px;
     width: 500px;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    /* margin-bottom: 10px; */
+    /* padding: 15px; */
 }
-#start_date_input {
-    margin: 0 5px 0 5px;
+.theme {
+    height: 20px;
+    width: 400px;
+    /* border: 1px dotted purple; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    /* margin-bottom: 10px; */
+    /* padding: 15px; */
 }
-#end_date_input {
-    margin: 0 5px 0 5px;
+.etc {
+    margin: 0 0 20px 0;
 }
-.cal_time_input {
-    height: 70px;
-    width: 500px;
-}
-#start_time_input {
-    margin: 0 5px 0 5px;
-}
-#end_time_input {
-    margin: 0 5px 0 5px;
-}
-.cal_date_input > input {
-    border: 1px solid #ddd;
-    margin: 5px 0 5px 0;
-    height: 30px;
-    width: 200px;
-}
-.cal_time_input > input {
-    border: 1px solid #ddd;
-    margin: 5px 0 5px 0;
-    height: 30px;
-    width: 200px;
-}
-/* 내용 */
-textarea {
-    width: 1200px;
-    margin: 10px auto;
-    height: 275px;
-    font-size: 14px;
-    resize: none;
-    border: 1px solid #ddd;
-}
-/* 주소 */
-.loc {
+.reg_Date {
     margin: 10px 0 10px 0;
 }
-.location > input:nth-of-type(1) {
-    width: 100px;
-    height: 25px;
-    border: 1px solid #ddd;
-    margin: 5px 0 5px 0;
+.mod_Date {
+    margin: 10px 0 10px 0;
 }
-.location > input:nth-of-type(2) {
-    width: 300px;
-    height: 25px;
-    border: 1px solid #ddd;
-    margin: 5px 0 5px 0;
+/* .pic {
+    height: 70%;
+    width: 70%;
+    border: 1px solid green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    padding: 15px;
+} */
+.exam {
+    width: 800px;
+    height: 300px;
+    /* border: 1px dotted blue; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    /* padding: 15px; */
 }
-.location > input:nth-of-type(3) {
-    width: 100px;
-    height: 25px;
-    border: 1px solid #ddd;
-    margin: 5px 0 5px 0;
+#map {
+    width: 700px;
+    height: 500px;
+    /* border: 1px solid orange; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    /* padding: 15px; */
 }
-.loc_btn {
-    background: #000000;
-    border-color: #000000;
-    color: #ffffff;
-    font-size: 14px;
-    width: 100px;
-    height: 28px;
-    padding: 2px 8px 0 8px;
-    border: none;
+.recom {
+    /* border: 1px dotted darkgray; */
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    margin-bottom: 10px;
+    height: 230px;
+    /* padding: 15px; */
 }
-.loc_btn:hover {
-    background: #49539E;
-    border-color: #49539E;
-    padding: 2px 8px 0 8px;
+.recom1 {
+    width: 360px;
+    height: 200px;
+    display: table-cell;
+    float: left;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid darkgoldenrod; */
+    margin: 0 10px 0 10px;
+}
+.recom2 {
+    width: 360px;
+    height: 200px;
+    display: table-cell;
+    float: left;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid darkgoldenrod; */
+    margin: 0 10px 0 10px;
+}
+.recom3 {
+    width: 360px;
+    height: 200px;
+    display: table-cell;
+    float: left;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid darkgoldenrod; */
+    margin: 0 10px 0 10px;
+}
+.recom-name {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
 }
 
-/* 첨부 파일 */
-.picture {
-    margin: 10px 0 10px 0;
+.swiper {
+    width: 70%;
+    height: 70%;
 }
-.upload {
-    width: 100px;
-    height: 100px;
-    margin: 0 5px 5px 0;
-    background-image: url(../../../../resources/static/img/bg_upload.png) ;
-    background-repeat: no-repeat;
-    background-position: center;
-    border: none;
-    font-size: 0;
-    line-height: 0;
-}
-.image-preview {
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
     display: flex;
-    float: left;
-}
-.image-preview > li > img {
-    width: 100px;
-    height: 100px;
+    justify-content: center;
+    align-items: center;
 }
 .btn {
     display: flex;
     width: 100%;
-    justify-content: center;
+    justify-content: right;
     align-items: center;
     margin-top: 20px;
     margin-bottom: 20px;
 }
-.btn_accent {
+.btn_modify {
     margin: 0 5px 0 5px;
 }
-.btn_cancel {
+.btn_delete {
     margin: 0 5px 0 5px;
 }
-.btn_accent button {
+.btn_list {
+    margin: 0 5px 0 5px;
+}
+.btn_modify button {
     background: #000000;
     border-color: #000000;
     color: #ffffff;
@@ -202,12 +181,27 @@ textarea {
     padding: 2px 8px 0 8px;
     border: none;
 }
-.btn_accent button:hover {
+.btn_modify button:hover {
     background: #49539E;
     border-color: #49539E;
     padding: 2px 8px 0 8px;
 }
-.btn_cancel button {
+.btn_delete button {
+    background: #000000;
+    border-color: #000000;
+    color: #ffffff;
+    font-size: 14px;
+    width: 100px;
+    height: 40px;
+    padding: 2px 8px 0 8px;
+    border: none;
+}
+.btn_delete button:hover {
+    background: #49539E;
+    border-color: #49539E;
+    padding: 2px 8px 0 8px;
+}
+.btn_list button {
     background: #f1f1f1;
     border-color: #f1f1f1;
     color: #000000;
@@ -217,8 +211,16 @@ textarea {
     padding: 2px 8px 0 8px;
     border: none;
 }
-.btn_cancel button:hover {
+.btn_list button:hover {
     background: #d8d8d8;
     border-color: #d8d8d8;
     padding: 2px 8px 0 8px;
 }
+/*input {*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*    width: 100px;*/
+/*    height: 30px;*/
+/*    margin: 0 10px 0 10px;*/
+/*}*/

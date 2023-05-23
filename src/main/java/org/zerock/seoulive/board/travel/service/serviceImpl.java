@@ -65,6 +65,7 @@ public class serviceImpl implements service {
     public Boolean modify(DTO dto) throws ServiceException {
         try {
             return this.dao.update(dto) == 1;
+
         }
         catch (Exception e) {
             throw new ServiceException(e);

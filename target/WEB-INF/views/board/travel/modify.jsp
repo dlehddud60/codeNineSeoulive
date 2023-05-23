@@ -6,6 +6,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@page import="java.util.Date" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -14,7 +17,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>여행지 modify</title>
 
-  <link rel="stylesheet" href="../../../../resources/static/css/travel/modify.css"/>
+  <link rel="stylesheet" href="../../../../resources/static/css/travel/write.css"/>
   <link rel="stylesheet" href="../../../../resources/static/css/layout/layout.css"/>
   <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 
@@ -23,22 +26,21 @@
 
   <script>
     $(function() {
-      $('.cancelBtn').click(function() {
+      $('.cancelBtn').click(function () {
 
         <%--location.href = "/board/travel/list?currPage=${param.currPage}";--%>
         location.href = "/board/travel/list";
 
       });
+    })
 
-    });
   </script>
-
 
   <jsp:include page="../../layout/header.jsp"/>
 </head>
 <body>
-<form action="" method="post">
-
+<form action="modify" method="post">
+  <input type="hidden" name="seq" value="${ __BOARD__.seq }">
   <!-- 글쓰기 헤더 -->
   <div class="travel_header">
     <h2>여행지 글쓰기</h2>
@@ -46,7 +48,7 @@
   <hr>
   <!-- 제목 -->
   <div class="travel_title">
-    <input type="text" placeholder=" 장소명을 입력해 주세요." autofocus>
+    <input type="text" name="title" value="${__BOARD__.title}" placeholder=" 장소명을 입력해 주세요." autofocus required>
   </div>
 
   <!-- 카테고리 -->
@@ -56,13 +58,13 @@
   <hr>
   <div class="travel_thema">
 
-    <label for="travelplace"><input type="radio" id="travelplace" value="야외활동" name="thema"><span>야외활동</span></label>
+    <label for="travelplace"><input type="radio" id="travelplace" value="야외활동" name="category" onclick="category_val()"><span>야외활동</span></label>
     ｜
-    <label for="show"><input type="radio" id="show" value="공연" name="thema"><span>공연</span></label>
+    <label for="show"><input type="radio" id="show" value="공연" name="category" onclick="category_val()"><span>공연</span></label>
     ｜
-    <label for="exhibition"><input type="radio" id="exhibition" value="전시회" name="thema"><span>전시회</span></label>
+    <label for="exhibition"><input type="radio" id="exhibition" value="전시회" name="category" onclick="category_val()"><span>전시회</span></label>
     ｜
-    <label for="popup"><input type="radio" id="popup" value="팝업스토어" name="thema"><span>팝업스토어</span></label>
+    <label for="popup"><input type="radio" id="popup" value="팝업스토어" name="category" onclick="category_val()"><span>팝업스토어</span></label>
   </div>
 
   <!-- 캘린더 내용 -->
@@ -73,25 +75,25 @@
   <div class="cal_input">
     <div class="cal_date_input">
       <label for="start_date_input"> 시작일자 </label>
-      <input type=text id="start_date_input">
+      <input type=text id="start_date_input" name="start_date" value="${__BOARD__.start_date}">
       <br>
       <label for="end_date_input"> 종료일자 </label>
-      <input type="text" id="end_date_input">
+      <input type="text" id="end_date_input" name="end_date" value="${__BOARD__.end_date}">
       <br>
     </div>
     <div class="cal_time_input">
       <label> 시작시간 </label>
-      <input type="time" id="start_time_input">
+      <input type="time" id="start_time_input" name="start_time" value="${__BOARD__.start_time}">
       <br>
       <label> 종료시간 </label>
-      <input type="time" id="end_time_input">
+      <input type="time" id="end_time_input" name="end_time" value="${__BOARD__.end_time}">
       <br>
     </div>
   </div>
 
   <!-- 본문 -->
   <div class="content">
-    <textarea placeholder="내용을 입력해주세요."></textarea>
+    <textarea name="content" placeholder="내용을 입력해주세요." required>${__BOARD__.content}</textarea>
   </div>
 
   <!-- 위치 -->
@@ -101,10 +103,10 @@
   <hr>
   <br>
   <div class="location">
-    <input type="text" id="loc_num" placeholder=" 우편번호">
+    <input type="text" id="loc_num"  placeholder=" 우편번호">
     <button type="button" class="loc_btn" onclick="loc_btn()">주소 검색</button>
     <br>
-    <input type="text" id="loc_road" placeholder=" 도로명 주소">
+    <input type="text" id="loc_road" name="address"  value="${__BOARD__.address}" placeholder=" 도로명 주소" required>
     <input type="text" id="loc_detail" placeholder=" 상세 주소">
   </div>
 
@@ -117,7 +119,7 @@
   <div class="file_upload">
     <div>
       <button class="upload"></button>
-      <input type="file" class="real-upload" accept="image/*" style="display: none;" required multiple>
+      <input type="file" class="real-upload" accept="image/*" style="display: none;" multiple>
       <ul class="image-preview">
       </ul>
     </div>
@@ -126,23 +128,34 @@
   <!-- 버튼 -->
   <div class="btn">
     <div class="btn_accent">
-      <a href="" onclick=""><button>작성하기</button></a>
+      <a href="#" onclick=""><button type="submit" onclick="submitBtn">작성하기</button></a>
     </div>
     <div class="btn_cancel">
-      <a href="" onclick=""><button>취소</button></a>
+      <a href="#" onclick=""><button class="cancelBtn">취소</button></a>
     </div>
   </div>
 </form>
 
 <%-- 카테고리 스크립트 --%>
 <script>
-  var themaVar = document.querySelector('input[name=thema]:checked').value;
+  function category_val() {
+    let radioButtons = document.querySelectorAll('input[type="radio"]');
+    let checkedValue;
+
+    radioButtons.forEach(radioButton => {
+      if(radioButton.checked) {
+        checkedValue = radioButton.value;
+      }
+    });
+    console.log('cheked : ', checkedValue);
+
+  }
 </script>
 
 <%-- 캘린더 스크립트 --%>
 <script>
   $( function() {
-    var dateFormat = "/mm/dd/yy",
+    var dateFormat = "yymmdd",
             from = $("#start_date_input").datepicker({
               defaultDate: "+1w",
               changeMonth: true,
@@ -150,7 +163,7 @@
               dayNamesMin: ["월", "화", "수", "목","금", "토", "일"],
               monthNames: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
               monthNamesShort: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
-              dateFormat: "yymmdd",
+              dateFormat: "yy/mm/dd",
             })
                     .on( "change", function() {
                       to.datepicker( "option", "minDate", getDate( this ) );
@@ -162,7 +175,7 @@
               dayNamesMin: ["월", "화", "수", "목","금", "토", "일"],
               monthNames: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
               monthNamesShort: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
-              dateFormat: "yymmdd",
+              dateFormat: "yy/mm/dd",
             })
                     .on( "change", function() {
                       from.datepicker( "option", "maxDate", getDate( this ) );
@@ -307,6 +320,8 @@
 
   realUpload.addEventListener('change', getImageFiles);
 </script>
+
+
 
 </body>
 <jsp:include page="/WEB-INF/views/layout/footer.jsp"/>
