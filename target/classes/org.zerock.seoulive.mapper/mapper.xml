@@ -6,7 +6,12 @@
 
 <mapper namespace="org.zerock.seoulive.board.travel.mapper.mapper">
     <insert id="insert">
-<!--        INSERT INTO TBL_TRAVEL(title, -->
+        <selectKey keyProperty="seq" order="BEFORE" resultType="int">
+            SELECT "ISEQ$$_137364".nextval FROM dual;
+        </selectKey>
+
+        INSERT INTO TBL_TRAVEL (SEQ, CATEGORY, TITLE, CONTENT, ADDRESS, START_TIME, END_TIME, START_DATE, END_DATE)
+        VALUES (#{seq}, #{category}, #{title}, #{content}, #{address}, #{start_time}, #{end_time}, #{start_date}, #{end_date})
     </insert>
 
     <select id="select">

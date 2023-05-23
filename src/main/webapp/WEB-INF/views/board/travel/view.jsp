@@ -8,6 +8,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@page import="java.util.Date" %>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -21,27 +23,28 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.4.1/jquery-migrate.min.js"></script>
     <script src="https://kit.fontawesome.com/4b84ea08f3.js" crossorigin="anonymous"></script>
-    <script src="../../../../resources/static/js/travel/view.js"></script>
+<%--    <script src="../../../../resources/static/js/travel/view.js"></script>--%>
     <link rel="stylesheet" href="../../../../resources/static/css/travel/view.css"/>
     <link rel="stylesheet" href="../../../../resources/static/css/layout/layout.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
 
+
     <script>
         $(function() {
-            $('.listBtn').click(function() {
+            $('#listBtn').click(function() {
 
                 <%--location.href = "/board/travel/list?currPage=${param.currPage}";--%>
                 location.href = "/board/travel/list";
 
             });
 
-            $('.modBtn').click(function() {
+            $('#modBtn').click(function() {
 
                 <%--location.href = "/board/travel/modify?currPage=${param.currPage}&seq=${__BOARD__.seq}";--%>
                 location.href = "/board/travel/modify";
             });
 
-            $('.delBtn').click(function () {
+            $('#delBtn').click(function () {
 
                 location.href = "/board/travel/list"
             });
@@ -102,9 +105,22 @@
     <div class="exam">
 
         <ul>
-            <li>${__BOARD__.content}</li>
-            <li>날짜</li>
-            <li>위치</li>
+            <br>
+            <hr>
+            <br>
+            설명 : <li>${__BOARD__.content}</li>
+            <br>
+            <hr>
+            <br>
+            <li>
+                기간 : <fmt:formatDate value="${__BOARD__.start_date}" pattern="yyyy년 MM월 dd일" /> ${__BOARD__.start_time} ~
+                <fmt:formatDate value="${__BOARD__.end_date}" pattern="yyyy년 MM월 dd일" /> ${__BOARD__.end_time}
+            </li>
+            <br>
+            <hr>
+            <br>
+            <li> 위치 : ${__BOARD__.address}</li>
+            <br>
         </ul>
 
     </div>
@@ -139,13 +155,13 @@
 
     <div class="btn">
         <div class="btn_modify">
-            <a href="" onclick=""><button>수정</button></a>
+            <a href="" onclick=""><button id="modBtn">수정</button></a>
         </div>
         <div class="btn_delete">
-            <a href="" onclick=""><button>삭제</button></a>
+            <a href="" onclick=""><button id="delBtn">삭제</button></a>
         </div>
         <div class="btn_list">
-            <a href="" onclick=""><button>목록</button></a>
+            <a href="" onclick=""><button id="listBtn">목록</button></a>
         </div>
     <br>
     </div>

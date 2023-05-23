@@ -39,17 +39,17 @@ public class TravelController {
         } // try-catch
     } // list
 
-    @PostMapping("/write")
+    @PostMapping(value = "/write")
     String write(DTO dto, RedirectAttributes rttrs) throws ControllerException {
 
         try {
             Objects.requireNonNull(dto);
 
             if(this.service.register(dto)) {
-                rttrs.addFlashAttribute("result", "true");
+                rttrs.addFlashAttribute("result", true);
                 rttrs.addFlashAttribute("seq", dto.getSeq());
             } // end if
-            return "redirect:/board/travel/write";
+            return "redirect:/board/travel/list";
         }
         catch(Exception e) {
             throw new ControllerException(e);

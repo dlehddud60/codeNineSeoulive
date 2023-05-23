@@ -16,7 +16,7 @@ body{font-family: 'Nanum Gothic', sans-serif;font-size:14px;line-height:1;color:
 /* 전체 영역 */
 form {
     width: 1200px;
-    height: 900px;
+    height: 1150px;
     margin: auto;
 }
 /* 헤더 */
@@ -58,15 +58,18 @@ form {
     margin: 0 20px 0 20px;
 
 }
-.travel_thema input[type="checkbox"]:checked + span {
+.travel_thema input[type="radio"]:checked + span {
     font-weight: bold;
 }
-.travel_thema input[type="checkbox"] {
+.travel_thema input[type="radio"] {
     position: absolute;
     overflow: hidden;
     clip:rect(0,0,0,0);
 }
 /* 캘린더 */
+.cal {
+    margin: 10px 0 10px 0;
+}
 .cal_input {
     display: flex;
     align-items: center;
@@ -77,14 +80,20 @@ form {
     height: 70px;
     width: 500px;
 }
-.date_input {
+#start_date_input {
+    margin: 0 5px 0 5px;
+}
+#end_date_input {
     margin: 0 5px 0 5px;
 }
 .cal_time_input {
     height: 70px;
     width: 500px;
 }
-.time_input {
+#start_time_input {
+    margin: 0 5px 0 5px;
+}
+#end_time_input {
     margin: 0 5px 0 5px;
 }
 .cal_date_input > input {
@@ -109,16 +118,54 @@ textarea {
     border: 1px solid #ddd;
 }
 /* 주소 */
-/* .location {
-    margin: auto;
-} */
+.loc {
+    margin: 10px 0 10px 0;
+}
+.location > input:nth-of-type(1) {
+    width: 100px;
+    height: 25px;
+    border: 1px solid #ddd;
+    margin: 5px 0 5px 0;
+}
+.location > input:nth-of-type(2) {
+    width: 300px;
+    height: 25px;
+    border: 1px solid #ddd;
+    margin: 5px 0 5px 0;
+}
+.location > input:nth-of-type(3) {
+    width: 100px;
+    height: 25px;
+    border: 1px solid #ddd;
+    margin: 5px 0 5px 0;
+}
+.loc_btn {
+    background: #000000;
+    border-color: #000000;
+    color: #ffffff;
+    font-size: 14px;
+    width: 100px;
+    height: 28px;
+    padding: 2px 8px 0 8px;
+    border: none;
+}
+.loc_btn:hover {
+    background: #49539E;
+    border-color: #49539E;
+    padding: 2px 8px 0 8px;
+}
+
 /* 첨부 파일 */
+.picture {
+    margin: 10px 0 10px 0;
+}
 .upload {
     width: 100px;
     height: 100px;
     margin: 0 5px 5px 0;
-    background-image: url(../../../../resources/static/img/bg_upload.png);
+    background-image: url(../../../../resources/static/img/bg_upload.png) ;
     background-repeat: no-repeat;
+    background-position: center;
     border: none;
     font-size: 0;
     line-height: 0;
@@ -131,30 +178,6 @@ textarea {
     width: 100px;
     height: 100px;
 }
-/*.travel_filebox {*/
-/*    margin-top: 15px;*/
-/*}*/
-/*.travel_filebox label {*/
-/*    padding: 5px;*/
-/*    color: #333;*/
-/*    background-color: white;*/
-/*    cursor: pointer;*/
-/*    border: 1px solid #d6d6d6;*/
-/*    border-radius: 5px;*/
-/*    font-size: 12px;*/
-/*}*/
-/*.travel_filebox input[type="file"] {*/
-/*    position: absolute;*/
-/*    overflow: hidden;*/
-/*    clip:rect(0,0,0,0);*/
-/*}*/
-/*!* 미리보기 *!*/
-/*#preview_imgs img {*/
-/*    margin: 5px;*/
-/*    width: 300px;*/
-/*    height: 300px;*/
-/*}*/
-/* 버튼 */
 .btn {
     display: flex;
     width: 100%;

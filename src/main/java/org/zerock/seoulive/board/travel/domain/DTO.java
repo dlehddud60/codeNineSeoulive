@@ -8,12 +8,16 @@ import java.util.Date;
 public class DTO {
 
     private Integer seq;
-    private String writer;
     private String category;
     private String title;
     private String content;
     private String address;
     private Integer total;
+    private String start_time;
+    private String end_time;
+    private Date start_date;
+    private Date end_date;
+
 
 
 

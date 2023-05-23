@@ -16,83 +16,298 @@
 
   <link rel="stylesheet" href="../../../../resources/static/css/travel/modify.css"/>
   <link rel="stylesheet" href="../../../../resources/static/css/layout/layout.css"/>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 
   <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
   <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
+  <script>
+    $(function() {
+      $('.cancelBtn').click(function() {
+
+        <%--location.href = "/board/travel/list?currPage=${param.currPage}";--%>
+        location.href = "/board/travel/list";
+
+      });
+
+    });
+  </script>
+
+
   <jsp:include page="../../layout/header.jsp"/>
 </head>
 <body>
-<form action="#" method="post">
+<form action="" method="post">
+
+  <!-- 글쓰기 헤더 -->
+  <div class="travel_header">
+    <h2>여행지 글쓰기</h2>
+  </div>
+  <hr>
   <!-- 제목 -->
   <div class="travel_title">
-    <input type="text" placeholder="제목을 입력해 주세요.">
+    <input type="text" placeholder=" 장소명을 입력해 주세요." autofocus>
   </div>
 
   <!-- 카테고리 -->
+  <div class="travel_category">
+    <h3>카테고리</h3>
+  </div>
+  <hr>
   <div class="travel_thema">
-    <label for="travelplace"><input type="checkbox" id="travelplace" value="travel" name="thema"><span>여행지</span></label>
-    <label for="exhibition"><input type="checkbox" id="exhibition" value="exhibition" name="thema"><span>전시회</span></label>
-    <label for="popup"><input type="checkbox" id="popup" value="popup" name="thema"><span>팝업스토어</span></label>
+
+    <label for="travelplace"><input type="radio" id="travelplace" value="야외활동" name="thema"><span>야외활동</span></label>
+    ｜
+    <label for="show"><input type="radio" id="show" value="공연" name="thema"><span>공연</span></label>
+    ｜
+    <label for="exhibition"><input type="radio" id="exhibition" value="전시회" name="thema"><span>전시회</span></label>
+    ｜
+    <label for="popup"><input type="radio" id="popup" value="팝업스토어" name="thema"><span>팝업스토어</span></label>
   </div>
 
   <!-- 캘린더 내용 -->
+  <div class="cal">
+    <h3>일정</h3>
+  </div>
+  <hr>
   <div class="cal_input">
     <div class="cal_date_input">
-      <label for="date_from">시작일자 </label><input type="date" name="cal_date" id="start_date">
-      <label for="date_to"> 종료일자 </label><input type="date" name="cal_date" id="end_date"><br>
+      <label for="start_date_input"> 시작일자 </label>
+      <input type=text id="start_date_input">
+      <br>
+      <label for="end_date_input"> 종료일자 </label>
+      <input type="text" id="end_date_input">
+      <br>
     </div>
     <div class="cal_time_input">
-      <label for="start_time">시작시간 </label><input type="time" name="cal_time" id="start_time">
-      <label for="end_time"> 종료시간 </label><input type="time" name="cal_time" id="end_time">
-      <input type="checkbox" name="cal_date" id="all_day"><label for="all_day"> 하루종일</label>
+      <label> 시작시간 </label>
+      <input type="time" id="start_time_input">
+      <br>
+      <label> 종료시간 </label>
+      <input type="time" id="end_time_input">
+      <br>
     </div>
   </div>
 
   <!-- 본문 -->
   <div class="content">
-    <input type="text" id="contents" name="contents" placeholder="내용을 입력하세요.">
+    <textarea placeholder="내용을 입력해주세요."></textarea>
   </div>
 
+  <!-- 위치 -->
+  <div class="loc">
+    <h3>위치</h3>
+  </div>
+  <hr>
+  <br>
   <div class="location">
-    <label>위치 </label><input type="text" placeholder="주소 노출">
+    <input type="text" id="loc_num" placeholder=" 우편번호">
+    <button type="button" class="loc_btn" onclick="loc_btn()">주소 검색</button>
+    <br>
+    <input type="text" id="loc_road" placeholder=" 도로명 주소">
+    <input type="text" id="loc_detail" placeholder=" 상세 주소">
   </div>
 
   <!-- 첨부파일 -->
-  <div id="preview_imgs"></div>
-  <div class="travel_filebox">
-    <label for="select_image">사진 선택</label>
-    <input type="file" id="select_image" accept="image/*" onchange="imageChange(event);" multiple="multiple">
+  <div class="picture">
+    <h3>사진</h3>
+  </div>
+  <hr>
+  <br>
+  <div class="file_upload">
+    <div>
+      <button class="upload"></button>
+      <input type="file" class="real-upload" accept="image/*" style="display: none;" required multiple>
+      <ul class="image-preview">
+      </ul>
+    </div>
   </div>
 
   <!-- 버튼 -->
-  <div class="travel_button">
-    <input type="reset" value="취소">
-    <input type="submit" value="작성">
+  <div class="btn">
+    <div class="btn_accent">
+      <a href="" onclick=""><button>작성하기</button></a>
+    </div>
+    <div class="btn_cancel">
+      <a href="" onclick=""><button>취소</button></a>
+    </div>
   </div>
 </form>
 
-
+<%-- 카테고리 스크립트 --%>
 <script>
-  // 이미지 미리보기
-  function imageChange(event){
-    let i = event.target.files.length-1;
-    for(let image of event.target.files){
-      let img = document.createElement("img");
-      const reader = new FileReader();
-      reader.onload = function(event){
-        img.setAttribute("src", event.target.result);
+  var themaVar = document.querySelector('input[name=thema]:checked').value;
+</script>
+
+<%-- 캘린더 스크립트 --%>
+<script>
+  $( function() {
+    var dateFormat = "/mm/dd/yy",
+            from = $("#start_date_input").datepicker({
+              defaultDate: "+1w",
+              changeMonth: true,
+              dayNames: ["월요일", "화요일", "수요일", "목요일", "금요일", "토요일", "일요일"],
+              dayNamesMin: ["월", "화", "수", "목","금", "토", "일"],
+              monthNames: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
+              monthNamesShort: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
+              dateFormat: "yymmdd",
+            })
+                    .on( "change", function() {
+                      to.datepicker( "option", "minDate", getDate( this ) );
+                    }),
+            to = $("#end_date_input").datepicker({
+              defaultDate: "+1w",
+              changeMonth: true,
+              dayNames: ["월요일", "화요일", "수요일", "목요일", "금요일", "토요일", "일요일"],
+              dayNamesMin: ["월", "화", "수", "목","금", "토", "일"],
+              monthNames: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
+              monthNamesShort: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
+              dateFormat: "yymmdd",
+            })
+                    .on( "change", function() {
+                      from.datepicker( "option", "maxDate", getDate( this ) );
+                    });
+    $('#start_date_input').datepicker();
+    $('#start_date_input').datepicker("option", "maxDate", $("#end_date_input").val());
+    $('#start_date_input').datepicker("option", "onClose", function ( selectedDate ) {
+      $("#end_date_input").datepicker( "option", "minDate", selectedDate );
+    });
+
+    $('#end_date_input').datepicker();
+    $('#end_date_input').datepicker("option", "minDate", $("#start_date_input").val());
+    $('#end_date_input').datepicker("option", "onClose", function ( selectedDate ) {
+      $("#start_date_input").datepicker( "option", "maxDate", selectedDate );
+    });
+
+    function getDate( element ) {
+      var date;
+      try {
+        date = $.datepicker.parseDate( dateFormat, element.value );
+      } catch( error ) {
+        date = null;
       }
-      reader.readAsDataURL(event.target.files[i--]);
-      document.querySelector("#preview_imgs").appendChild(img);
+
+      return date;
+    }
+  } );
+</script>
+
+<%--주소 찾기 api 스크립트--%>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+  //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
+  function loc_btn() {
+    new daum.Postcode({
+      oncomplete: function(data) {
+        // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+        // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
+        // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+        var roadAddr = data.roadAddress; // 도로명 주소 변수
+        var extraRoadAddr = ''; // 참고 항목 변수
+
+        // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+        // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+        if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+          extraRoadAddr += data.bname;
+        }
+        // 건물명이 있고, 공동주택일 경우 추가한다.
+        if(data.buildingName !== '' && data.apartment === 'Y'){
+          extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+        }
+        // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+        if(extraRoadAddr !== ''){
+          extraRoadAddr = ' (' + extraRoadAddr + ')';
+        }
+
+        // 우편번호와 주소 정보를 해당 필드에 넣는다.
+        document.getElementById('loc_num').value = data.zonecode;
+        document.getElementById("loc_road").value = roadAddr;
+
+        // 참고항목 문자열이 있을 경우 해당 필드에 넣는다.
+        if(roadAddr !== ''){
+          document.getElementById("sample4_extraAddress").value = extraRoadAddr;
+        } else {
+          document.getElementById("sample4_extraAddress").value = '';
+        }
+
+        var guideTextBox = document.getElementById("guide");
+        // 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
+        if(data.autoRoadAddress) {
+          var expRoadAddr = data.autoRoadAddress + extraRoadAddr;
+          guideTextBox.innerHTML = '(예상 도로명 주소 : ' + expRoadAddr + ')';
+          guideTextBox.style.display = 'block';
+
+        } else if(data.autoJibunAddress) {
+          var expJibunAddr = data.autoJibunAddress;
+          guideTextBox.innerHTML = '(예상 지번 주소 : ' + expJibunAddr + ')';
+          guideTextBox.style.display = 'block';
+        } else {
+          guideTextBox.innerHTML = '';
+          guideTextBox.style.display = 'none';
+        }
+      }
+    }).open();
+  }
+</script>
+
+<%--사진 미리보기 및 업로드 스크립트--%>
+<script>
+
+  function getImageFiles(e) {
+    const uploadFiles = [];
+    const files = e.currentTarget.files;
+    const imagePreview = document.querySelector('.image-preview');
+    const docFrag = new DocumentFragment();
+
+
+    // 업로드 파일 수가 여러장 이상인 경우 경고 메시지 출력
+    if ([...files].length > 1) {
+      alert('이미지는 한개씩 업로드 가능합니다.');
+      return;
+    }
+
+    // 업로드 파일 중 이미지 파일이 아닌 경우 경고 메시지 출력
+    for (let i = 0; i < files.length; i++) {
+      if (!files[i].type.match("image/.*")) {
+        alert('이미지 파일만 업로드 가능합니다.');
+        return;
+      }
+    }
+
+    for (let i = 0; i < files.length; i++) {
+      // 업로드 파일 수가 1장 이하인 경우에만 파일 추가
+      if (uploadFiles.length < 1) {
+        uploadFiles.push(files[i]);
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          const preview = createElement(e, files[i]);
+          imagePreview.appendChild(preview);
+        };
+        reader.readAsDataURL(files[i]);
+      }
     }
   }
 
-  // 하루종일 체크 시 시간 변경
+  function createElement(e, file) {
+    const li = document.createElement('li');
+    const img = document.createElement('img');
+    img.setAttribute('src', e.target.result);
+    img.setAttribute('data-file', file.name);
+    li.appendChild(img);
+    return li;
+  }
+
+  const realUpload = document.querySelector('.real-upload');
+  const upload = document.querySelector('.upload');
 
 
+
+  upload.addEventListener('click', () => realUpload.click());
+
+  realUpload.addEventListener('change', getImageFiles);
 </script>
 
 </body>
-  <jsp:include page="/WEB-INF/views/layout/footer.jsp"/>
+<jsp:include page="/WEB-INF/views/layout/footer.jsp"/>
 </html>

@@ -2,6 +2,7 @@ package org.zerock.seoulive.board.travel.service;
 
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.zerock.seoulive.board.travel.domain.DTO;
@@ -9,8 +10,10 @@ import org.zerock.seoulive.board.travel.domain.VO;
 import org.zerock.seoulive.board.travel.exception.ServiceException;
 import org.zerock.seoulive.board.travel.mapper.mapper;
 
+import java.sql.Date;
 import java.util.List;
 
+@Log4j2
 @NoArgsConstructor
 @Service("service")
 public class serviceImpl implements service {
@@ -30,7 +33,17 @@ public class serviceImpl implements service {
 
     @Override
     public Boolean register(DTO dto) throws ServiceException {
+        log.info("register({}) inoked.", dto);
         try {
+
+//            String startDate = String.valueOf(dto.getStart_date());
+//            Date startdate = Date.valueOf(startDate);
+//            dto.setStart_date(startdate);
+//
+//            String endDate = String.valueOf(dto.getEnd_date());
+//            Date enddate = Date.valueOf(endDate);
+//            dto.setEnd_date(enddate);
+//            dto.setStart_date(date.valueOf(dto.getStart_date()));
             return this.dao.insert(dto) == 1;
         }
         catch (Exception e) {
