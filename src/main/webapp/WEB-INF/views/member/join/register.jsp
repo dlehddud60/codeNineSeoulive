@@ -28,7 +28,7 @@
 
     <body>
 
-      <form action="/member/join/register" method="post">
+      <form action="/member/join/doit" method="post">
         <div class="join_container">
           <div class="join_container inner">
 
@@ -73,6 +73,7 @@
               </div>
               <span id="genderError"></span>
             </div>
+
           </div>
 
           <div class="join_container inner">
@@ -110,7 +111,7 @@
             </div>
 
             <div class="join_button">
-              <input type="submit" id="join_btn" value="가입하기">
+              <input type="submit" id="join_btn" value="가입하기" formenctype="multipart/form-data">
             </div>
           </div>
         </div>

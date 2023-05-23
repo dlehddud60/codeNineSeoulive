@@ -9,12 +9,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.seoulive.member.join.domain.UserDTO;
 import org.zerock.seoulive.member.join.exception.ControllerException;
 import org.zerock.seoulive.member.join.service.MailSendService;
 import org.zerock.seoulive.member.join.service.UserService;
 
+import java.io.File;
+import java.util.Arrays;
 import java.util.Objects;
 
 
@@ -36,9 +39,15 @@ public class UserController {
 
     } // joinMain
 
+    @GetMapping("/register")
+    void register() {   // 단순 등록화면 요청
+        log.trace("register() invoked.");
+
+    } // register
+
     @PostMapping(
             value = "/register",
-            params = {"email", "password", "birthDate", "gender", "nickName", "introduction", "profileImg"}
+            params = {"email", "password",  "birthDate", "gender", "nickName", "introduction"}
             )
     String register(UserDTO dto, RedirectAttributes rttrs) throws ControllerException {
         log.trace("register({}, {}) invoked.", dto, rttrs);
@@ -53,12 +62,6 @@ public class UserController {
         } // try-catch
     } // register
 
-    @GetMapping("/register")
-    void register() {   // 단순 등록화면 요청
-        log.trace("register() invoked.");
-
-    } // register
-
     //이메일 인증
     @GetMapping("/register/mailCheck")
     @ResponseBody
@@ -67,6 +70,32 @@ public class UserController {
 
         return mailService.joinEmail(email);
     } // mailCheck
+
+
+    @PostMapping(path = "/doit")
+    void doit(
+            MultipartFile[] profileImg
+    ) throws ControllerException {
+        log.trace("doit({}) invoked.", Arrays.toString(profileImg));
+
+        try {
+            for (MultipartFile file : profileImg) {
+                String reqParamName = file.getName();
+                String originFileName = file.getOriginalFilename();
+                Long fileSize = file.getSize();
+
+                File savePath = new File("/Users/uneong/temp/upload/" + originFileName);
+
+                log.trace("reqParamName({}), originFileName({}), fileSize({})",
+                        reqParamName, originFileName, fileSize);
+
+                file.transferTo(savePath);
+            } // enhanced for
+        } catch(Exception e) {  // Original Exception
+            throw new ControllerException(e);
+        } // try-catch()
+    } // doit
+
 
 
 } // end class

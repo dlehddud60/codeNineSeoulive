@@ -1,6 +1,7 @@
 package org.zerock.seoulive.member.join.domain;
 
 import lombok.Data;
+import org.springframework.web.multipart.MultipartFile;
 
 
 @Data
@@ -15,6 +16,7 @@ public class UserDTO {
     private String profileImg;
 
     private boolean rememberMe;
+    private MultipartFile file;
 
 
 } // end class
