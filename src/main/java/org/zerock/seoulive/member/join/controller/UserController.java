@@ -5,10 +5,7 @@ import lombok.Setter;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.seoulive.member.join.domain.UserDTO;
@@ -47,10 +44,10 @@ public class UserController {
 
     @PostMapping(
             value = "/register",
-            params = {"email", "password",  "birthDate", "gender", "nickName", "introduction"}
-            )
-    String register(UserDTO dto, RedirectAttributes rttrs) throws ControllerException {
-        log.trace("register({}, {}) invoked.", dto, rttrs);
+            params = {"email", "password", "birthDate", "gender", "nickName", "introduction"}
+    )
+    String register(UserDTO dto) throws ControllerException {
+        log.trace("register({}, {}) invoked.", dto);
 
         try {
             Objects.requireNonNull(dto);

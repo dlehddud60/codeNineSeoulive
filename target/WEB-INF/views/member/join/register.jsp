@@ -28,10 +28,9 @@
 
     <body>
 
-      <form action="/member/join/doit" method="post">
+      <form action="/member/join/register" method="post">
         <div class="join_container">
           <div class="join_container inner">
-
             <div class="join_wrap">
               <p>이메일</p>
               <div class="join_btn_wrap">
@@ -84,7 +83,7 @@
             </div>
 
             <div class="upload_image">
-              <input type="file" id="profileImg" name="profileImg" accept="image/*" onchange="setThumbnail(event);"
+              <input type="file" id="profileImg" name="profileImg" accept="image/*" formenctype="multipart/form-data" onchange="setThumbnail(event);"
                 style="width: 0; height: 0;" />
               <label for="profileImg">프로필 사진 업로드</label>
             </div>
