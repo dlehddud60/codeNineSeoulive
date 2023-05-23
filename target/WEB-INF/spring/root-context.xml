@@ -19,7 +19,7 @@
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
 
 		<property name="driverClassName" value="oracle.jdbc.OracleDriver"/>
-		<property name="jdbcUrl" value="jdbc:oracle:thin:@o9o6yubutmsjch3b_high?TNS_ADMIN=/Users/leedongyoung/opt/OracleCloudWallet/VFX" />
+		<property name="jdbcUrl" value="jdbc:oracle:thin:@o9o6yubutmsjch3b_high?TNS_ADMIN=/Users/sejungahn/opt/OracleCloudWallet/VFX2" />
 		<property name="username" value="SEOULIVE"/>
 		<property name="password" value="Oracle12345678"/>
 
@@ -39,21 +39,25 @@
 		<constructor-arg ref="hikariConfig"/>
 	</bean>
 
-<!--	<bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">-->
-<!--		<property name="dataSource" ref="hikariDataSource"/>-->
-<!--		<property name="configLocation" value="classpath:mybatis-config.xml"/>-->
-<!--		&lt;!&ndash; <property name="mapperLocations" value="classpath:mappers/*.xml"/> &ndash;&gt;-->
-<!--	</bean>-->
+	<bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="hikariDataSource"/>
+		<property name="configLocation" value="classpath:mybatis-config.xml"/>
+		<!-- <property name="mapperLocations" value="classpath:mappers/*.xml"/> -->
+	</bean>
 
-	<mybatis-spring:scan base-package="org.zerock.seoulive.controller" />
+
+
+
 	
 	<!-- ================= Start Of AOP ================== -->
 	
 	<context:annotation-config />
 	<aop:aspectj-autoproxy />
 
-	<context:component-scan base-package="org.zerock.seoulive.service" />
-	<context:component-scan base-package="org.zerock.seoulive.persistence" />
+	<mybatis-spring:scan base-package="org.zerock.seoulive.board.cs.faq.mapper"/>
+
+	<context:component-scan base-package="org.zerock.seoulive.board.cs.faq.service" />
+
 
 	<!-- ================= End Of AOP ================== -->
 	

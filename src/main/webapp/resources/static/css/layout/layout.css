@@ -84,6 +84,7 @@ aside .quick_box ul li a i{
 
 /* footer */
 footer{
+    margin-top:50px;
     border-top:1px solid #ddd;
     border-bottom:1px solid #ddd;
     background:#fff;

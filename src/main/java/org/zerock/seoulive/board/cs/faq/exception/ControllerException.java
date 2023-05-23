@@ -1,14 +1,14 @@
 package org.zerock.seoulive.board.cs.faq.exception;
 
-public class ServiceException extends Exception{
+public class ControllerException extends Exception{
 
     private static final long serialVersionUID = 1L;
 
-    public ServiceException(String message) {
+    public ControllerException(String message) {
         super(message);
     } // Default Constructor
 
-    public ServiceException(Exception originalException){
+    public ControllerException(Exception originalException){
         super(originalException);
     } // Default Constructor
 } // end class

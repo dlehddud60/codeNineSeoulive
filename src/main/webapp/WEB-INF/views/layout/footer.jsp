@@ -31,7 +31,7 @@
                     <li><a href="#a">개인정보처리방침</a></li>
                     <li><a href="#a">사이트맵</a></li>
                 </ul>
-                <p class="copyright">Copyright © seoullive. All Rights Reserved</p>
+                <p class="copyright">Copyright © seoulive. All Rights Reserved</p>
             </div>
         </div>
     </div>

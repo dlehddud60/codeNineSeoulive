@@ -14,7 +14,7 @@
 
 	<packaging>war</packaging>
 
-	<name>springinterceptor-20230502</name>
+	<name>seoulive</name>
 	<url>http://springmvc.example.com</url>
 	<description>Spring MVC project</description>
 

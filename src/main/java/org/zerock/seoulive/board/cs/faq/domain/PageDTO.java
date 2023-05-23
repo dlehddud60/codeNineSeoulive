@@ -1,11 +1,13 @@
-package org.zerock.myapp.domain;
+package org.zerock.seoulive.board.cs.faq.domain;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 
 @ToString
 @Getter
+@NoArgsConstructor
 public class PageDTO {
 
 	private Criteria cri;
