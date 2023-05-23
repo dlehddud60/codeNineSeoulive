@@ -49,29 +49,10 @@
 </div>
 
 <script>
-    // To display sign-in result.
-    var result = "${param.__RESULT__}";
-
-    if(result != null && result.length > 0) {
-        alert(result);
-    } // if
-
     $(function () {
 
-        $('#loginBtn').on('click', function () {
-            self.location.href = '/member/login/main';
-        }); // .onclick
-
-        $('#joinBtn').on('click', function () {
-            self.location.href = '/member/join/main';
-        }); // .onclick
-
         $('#logoutBtn').on('click', function () {
-            self.location.href = '/member/logout';
-        }); // .onclick
-
-        $('#myPageBtn').on('click', function () {
-            self.location.href = '#';
+            self.location.href = '/member/logout';    // GET, /user/logout
         }); // .onclick
 
     }); // .jq

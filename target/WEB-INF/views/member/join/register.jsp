@@ -31,14 +31,6 @@
       <form action="/member/join/register" method="post">
         <div class="join_container">
           <div class="join_container inner">
-            <!-- <div class="join_wrap">
-          <p>아이디</p>
-          <div class="join_btn_wrap">
-              <input type="text" placeholder="영문/숫자 5~11자">
-              <button class="btn">중복확인</button>
-              <div class="error_message"></div>
-          </div>
-      </div> -->
 
             <div class="join_wrap">
               <p>이메일</p>
@@ -50,9 +42,6 @@
               </div>
               <div class="join_btn_wrap">
                 <input name="mail_check_input" id="mail_check_input" placeholder="인증번호 입력" disabled="disabled" maxlength="6" required style="margin: 3px auto;">
-                <!--          <div>-->
-                <!--            <button type="button" class="btn">인증 확인</button>-->
-                <!--          </div>-->
               </div>
               <span id="emailError"></span>
             </div>
@@ -64,42 +53,6 @@
               <input type="password" id="password_check" placeholder="비밀번호 확인" required>
               <span id="pwError"></span>
             </div>
-
-            <!-- <div class="join_wrap">
-              <p>이름</p>
-              <input type="text" placeholder="이름">
-              <div class="error_message"></div>
-            </div> -->
-
-            <!-- <div class="join_wrap">
-              <p>생년월일</p>
-              <div class="join_wrap_birth">
-                <input type="number" name="brithYear" min="1900" max="2023" placeholder="년(4자)">
-                <div class="selection_list_warp" style="z-index: 100">
-                  <input type="hidden" name="birthMonth">
-                  <li class="selection_item">
-                    월 <i class="fas fa-angle-down"></i>
-                  </li>
-                  <ul class="selection_list" style="height: 250px;">
-                    <li><button type="button">월</button></li>
-                    <li><button type="button" value="01">1월</button></li>
-                    <li><button type="button" value="02">2월</button></li>
-                    <li><button type="button" value="03">3월</button></li>
-                    <li><button type="button" value="04">4월</button></li>
-                    <li><button type="button" value="05">5월</button></li>
-                    <li><button type="button" value="06">6월</button></li>
-                    <li><button type="button" value="07">7월</button></li>
-                    <li><button type="button" value="08">8월</button></li>
-                    <li><button type="button" value="09">9월</button></li>
-                    <li><button type="button" value="10">10월</button></li>
-                    <li><button type="button" value="11">11월</button></li>
-                    <li><button type="button" value="12">12월</button></li>
-                  </ul>
-                </div>
-                <input type="number" name="birthDay" id="birthDay" max="31" placeholder="일" onchange="inputValueChange()">
-                <div class="error_message"></div>
-              </div>
-            </div> -->
 
             <div class="join_wrap">
               <p>생년월일</p>
@@ -120,7 +73,6 @@
               </div>
               <span id="genderError"></span>
             </div>
-
           </div>
 
           <div class="join_container inner">
@@ -131,9 +83,9 @@
             </div>
 
             <div class="upload_image">
-              <input type="file" id="select_image" accept="image/*" onchange="setThumbnail(event);"
+              <input type="file" id="profileImg" name="profileImg" accept="image/*" onchange="setThumbnail(event);"
                 style="width: 0; height: 0;" />
-              <label for="select_image">프로필 사진 업로드</label>
+              <label for="profileImg">프로필 사진 업로드</label>
             </div>
 
             <div class="join_wrap">

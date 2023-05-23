@@ -38,7 +38,7 @@ public class UserController {
 
     @PostMapping(
             value = "/register",
-            params = {"email", "password",  "birthDate", "gender", "nickName", "introduction"}
+            params = {"email", "password", "birthDate", "gender", "nickName", "introduction", "profileImg"}
             )
     String register(UserDTO dto, RedirectAttributes rttrs) throws ControllerException {
         log.trace("register({}, {}) invoked.", dto, rttrs);

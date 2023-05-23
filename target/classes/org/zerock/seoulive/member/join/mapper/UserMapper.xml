@@ -13,16 +13,17 @@
             nickname,
             birth_date,
             gender,
-            introduction
+            introduction,
+            profile_img
             )
         VALUES
             (#{email},
             #{password},
             #{nickName},
             #{birthDate},
-<!--            concat(#{birthYear}, #{birthMonth}, #{birthDay}),-->
             #{gender},
-            #{introduction}
+            #{introduction},
+            #{profileImg}
             )
     </insert>
 
